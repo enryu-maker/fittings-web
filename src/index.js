@@ -5,17 +5,18 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { store } from './Store';
-
+import { BrowserRouter } from 'react-router-dom'
+import { ThemeProvider } from "@material-tailwind/react";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-<<<<<<< HEAD
-    <Provider store={store}>
-      <App />
-    </Provider>
-=======
-    <App/>
->>>>>>> refs/remotes/origin/main
+    <ThemeProvider>
+      <BrowserRouter>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </BrowserRouter>
+    </ThemeProvider>
   </React.StrictMode>
 );
 

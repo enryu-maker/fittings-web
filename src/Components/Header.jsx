@@ -1,6 +1,6 @@
 import React from 'react'
 import { AiOutlineSearch, AiOutlineUser, AiOutlineMobile, AiOutlineShoppingCart } from "react-icons/ai";
-import { Cards } from '../Screen/Cart/Cart';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { OpenCartAction } from '../Store/actions';
 export default function Header() {
@@ -21,7 +21,7 @@ export default function Header() {
 
     return (
         <>
-            <div className='w-full hidden transition-all hover:border-b-2 font-Raleway h-[120px] lg:flex justify-between items-center flex-col'>
+            <div className='w-full transition-all hover:border-b-2 font-Raleway h-[120px] lg:flex justify-between items-center flex-col'>
                 {/* small header */}
                 <div
                     className='w-[95%] py-5 flex justify-evenly items-center'

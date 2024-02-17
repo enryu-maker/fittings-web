@@ -8,7 +8,7 @@ export default function Footer() {
                 backgroundImage: `url(${IMAGE.bg})`,
                 backgroundRepeat: "no-repeat",
             }}
-            className={`w-full h-[600px] font-Raleway transition-all flex justify-center items-center`}
+            className={`w-full h-[500px] font-Raleway transition-all flex justify-center items-center`}
         >
             <div
                 className='w-[88%] h-[88%] bg-white py-4 shadow-md flex flex-col justify-evenly  items-center'
