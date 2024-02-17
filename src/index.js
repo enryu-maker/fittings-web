@@ -9,9 +9,13 @@ import { store } from './Store';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+<<<<<<< HEAD
     <Provider store={store}>
       <App />
     </Provider>
+=======
+    <App/>
+>>>>>>> refs/remotes/origin/main
   </React.StrictMode>
 );
 
