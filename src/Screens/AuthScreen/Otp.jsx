@@ -1,11 +1,14 @@
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import React, { useState, useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { VerifyAction } from '../../Store/actions';
 
 const OTPForm = () => {
   const navigate = useNavigate();
   const { state } = useLocation()
   const [otp, setOTP] = useState(['', '', '', '']);
   const inputRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
+  const [loading, setLoading] = React.useState(false)
 
   const handleChange = (index, value) => {
     if (isNaN(value)) return;
@@ -17,7 +20,7 @@ const OTPForm = () => {
       inputRefs[index + 1].current.focus();
     }
   };
-
+  const dispatch = useDispatch()
   const handleKeyDown = (index, e) => {
     if (e.key === 'Backspace' && otp[index] === '') {
       if (index > 0) {
@@ -33,7 +36,6 @@ const OTPForm = () => {
   };
   const handleClick = (e) => {
     e.preventDefault();
-    navigate('/Product')
     const otpCode = otp.join('');
     console.log('OTP submitted:', otpCode);
   };
@@ -69,7 +71,13 @@ const OTPForm = () => {
 
           <div>
             <button
-              onClick={handleClick}
+              onClick={(e) => {
+                e.preventDefault()
+                dispatch(VerifyAction({
+                  email: state?.email,
+                  otp: otp.join(''),
+                }, navigate, setLoading))
+              }}
               type="submit"
               className="group mt-8 relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-black hover:bg-black-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black-500"
             >

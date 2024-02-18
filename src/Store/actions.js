@@ -82,6 +82,44 @@ export const RegisterAction = (setLoading, data, navigate) => {
     }
 }
 
+export const VerifyAction = (data, navigate, setLoading) => {
+    setLoading(true)
+    return async dispatch => {
+        await axios.post(baseURL + 'verify/', data)
+            .then(res => {
+                if (res.status === 200) {
+                    toast.success("OTP verified Successfully", {
+                        position: "top-center",
+                        autoClose: 1000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                    });
+                    setTimeout(() => {
+                        navigate('/login')
+                        setLoading(false)
+                    }, 3000)
+                }
+            })
+            .catch(err => {
+                toast.error(err?.response?.data?.msg, {
+                    position: "top-center",
+                    autoClose: 1000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+                setLoading(false)
+            })
+    }
+}
+
 
 
 export const OpenCartAction = (status) => {
