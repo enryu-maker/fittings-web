@@ -46,19 +46,47 @@ function Products() {
             price: '$35',
             color: 'Black',
           }
+          , {
+            id: 6,
+           name: 'nicket cabinet pull',
+            href: '#',
+            imageSrc:"https://i.pinimg.com/564x/52/66/40/52664088bb364f0b2ff731cdb88eedee.jpg",
+            imageAlt: "Front of men's Basic Tee in black.",
+            price: '$35',
+            color: 'Black',
+          }
+          , {
+            id: 7,
+           name: 'nicket cabinet pull',
+            href: '#',
+            imageSrc:"https://i.pinimg.com/564x/a0/ed/b0/a0edb091eccb6084362613756cc06203.jpg",
+            imageAlt: "Front of men's Basic Tee in black.",
+            price: '$35',
+            color: 'Black',
+          }
+          , {
+            id: 8,
+           name: 'nicket cabinet pull',
+            href: '#',
+            imageSrc:"https://i.pinimg.com/564x/94/0e/cb/940ecb862d684587726ef15db97b8e8b.jpg",
+            imageAlt: "Front of men's Basic Tee in black.",
+            price: '$35',
+            color: 'Black',
+          }
+          
       ]
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-        <h2 className="text-2xl font-bold tracking-tight text-gray-900">Customers also purchased</h2>
+        <h2 className="text-2xl font-bold tracking-tight text-gray-900">Our Best Sellers</h2>
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {products.map((product) => (
             <div key={product.id} className="group relative">
-              <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+              <div className="w-150 overflow-hidden  rounded-md bg-gray-200 lg:aspect-none  group-hover:opacity-75 lg:h-80">
                 <img
                   src={product.imageSrc}
                   alt={product.imageAlt}
-                  className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                  className="h-full w-100 object-cover object-center lg:h-full lg:w-full"
                 />
                 
                 <button className="bg-orange text-gray-700"> Shop Now</button>
