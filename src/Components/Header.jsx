@@ -1,6 +1,6 @@
 import React from 'react'
 import { AiOutlineSearch, AiOutlineUser, AiOutlineMobile, AiOutlineShoppingCart } from "react-icons/ai";
-
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { OpenCartAction } from '../Store/actions';
 export default function Header() {
@@ -48,11 +48,15 @@ export default function Header() {
 
                             />
                         </div>
-                        <AiOutlineUser size={25} />
-                        <AiOutlineMobile size={25} />
+                        <a href='/login'>
+                            <AiOutlineUser size={25} />
+                        </a>
+                        <a href='/mobile'>
+                            <AiOutlineMobile size={25} />
+                        </a>
                         <AiOutlineShoppingCart size={25} onClick={() => {
                             dispatch(OpenCartAction(!cartOpen))
-                        } }/>
+                        }} />
                     </div>
                 </div>
                 {/*  */}
@@ -89,8 +93,6 @@ export default function Header() {
                         Install our app now to avail FLAT 5% OFF on your first app purchase! Use code APP5
                     </div>
             }
-
         </>
-
     )
 }
