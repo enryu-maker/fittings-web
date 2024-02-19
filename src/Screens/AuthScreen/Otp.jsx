@@ -41,7 +41,7 @@ const OTPForm = () => {
   };
   return (
     <>
-      <div className="flex justify-center items-center font-Raleway">
+      <div className="flex justify-center items-center font-Raleway mt-[140px]">
         <div className="flex min-h-full space-x-4 flex-col justify-center px-6 py-12 mr-100 lg:px-8">
           <div className="sm:mx-auto sm:w-full  sm:max-w-sm">
 

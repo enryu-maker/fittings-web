@@ -3,19 +3,11 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import "tw-elements-react/dist/css/tw-elements-react.min.css";
-<<<<<<< HEAD
-
-=======
->>>>>>> 7aa9b52f668e78c5a7e85d2fdd09d0502c6db87e
 import { Provider } from 'react-redux';
 import { store } from './Store';
 import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider } from "@material-tailwind/react";
-<<<<<<< HEAD
-=======
 import { ToastContainer } from 'react-toastify';
->>>>>>> 7aa9b52f668e78c5a7e85d2fdd09d0502c6db87e
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

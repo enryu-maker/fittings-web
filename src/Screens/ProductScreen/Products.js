@@ -1,12 +1,6 @@
 import React from 'react'
-import { useNavigate } from 'react-router';
 
 function Products() {
-  const navigate = useNavigate();
-  const handleOpen = (e) => {
-    e.preventDefault()
-   navigate("/Sub")
-     };
     const products = [
         {
           id: 1,
@@ -16,8 +10,6 @@ function Products() {
           imageAlt: "Front of men's Basic Tee in black.",
           price: '$35',
           color: 'Black',
-          des: "N&H Handmade Coconut Shell Two Toned Lotus Shaped Table Top Water Fountain"
-
         },
         {
             id: 2,
@@ -27,8 +19,6 @@ function Products() {
             imageAlt:"Front of men's Basic Tee in black.",
             price: '$35',
             color: 'Black',
-            des: "N&H Handmade Coconut Shell Two Toned Lotus Shaped Table Top Water Fountain"
-
           },
           {
             id: 3,
@@ -38,8 +28,6 @@ function Products() {
             imageAlt: "Front of men's Basic Tee in black.",
             price: '$35',
             color: 'Black',
-            des: "N&H Handmade Coconut Shell Two Toned Lotus Shaped Table Top Water Fountain"
-
           },
           {
             id: 4,
@@ -49,7 +37,6 @@ function Products() {
             imageAlt: "Front of men's Basic Tee in black.",
             price: '$35',
             color: 'Black',
-            des: "N&H Handmade Coconut Shell Two Toned Lotus Shaped Table Top Water Fountain"
           }, {
             id: 5,
            name: 'nicket cabinet pull',
@@ -57,8 +44,7 @@ function Products() {
             imageSrc:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEtEV_BTV53q_pwsbgsl79Nk1b7a1522t_6g&usqp=CAU",
             imageAlt: "Front of men's Basic Tee in black.",
             price: '$35',
-            color:"black",
-            des: "N&H Handmade Coconut Shell Two Toned Lotus Shaped Table Top Water Fountain",
+            color: 'Black',
           }
           , {
             id: 6,
@@ -68,8 +54,6 @@ function Products() {
             imageAlt: "Front of men's Basic Tee in black.",
             price: '$35',
             color: 'Black',
-            des: "N&H Handmade Coconut Shell Two Toned Lotus Shaped Table Top Water Fountain"
-
           }
           , {
             id: 7,
@@ -79,8 +63,6 @@ function Products() {
             imageAlt: "Front of men's Basic Tee in black.",
             price: '$35',
             color: 'Black',
-            des: "N&H Handmade Coconut Shell Two Toned Lotus Shaped Table Top Water Fountain"
-
           }
           , {
             id: 8,
@@ -90,8 +72,6 @@ function Products() {
             imageAlt: "Front of men's Basic Tee in black.",
             price: '$35',
             color: 'Black',
-            des: "N&H Handmade Coconut Shell Two Toned Lotus Shaped Table Top Water Fountain"
-
           }
           
       ]
@@ -102,14 +82,14 @@ function Products() {
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {products.map((product) => (
             <div key={product.id} className="group relative">
-              <div  className="w-150 overflow-hidden  rounded-md bg-gray-200 lg:aspect-none  group-hover:opacity-75 lg:h-80">
-                <img   onClick={handleOpen}
+              <div className="w-150 overflow-hidden  rounded-md bg-gray-200 lg:aspect-none  group-hover:opacity-75 lg:h-80">
+                <img
                   src={product.imageSrc}
                   alt={product.imageAlt}
                   className="h-full w-100 object-cover object-center lg:h-full lg:w-full"
-              
                 />
                 
+                <button className="bg-orange text-gray-700"> Shop Now</button>
               </div>
               <div className="mt-4 flex justify-between">
                 <div>
@@ -122,10 +102,7 @@ function Products() {
                   <p className="mt-1 text-sm text-gray-500">{product.color}</p>
                 </div>
                  <p className="text-m font-medium text-black-900">{product.price}</p>
-                 
               </div>
-              <p   className="mt-1 text-sm text-gray-500">{product.des}</p>
-
             </div>
           ))}
         </div>

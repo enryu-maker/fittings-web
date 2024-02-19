@@ -21,7 +21,7 @@ export default function Header() {
 
     return (
         <>
-            <div className='w-full transition-all hover:border-b-2 font-Raleway h-[120px] lg:flex justify-between items-center flex-col'>
+            <div className='w-full fixed bg-white top-0 z-50  transition-all hover:border-b-2 font-Raleway h-[120px] lg:flex justify-between items-center flex-col'>
                 {/* small header */}
                 <div
                     className='w-[95%] py-5 flex justify-evenly items-center'
@@ -76,23 +76,24 @@ export default function Header() {
                         ))
                     }
                 </div>
+                {
+                    open ?
+                        <div
+                            className='h-[400px] w-full bg-white transition-shadow shadow-sm flex justify-center items-center'
+                        >
+                            <p>
+                                hello World
+                            </p>
+                        </div>
+                        :
+                        <div
+                            className='bg-black w-full transition-all py-2 text-xs font-Raleway flex text-white  justify-center items-center'
+                        >
+                            Install our app now to avail FLAT 5% OFF on your first app purchase! Use code APP5
+                        </div>
+                }
             </div>
-            {
-                open ?
-                    <div
-                        className='h-[400px] w-full bg-white transition-shadow shadow-sm flex justify-center items-center'
-                    >
-                        <p>
-                            hello World
-                        </p>
-                    </div>
-                    :
-                    <div
-                        className='bg-black transition-all py-2 text-xs font-Raleway flex text-white  justify-center items-center'
-                    >
-                        Install our app now to avail FLAT 5% OFF on your first app purchase! Use code APP5
-                    </div>
-            }
+
         </>
     )
 }
