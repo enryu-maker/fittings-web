@@ -5,6 +5,7 @@ import { TECarousel, TECarouselItem } from "tw-elements-react";
 import Cards from "./Cards";
 import Products from "../ProductScreen/Products";
 export default function Home() {
+    
   return (
     <>
       <TECarousel showControls  ride="carousel">
@@ -13,14 +14,13 @@ export default function Home() {
             itemID={1}
             className="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
           >
-            <img
+            <img 
               src="https://i.pinimg.com/originals/2f/2b/ff/2f2bff255fc46eeab07c8ff6cce6189a.jpg"
               className="block"
               alt="..."
             />
             <div className="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
               <h1 className="text-5xl	text-black	">LIVING AREA</h1>
-              
             </div>
           </TECarouselItem>
           <TECarouselItem
