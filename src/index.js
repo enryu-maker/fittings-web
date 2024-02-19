@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import "tw-elements-react/dist/css/tw-elements-react.min.css";
 import { Provider } from 'react-redux';
 import { store } from './Store';
 import { BrowserRouter } from 'react-router-dom'
