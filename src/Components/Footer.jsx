@@ -27,11 +27,26 @@ export default function Footer() {
                             Quick Link
                         </p>
                     </div>
-                    <div>
+                    <div className='flex flex-col space-y-2'>
                         <p
                             className=' uppercase font-semibold'>
                             customer Service
                         </p>
+                        <a
+                            href='#'
+                            className=' capitalize '>
+                            Privacy Policy
+                        </a>
+                        <a
+                            href='#'
+                            className=' capitalize '>
+                            Terms & Conditions
+                        </a>
+                        <a
+                            href='#'
+                            className=' capitalize '>
+                            Refund & Cancellation Policy
+                        </a>
                     </div>
                     <div>
                         <p
