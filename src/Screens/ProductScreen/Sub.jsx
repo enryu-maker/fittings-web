@@ -109,7 +109,7 @@ import { useNavigate } from "react-router";
       ] 
   return (
     <div className="mt-[180px] font-Raleway">
-        <p className="text-center">SUBCATEGORY</p>
+        <p className="text-center text-4xl">SUBCATEGORY</p>
       <div className="grid grid-cols-4 gap-4">
       <Card className="h-[calc(100vh-2rem)] font-Raleway w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5">
        <div className="mb-2 flex items-center gap-4 p-4">

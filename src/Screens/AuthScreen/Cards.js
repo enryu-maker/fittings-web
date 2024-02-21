@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 import { Button } from '@material-tailwind/react';
 import React from 'react';
 import { TERipple } from 'tw-elements-react';
@@ -153,4 +151,3 @@ export default function Cards() {
     </div>
   );
 }
->>>>>>> main
