@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <>
       <TECarousel showControls  ride="carousel">
-        <div className="relative w-90 h-90  m-40   rounded-lg overflow-hidden after:clear-both after:block after:content-['']">
+        <div className="relative w-90 h-90 flex-1	 rounded-lg overflow-hidden after:clear-both after:block after:content-['']">
           <TECarouselItem
             itemID={1}
             className="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"

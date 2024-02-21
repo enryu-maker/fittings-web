@@ -8,7 +8,13 @@ import {
     Typography,
     Avatar,
   } from "@material-tailwind/react";
+import { useNavigate } from 'react-router';
 export default function Cards() {
+    const navigate = useNavigate();
+    const handleOpen = (e) => {
+      e.preventDefault()
+     navigate("/Products")
+       };
     const images = [
         'https://i.pinimg.com/564x/8f/ec/d1/8fecd191e720d539f4654754f7ebfa9f.jpg',
         'https://i.pinimg.com/564x/fb/4f/c9/fb4fc9035dac89d721a4df102d0f9638.jpg',
@@ -24,7 +30,7 @@ export default function Cards() {
      <div className='flex flex-row'>
      {images.map((image, index) => (
 
-      <img
+      <img onClick={handleOpen}
         src={image}
         className="h-60 rounded-lg w-60 m-6 "
         alt="FURNITURE"
