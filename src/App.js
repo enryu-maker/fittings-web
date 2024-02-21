@@ -3,6 +3,7 @@ import Header from './Components/Header'
 import Footer from './Components/Footer'
 import { Cart } from './Screens/Cart/Cart'
 import { useSelector } from 'react-redux'
+import Home from './Screens/Common/Home'
 import Login from './Screens/AuthScreen/Login';
 import Home from './Screens/Common/Home';
 import Cards from './Screens/Common/Cards';
@@ -37,3 +38,5 @@ export default function App() {
     </>
   )
 }
+
+
