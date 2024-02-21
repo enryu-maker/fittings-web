@@ -3,15 +3,15 @@ import Header from './Components/Header'
 import Footer from './Components/Footer'
 import { Cart } from './Screens/Cart/Cart'
 import { useSelector } from 'react-redux'
+import Home from './Screens/Common/Home'
 import Login from './Screens/AuthScreen/Login';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Registration from './Screens/Registration';
-import Otp from './Screens/AuthScreen/Otp';
-import Products from './Screens/ProductScreen/Products';
-import Home from './Screens/AuthScreen/Home';
-import Cards from './Screens/AuthScreen/Cards';
-import Category from './Screens/AuthScreen/Category';
-
+import Home from './Screens/Common/Home';
+import Cards from './Screens/Common/Cards';
+import Category from './Screens/Common/Category';
+import { Routes, Route } from "react-router-dom";
+import Registration from './Screens/AuthScreen/Registration';
+import OTPForm from './Screens/AuthScreen/Otp'
+import Products from './Screens/ProductScreen/Products'
 
 export default function App() {
   const cartOpen = useSelector(state => state.Reducers.cartOpen)
@@ -28,16 +28,15 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />
-          <Route path="/Products" element={<Products />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/category" element={<Category />} />
+          <Route path="/cards" element={<Cards />} />
           <Route path="/otp" element={<OTPForm />} />
-          <Route path="/Category" element={<Category/>} />
-          <Route path="/Cards" element={<Cards/>} />
-          <Route path="/Sub" element={<Sub/>} />
-          <Route path="/Details" element={<Details/>} />
-
         </Routes>
         <Footer />
       </div>
     </>
   )
 }
+
+
