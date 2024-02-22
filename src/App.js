@@ -29,12 +29,11 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/category" element={<Category />} />
+          <Route path="/category" element={<Products />} />
           <Route path="/cards" element={<Cards />} />
           <Route path="/otp" element={<OTPForm />} />
           <Route path="/cards" element={<Cards/>} />
-          <Route path="/sub" element={<Sub/>} />
+          <Route path="/subcategory" element={<Sub/>} />
           <Route path="/details" element={<Details/>} />
         </Routes>
         <Footer />
