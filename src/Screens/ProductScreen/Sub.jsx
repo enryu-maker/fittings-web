@@ -147,14 +147,14 @@ function Sub() {
                     <ListItemPrefix>
                       <PresentationChartBarIcon className="h-5 w-5" />
                     </ListItemPrefix>
-                    <Typography color="blue-gray" className="mr-auto font-normal">
+                    <Typography color="blue-gray" className="mr-auto  font-normal">
                       Price
                     </Typography>
                   </AccordionHeader>
                 </ListItem>
                 <AccordionBody className=" font-Raleway py-1">
                   <List className="p-0">
-                    <div className="w-40">
+                <div className="w-60 m-5">
                       <Slider defaultValue={30} />
                     </div>
                   </List>
@@ -245,15 +245,15 @@ function Sub() {
           </Card>
           <div className="h-50  grid grid-cols-subgrid gap-4 col-span-3">
             {products.map((product) => (
-              <Card className="w-74  m-2 shadow-lg" onClick={(e) => handleSubmit(e)} >
+              <Card className="w-74  " onClick={(e) => handleSubmit(e)} >
                 <CardHeader floated={false} color="blue-gray">
-                  <img src={product.imageSrc} alt="ui/ux review check" className="h-80" />
+                  <img src={product.imageSrc} alt="ui/ux review check " className="h-80 " />
                   <div className="to-bg-black-10 absolute inset-0 h-full  bg-gradient-to-tr from-transparent via-transparent to-black/60 " />
                   <IconButton
                     size="sm"
                     color="red"
                     variant="text"
-                    className="!absolute top-4 right-4 rounded-full"
+                    className="!absolute top-4 right-4 "
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

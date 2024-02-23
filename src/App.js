@@ -13,6 +13,9 @@ import OTPForm from './Screens/AuthScreen/Otp'
 import Products from './Screens/ProductScreen/Products'
 import Sub from './Screens/ProductScreen/Sub'
 import Details from './Screens/ProductScreen/Details'
+import Privacypage from './Components/Privacypage'
+import Terms from './Components/Terms'
+import Refund from './Components/Refund'
 
 export default function App() {
   const cartOpen = useSelector(state => state.Reducers.cartOpen)
@@ -33,8 +36,12 @@ export default function App() {
           <Route path="/cards" element={<Cards />} />
           <Route path="/otp" element={<OTPForm />} />
           <Route path="/cards" element={<Cards/>} />
-          <Route path="/subcategory" element={<Sub/>} />
+          <Route path="/products" element={<Sub/>} />
           <Route path="/details" element={<Details/>} />
+          <Route path="/privacypage" element={<Privacypage/>} />
+          <Route path="/terms" element={<Terms/>} />
+          <Route path="refund"element={<Refund/>}/>
+
         </Routes>
         <Footer />
       </div>
