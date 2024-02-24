@@ -16,6 +16,8 @@ import Details from './Screens/ProductScreen/Details'
 import Privacypage from './Components/Privacypage'
 import Terms from './Components/Terms'
 import Refund from './Components/Refund'
+import Mobile from './Screens/Constants/Mobile'
+import MyAC from './Screens/Constants/MyAc'
 
 export default function App() {
   const cartOpen = useSelector(state => state.Reducers.cartOpen)
@@ -41,6 +43,8 @@ export default function App() {
           <Route path="/privacypage" element={<Privacypage/>} />
           <Route path="/terms" element={<Terms/>} />
           <Route path="refund"element={<Refund/>}/>
+          <Route path="mobile"element={<Mobile/>}/>
+          <Route path="myac"element={<MyAC/>}/>
 
         </Routes>
         <Footer />

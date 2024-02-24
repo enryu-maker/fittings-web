@@ -1,75 +1,70 @@
-import React, { useState } from "react";
-import { Card, List, ListItem } from "@material-tailwind/react";
+import React, { useState } from 'react';
+import { Transition } from '@headlessui/react';
+import { List, ListItem } from '@material-tailwind/react';
 
-const privacyPolicyData = [
-  { title: "GENERAL", description: "Description for Dashboard" },
-  {
-    title: "COLLECTION OF PERSONAL AND OTHER INFORMATION",
-    description: "Description for Collection of Personal and Other Information",
-  },
-  { title: "COOKIES", description: "Description for Cookies" },
-  {
-    title: "DIVULGING/SHARING OF PERSONAL INFORMATION",
-    description: "Description for Divulging/Sharing of Personal Information",
-  },
-  {
-    title: "SECURITY",
-    description: "Description for Divulging/Sharing of Personal Information",
-  },
-  {
-    title: "THIRD PARTY ADVERTISEMENTS / PROMOTIONS",
-    description: "Description for Divulging/Sharing of Personal Information",
-  },
-  {
-    title: "USER’S CONSENT",
-    description: "Description for Divulging/Sharing of Personal Information",
-  },
-  {
-    title: "CHILDREN INFORMATION",
-    description: "Description for Divulging/Sharing of Personal Information",
-  },
-  {
-    title: "GRIEVANCE OFFICER",
-    description: "Description for Divulging/Sharing of Personal Information",
-  },
-  {
-    title: "DISPUTE RESOLUTION AND JURISDICTION",
-    description:
-      "The portal, www.fittingswale.com (“Website”) and the mobile application ‘fittingswale’ (“App”) (collectively “Platforms”) is managed and operated by Mittal enterprises (“fittingswale” or “We”), a proprietorship firm with its registered office located at mittal bhawan gol building manaitand dhanbad Jharkhand – 826001 India. Fittingswale is inter alia engaged in the business of wholesale and retail trade in home improvement sector and sale of their allied and auxiliary products (“Products”), through brick and mortar stores and through its Platforms and providing other home design and decor solutions (collectively as “Services”) to the users of the Platforms (“User” or “You” or “Your”)",
-  },
-];
+const Refund = () => {
+  const sections = [
+    {  id:1, title: " INTRODUCTION", description: "Description for Dashboard" },
+    { id:2,
+      title: "OBJECTIVES OF THIS POLICY",
+      description:
+        "Description for Collection of Personal and Other Information",
+    },
+    { id:3,title: "TERMS OF CANCELLATION", description: "Description for Cookies" },
+    { id:4,
+      title: "REFUND",
+      description: "Description for Divulging/Sharing of Personal Information",
+    }
+  ];
 
-function Refund() {
-  const [selectedTitle, setSelectedTitle] = useState(
-    privacyPolicyData[0].title
-  );
+  const [selectedSection, setSelectedSection] = useState(null);
 
-  const handleTitleClick = (title) => {
-    setSelectedTitle(title);
+  const handleSectionClick = (sectionId) => {
+    setSelectedSection(sectionId);
   };
+
   return (
     <>
-      <div className="flex w-full h-[100vh] mt-10 justify-evenly items-center">
-    <div className="w-[30%] bg-orange-300">
-    <Card >
+<div >
+    {/* <h2 className='mt-90 text-black text-bold text-5xl'>CANCELLATION, REFUND AND RETURN POLICY</h2> */}
+    
+    <div className="flex flex-col mt-40 md:flex-row h-screen">        
+      <div className="w-full md:w-1/4 bg-gray-200 p-4">
+        <h2 className="text-lg font-bold mb-4">Privacy Policy</h2>       
         <List>
-          {privacyPolicyData.map((item, index) => (
-            <React.Fragment key={index}>
-              <ListItem onClick={() => handleTitleClick(item.title)} className={`${selectedTitle === item.title ? 'bg-blue-100' : ''}`}>
-                {item.title}
-              </ListItem>
-              <hr></hr>
-            </React.Fragment>
+          {sections.map(section => (
+            <ListItem key={section.id} onClick={() => handleSectionClick(section.id)} className="cursor-pointer hover:text-blue-500 mb-2">
+              {section.title}
+            </ListItem>
           ))}
         </List>
-      </Card>
-    </div>
-    <div className="w-[70%] bg-yellow-300">
-    
-    </div>
       </div>
+      <Transition
+        show={selectedSection !== null}
+        enter="transition ease-out duration-300 transform"
+        enterFrom="translate-x-full"
+        enterTo="translate-x-0"
+        leave="transition ease-in duration-200 transform"
+        leaveFrom="translate-x-0"
+        leaveTo="translate-x-full"
+        className="w-full md:w-3/4 bg-white p-4 overflow-y-auto"
+      >
+        {(ref) => (
+          <div ref={ref}>
+            {selectedSection !== null && (
+              <div>
+                <h2 className="text-lg font-bold mb-4">{sections[selectedSection - 1].title}</h2>
+                <p>{sections[selectedSection - 1].description}</p>
+              </div>
+            )}
+          </div>
+        )}
+      </Transition>
+    </div>
+    </div>
     </>
   );
-}
+};
 
-export default Refund;
+export default  Refund;
+

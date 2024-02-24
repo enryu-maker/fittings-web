@@ -1,11 +1,14 @@
-
 import React, { useState } from 'react';
 import { Transition } from '@headlessui/react';
 import { List, ListItem } from '@material-tailwind/react';
 
-const Privacypage = () => {
+const MyAc = () => {
   const sections = [
-    {  id:1, title: "GENERAL", description: "Description for Dashboard" },
+    {  id:1,
+         title: "GENERAL", 
+        Name : "Description for Dashboard" ,
+        Email:""
+    },
     { id:2,
       title: "COLLECTION OF PERSONAL AND OTHER INFORMATION",
       description:
@@ -60,7 +63,7 @@ const Privacypage = () => {
               {section.title}
             </ListItem>
           ))}
-       </List>
+        </List>
       </div>
       <Transition
         show={selectedSection !== null}
@@ -78,14 +81,13 @@ const Privacypage = () => {
               <div>
                 <h2 className="text-lg font-bold mb-4">{sections[selectedSection - 1].title}</h2>
                 <p>{sections[selectedSection - 1].description}</p>
-              </div>             
+              </div>
             )}
-          </div>         
+          </div>
         )}
       </Transition>
-      <hr></hr>
     </div>
   );
 };
 
-export default Privacypage;
+export default MyAc ;
