@@ -1,7 +1,8 @@
 const initialState = {
     access: null,
     cart: [],
-    cartOpen: false
+    cartOpen: false,
+    cateogry: []
 };
 export default (state = initialState, action) => {
     switch (action.type) {
@@ -14,6 +15,11 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 cartOpen: action.payload,
+            };
+        case "CAT":
+            return {
+                ...state,
+                cateogry: action.payload,
             };
         default:
             return state;

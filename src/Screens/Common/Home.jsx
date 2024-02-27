@@ -3,8 +3,11 @@ import { Carousel } from 'react-responsive-carousel'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import React from "react";
 import Cards from "./Cards";
+import { useSelector } from 'react-redux';
 export default function Home() {
   const banner = [1,2,3]
+  const cateogry = useSelector(state => state.Reducers.cateogry)
+
   return (
     <div
       className=" font-Raleway mt-[140px]"
@@ -32,7 +35,7 @@ export default function Home() {
           ))
         }
       </Carousel>
-      <Cards />
+      <Cards data={cateogry}/>
       {/* <Products /> */}
     </div>
   );
