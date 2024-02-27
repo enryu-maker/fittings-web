@@ -2,7 +2,7 @@ import React from 'react'
 import Header from './Components/Header'
 import Footer from './Components/Footer'
 import { Cart } from './Screens/Cart/Cart'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Login from './Screens/AuthScreen/Login';
 import Home from './Screens/Common/Home';
 import Cards from './Screens/Common/Cards';
@@ -13,9 +13,14 @@ import OTPForm from './Screens/AuthScreen/Otp'
 import Products from './Screens/ProductScreen/Products'
 import Sub from './Screens/ProductScreen/Sub'
 import Details from './Screens/ProductScreen/Details'
+import { GetCateogry } from './Store/actions'
 
 export default function App() {
   const cartOpen = useSelector(state => state.Reducers.cartOpen)
+  const dispatch = useDispatch()
+  React.useEffect(() => {
+    dispatch(GetCateogry())
+  }, [dispatch])
   return (
     <>
       {
@@ -32,9 +37,9 @@ export default function App() {
           <Route path="/category" element={<Products />} />
           <Route path="/cards" element={<Cards />} />
           <Route path="/otp" element={<OTPForm />} />
-          <Route path="/cards" element={<Cards/>} />
-          <Route path="/subcategory" element={<Sub/>} />
-          <Route path="/details" element={<Details/>} />
+          <Route path="/cards" element={<Cards />} />
+          <Route path="/subcategory/:id" element={<Sub />} />
+          <Route path="/details" element={<Details />} />
         </Routes>
         <Footer />
       </div>

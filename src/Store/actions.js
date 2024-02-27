@@ -1,5 +1,4 @@
 import axios from "axios";
-
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { baseURL } from "../Helper/Helper";
@@ -116,6 +115,51 @@ export const VerifyAction = (data, navigate, setLoading) => {
                     theme: "light",
                 });
                 setLoading(false)
+            })
+    }
+}
+export const GetCateogry = () => {
+    return async dispatch => {
+        await axios.get(baseURL + `product/main-categories/`).then((res) => {
+            dispatch({
+                type: 'CAT',
+                payload: res.data,
+            })
+        }).catch((err) => {
+            toast.error(err?.response?.data?.msg, {
+                position: "top-center",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+        })
+    }
+}
+
+export const GetProducts = (id, setData, setLoading) => {
+
+    return async dispatch => {
+        await axios.get(baseURL + `product/sub-categories/${id}/`)
+            .then((res) => {
+                console.log(res.data)
+                setData(res.data)
+                setLoading(false);
+            }).catch((err) => {
+                toast.error(err?.response?.data?.msg, {
+                    position: "top-center",
+                    autoClose: 1000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+                setLoading(false);
             })
     }
 }
