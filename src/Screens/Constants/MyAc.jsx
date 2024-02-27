@@ -22,27 +22,27 @@ const MyAc = () => {
                 Profile
               </li>
               <hr></hr>
-              <li onClick={() => handleSectionChange('order-history')} className={activeSection === 'order-history' ? 'text-black  hover:bg-orange-700 font-semibold' : 'text-black'}>
+              <li onClick={() => handleSectionChange('order-history')} className={activeSection === 'order-history' ? 'text-black   font-semibold' : 'text-black'}>
                 Order History
               </li>
               <hr></hr>
-              <li onClick={() => handleSectionChange('address')} className={activeSection === 'logout' ? 'text-black  hover:bg-orange-700 font-semibold' : 'text-black'}>
+              <li onClick={() => handleSectionChange('address')} className={activeSection === 'logout' ? 'text-black   font-semibold' : 'text-black'}>
               Address
               </li>
               <hr></hr>
-              <li onClick={() => handleSectionChange('logout')} className={activeSection === 'logout' ? 'text-black hover:bg-orange-700 font-semibold' : 'text-black'}>
+              <li onClick={() => handleSectionChange('logout')} className={activeSection === 'logout' ? 'text-black  font-semibold' : 'text-black'}>
               Coupons
               </li>
               <hr></hr>
-              <li onClick={() => handleSectionChange('logout')} className={activeSection === 'logout' ? 'text-black  hover:bg-orange-700 font-semibold' : 'text-black'}>
+              <li onClick={() => handleSectionChange('logout')} className={activeSection === 'logout' ? 'text-black  font-semibold' : 'text-black'}>
               Rating & Reviews
               </li>
               <hr></hr>
-              <li onClick={() => handleSectionChange('logout')} className={activeSection === 'logout' ? 'text-black  hover:bg-orange-700 font-semibold' : 'text-black'}>
+              <li onClick={() => handleSectionChange('logout')} className={activeSection === 'logout' ? 'text-black   font-semibold' : 'text-black'}>
               Settings
               </li>
               <hr></hr>
-              <li onClick={() => handleSectionChange('logout')} className={activeSection === 'logout' ? 'text-black  hover:bg-orange-700 font-semibold' : 'text-black'}>
+              <li onClick={() => handleSectionChange('logout')} className={activeSection === 'logout' ? 'text-black   font-semibold' : 'text-black'}>
                 Logout
               </li>
             </ul>
@@ -80,6 +80,32 @@ const ProfileSection = () => {
       [name]: value
     }));
   };
+  function handleFileChange(event) {
+    const file = event.target.files[0]; // Assuming single file selection
+    if (file) {
+      
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const imageData = e.target.result;
+   
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+  
+  
+  function handleGSTFileChange(event) {
+    const file = event.target.files[0]; // Assuming single file selection
+    if (file) {
+     
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const imageData = e.target.result;
+     
+      };
+      reader.readAsDataURL(file);
+    }
+  }
 
   return (
     <div className='grid grid-rows-4 grid-flow-col gap-4'>
@@ -98,7 +124,7 @@ const ProfileSection = () => {
       </div>
       <div className="mb-4">
         <label className="block text-sm font-medium text-gray-700">PAN Card</label>
-        <input type="text" name="panCard" value={userData.panCard} onChange={handleChange} className="mt-1 p-2 border border-gray-300 rounded-md w-full" />
+        <input  type="file" accept="image/*" name="panCard" value={userData.panCard} onChange={handleFileChange}  className="mt-1 p-2 border border-gray-300 rounded-md w-full" />
       </div>
       <div className="mb-4">
         <label className="block text-sm font-medium text-gray-700">Phone Number</label>
@@ -110,7 +136,7 @@ const ProfileSection = () => {
       </div>
       <div className="mb-4">
         <label className="block text-sm font-medium text-gray-700">GST Certificate</label>
-        <input type="tel" name="phoneNumber" value={userData.phoneNumber} onChange={handleChange} className="mt-1 p-2 border border-gray-300 rounded-md w-full" />
+        <input type="file" accept="image/*"   name="GST certificate" value={userData.phoneNumber} onChange={handleGSTFileChange} className="mt-1 p-2 border border-gray-300 rounded-md w-full" />
       </div>
     </div>
   );
@@ -146,3 +172,4 @@ const LogoutSection = () => {
 };
 
 export default MyAc;
+    
