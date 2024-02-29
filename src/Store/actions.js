@@ -164,6 +164,78 @@ export const GetProducts = (id, setData, setLoading) => {
     }
 }
 
+export const GetPrivacy = (setData, setLoading) => {
+
+    return async dispatch => {
+        await axios.get(baseURL + `static-data/privacy-policy/`)
+            .then((res) => {
+                console.log(res.data)
+                setData(res.data)
+                setLoading(false);
+            }).catch((err) => {
+                toast.error(err?.response?.data?.msg, {
+                    position: "top-center",
+                    autoClose: 1000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+                setLoading(false);
+            })
+    }
+}
+
+export const GetTerms = (setData, setLoading) => {
+
+    return async dispatch => {
+        await axios.get(baseURL + `static-data/terms-and-conditions/`)
+            .then((res) => {
+                console.log(res.data)
+                setData(res.data)
+                setLoading(false);
+            }).catch((err) => {
+                toast.error(err?.response?.data?.msg, {
+                    position: "top-center",
+                    autoClose: 1000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+                setLoading(false);
+            })
+    }
+}
+
+export const GetRefund = (setData, setLoading) => {
+
+    return async dispatch => {
+        await axios.get(baseURL + `static-data/refund-cancellation-policy/`)
+            .then((res) => {
+                console.log(res.data)
+                setData(res.data)
+                setLoading(false);
+            }).catch((err) => {
+                toast.error(err?.response?.data?.msg, {
+                    position: "top-center",
+                    autoClose: 1000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+                setLoading(false);
+            })
+    }
+}
+
 
 
 export const OpenCartAction = (status) => {
