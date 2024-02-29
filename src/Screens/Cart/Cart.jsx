@@ -6,14 +6,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { OpenCartAction } from "../../Store/actions";
 import { AiOutlineClose } from "react-icons/ai";
 import CartCard from "./CartCard";
+import { useNavigate } from 'react-router';
 
 export function Cart() {
+    const navigate = useNavigate();
     const dispatch = useDispatch()
     const cartOpen = useSelector(state => state.Reducers.cartOpen)
     const closeDrawer = () => {
         dispatch(OpenCartAction(false))
     };
 
+    const handlechange = (e) =>{
+     e.preventDefault ()
+     navigate('/Cartcheckout');
+    }
     const theme = {
         drawer: {
             defaultProps: {
@@ -87,7 +93,7 @@ export function Cart() {
                 <CartCard />
                 <div
                     className="py-5 border-t-2 absolute bottom-0 w-full flex justify-center items-center ">
-                        <button
+                        <button onClick={handlechange}
                         className="bg-black hover:bg-white hover:text-black hover:border-black hover:border-[1px] transition-all uppercase text-xs text-white font-Raleway font-thin py-3 w-[88%] self-center"
                         >
                             Checkout Rs. 3100.00
