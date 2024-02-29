@@ -57,7 +57,7 @@ export default function Cards() {
         color="transparent"
         className="absolute inset-0 m-0 h-full w-full rounded-none bg-[url('https://i.pinimg.com/564x/e3/1b/bc/e31bbcd2a4b103eea8c64fe05ea14f9c.jpg')] bg-cover bg-center"
       >
-        <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-t from-black/80 via-black/50" />
+        <div className="to-bg-[#df633a]-10 absolute inset-0 h-full w-full bg-gradient-to-t from-black/80 via-black/50" />
       </CardHeader>
       <CardBody className="relative py-14 px-6 md:px-12">
         <Typography
@@ -82,7 +82,7 @@ export default function Cards() {
         color="transparent"
         className="absolute inset-0 m-0 h-full w-full rounded-none bg-[url('https://i.pinimg.com/564x/12/cf/8c/12cf8c592289dbe297affdf5947c3849.jpg')] bg-cover bg-center"
       >
-        <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-t from-black/80 via-black/50" />
+        <div className="to-bg-[#df633a]-10 absolute inset-0 h-full w-full bg-gradient-to-t from-black/80 via-black/50" />
       </CardHeader>
       <CardBody className="relative py-14 px-6 md:px-12">
         <Typography
@@ -107,7 +107,7 @@ export default function Cards() {
         color="transparent"
         className="absolute inset-0 m-0 h-full w-full rounded-none bg-[url('https://i.pinimg.com/564x/66/dc/90/66dc903c6a8daa37f8514185bdd7e844.jpg')] bg-cover bg-center"
       >
-        <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-t from-black/80 via-black/50" />
+        <div className="to-bg-[#df633a]-10 absolute inset-0 h-full w-full bg-gradient-to-t from-black/80 via-black/50" />
       </CardHeader>
       <CardBody className="relative py-14 px-6 md:px-12">
         <Typography
@@ -125,7 +125,7 @@ export default function Cards() {
     
     </div>
     
-      {/* <div className="block w-60 h-40 p-5 m-10 rounded-lg bg-grey-500 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-black-700">
+      {/* <div className="block w-60 h-40 p-5 m-10 rounded-lg bg-grey-500 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-[#df633a]-700">
         <a href="#!">
           <img
             className=" w-50 h-60  "

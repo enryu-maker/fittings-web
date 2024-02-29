@@ -16,7 +16,7 @@ function Cartcheckout( ) {
 
   return (
 <div className="container mx-auto px-4 py-8 mt-20">
-      <h1 className="text-2xl font-bold mb-4">Checkout</h1>
+      <h1 className="text-2xl  mb-4">Checkout</h1>
       <div className="w-full max-w-3xl mx-auto">
         <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
           <div className="flex items-center justify-between mb-4">
@@ -28,7 +28,7 @@ function Cartcheckout( ) {
           {currentStep === 3 && <Step3 />}
           <div className="flex justify-between">
             {currentStep !== 1 && (
-              <button onClick={handlePreviousStep} className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 m-5 rounded inline-flex items-center">
+              <button onClick={handlePreviousStep} className="bg-gray-300 hover:bg-gray-400 text-gray-800  py-2 px-4 m-5 rounded inline-flex items-center">
                 <svg className="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M8.707 3.293a1 1 0 0 1 1.414 1.414L6.414 10l3.707 3.293a1 1 0 1 1-1.414 1.414l-4-4a1 1 0 0 1 0-1.414l4-4z" clipRule="evenodd" />
                 </svg>
@@ -36,7 +36,7 @@ function Cartcheckout( ) {
               </button>
             )}
             {currentStep !== 3 && (
-              <button onClick={handleNextStep} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-flex items-center">
+              <button onClick={handleNextStep} className="bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded inline-flex items-center">
                 Next
                 <svg className="w-4 h-4 ml-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M11.293 16.707a1 1 0 0 1-1.414 0L5.586 12.5a1 1 0 0 1 0-1.414L9.293 7.293a1 1 0 1 1 1.414 1.414L7.414 12l3.293 3.293a1 1 0 0 1 0 1.414z" clipRule="evenodd" />
@@ -79,12 +79,12 @@ function Step1({ onSubmit }) {
   
     return (
       <div>
-        <h2 className="text-lg font-semibold mb-4">Shipping Address</h2>
+        <h2 className="text-lg  mb-4">Shipping Address</h2>
   
         <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-3 gap-4">
           {savedAddresses.map((address, index) => (
             <div key={index} className={`bg-gray-300 p-4 rounded-md cursor-pointer ${selectedAddress === address ? 'border border-blue-500' : ''}`} onClick={() => handleSelectAddress(address)}>
-              <h3 className="text-lg font-semibold mb-2">Address {index + 1}</h3>
+              <h3 className="text-lg  mb-2">Address {index + 1}</h3>
               <p>{address.fullName}</p>
               <p>{address.addressLine1}</p>
               <p>{address.city}, {address.state}, {address.postalCode}</p>
@@ -93,11 +93,11 @@ function Step1({ onSubmit }) {
           ))}
         </div>
   
-        <h2 className="text-lg font-semibold   mb-4 mt-6">Selected Shipping Address</h2>
+        <h2 className="text-lg    mb-4 mt-6">Selected Shipping Address</h2>
   
         {selectedAddress && (
           <div className="bg-gray-100 p-4 rounded-md m-5 border border-black">
-            <h3 className="text-lg font-semibold mb-2">Selected Address</h3>
+            <h3 className="text-lg  mb-2">Selected Address</h3>
             <p>{selectedAddress.fullName}</p>
             <p>{selectedAddress.addressLine1}</p>
             <p>{selectedAddress.city}, {selectedAddress.state}, {selectedAddress.postalCode}</p>
@@ -127,7 +127,7 @@ function Step1({ onSubmit }) {
   
     return (
       <div>
-        <h2 className="text-lg font-semibold mb-4">Payment Information</h2>
+        <h2 className="text-lg  mb-4">Payment Information</h2>
 
         <div className="flex items-center mb-4">
           <input
@@ -200,7 +200,7 @@ function Step1({ onSubmit }) {
 
         {selectedPaymentMethod && (
           <div className="bg-gray-100 p-4 rounded-md border border-blue-500 mt-6">
-            <h3 className="text-lg font-semibold mb-2">
+            <h3 className="text-lg  mb-2">
               Selected Payment Method
             </h3>
             <p>
@@ -277,9 +277,9 @@ function Step3() {
       };
   return (
     <div>
-      <h2 className="text-lg font-semibold mb-4">Review Your Order</h2>
+      <h2 className="text-lg  mb-4">Review Your Order</h2>
       <div className="mb-4">
-        <h3 className="text-md font-semibold mb-2">Order Summary</h3>
+        <h3 className="text-md  mb-2">Order Summary</h3>
         <ul>
           {orderDetails.items.map((item, index) => (
             <li key={index} className="flex justify-between items-center mb-2">
@@ -291,7 +291,7 @@ function Step3() {
         </ul>
       </div>
   <div className="mb-4 flex ">
-        <h3 className="text-md font-semibold mb-2">Shipping Address</h3>
+        <h3 className="text-md  mb-2">Shipping Address</h3>
         <p className='ml-'>{orderDetails.shippingAddress.fullName}</p>
         <p>{orderDetails.shippingAddress.addressLine1}</p>
         {orderDetails.shippingAddress.addressLine2 && <p>{orderDetails.shippingAddress.addressLine2}</p>}
@@ -299,14 +299,14 @@ function Step3() {
         <p>{orderDetails.shippingAddress.country}</p>
       </div>
       <div className="mb-4">
-        <h3 className="text-md font-semibold mb-2">Payment Information</h3>
+        <h3 className="text-md  mb-2">Payment Information</h3>
         <p>Card Number: {orderDetails.paymentInfo.cardNumber}</p>
         <p>Cardholder Name: {orderDetails.paymentInfo.cardHolderName}</p>
         <p>Expiration Date: {orderDetails.paymentInfo.expirationDate}</p>
         <p>CVV: {orderDetails.paymentInfo.cvv}</p>
       </div>
       <div className="mb-4">
-        <h3 className="text-md font-semibold mb-2">Total Price</h3>
+        <h3 className="text-md  mb-2">Total Price</h3>
         <p>Total Amount: {orderDetails.totalprice.price}</p>
       </div>
       <button className="bg-blue-500 text-white px-4 py-2 m-5 rounded-md hover:bg-blue-600">Place Order</button>

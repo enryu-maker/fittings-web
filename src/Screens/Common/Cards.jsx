@@ -7,16 +7,11 @@ import {
   Avatar,
 } from "@material-tailwind/react";
 import { baseURL } from '../../Helper/Helper';
+import { useNavigate } from 'react-router-dom';
 export default function Cards({
   data
 }) {
-  const images = [
-    'https://i.pinimg.com/564x/8f/ec/d1/8fecd191e720d539f4654754f7ebfa9f.jpg',
-    'https://i.pinimg.com/564x/fb/4f/c9/fb4fc9035dac89d721a4df102d0f9638.jpg',
-    'https://i.pinimg.com/564x/f9/7b/2c/f97b2cc6031afd6756652702c6fd8a4f.jpg',
-    'https://i.pinimg.com/236x/15/2d/91/152d910c18c3373ba369aa5266f6f62b.jpg',
-    'https://i.pinimg.com/736x/1f/14/47/1f14476e2d8c36f0c7d1e388e68fbde3.jpg',
-  ];
+  const navigate = useNavigate()
   const products = [
     {
       id: 1,
@@ -96,12 +91,17 @@ export default function Cards({
       <h3 className="text-left m-10 text-3xl	">
         Shop By Category
       </h3>
-      <div className='flex flex-wrap justify-evenly items-center w-[95%]'>
+      <div className='flex flex-wrap justify-evenly items-start w-[95%]'>
         {
           data?.map((item, index) => {
             if (item?.status === "Activate") {
               return (
                 <button
+                  onClick={()=>{
+                    navigate('/category',{
+                      state: item
+                    })
+                  }}
                   key={index}
                   className=' flex flex-col w-[110px] justify-center items-center capitalize text-xs '
                 >
@@ -133,7 +133,7 @@ export default function Cards({
             color="transparent"
             className="absolute inset-0 m-0 h-full w-full rounded-none bg-[url('https://i.pinimg.com/564x/e3/1b/bc/e31bbcd2a4b103eea8c64fe05ea14f9c.jpg')] bg-cover bg-center"
           >
-            <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-t from-black/80 via-black/50" />
+            <div className="to-bg-[#df633a]-10 absolute inset-0 h-full w-full bg-gradient-to-t from-black/80 via-black/50" />
           </CardHeader>
           <CardBody className="relative py-14 px-6 md:px-12">
             <Typography
@@ -158,7 +158,7 @@ export default function Cards({
             color="transparent"
             className="absolute inset-0 m-0 h-full w-full rounded-none bg-[url('https://i.pinimg.com/564x/e3/1b/bc/e31bbcd2a4b103eea8c64fe05ea14f9c.jpg')] bg-cover bg-center"
           >
-            <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-t from-black/80 via-black/50" />
+            <div className="to-bg-[#df633a]-10 absolute inset-0 h-full w-full bg-gradient-to-t from-black/80 via-black/50" />
           </CardHeader>
           <CardBody className="relative py-14 px-6 md:px-12">
             <Typography
@@ -183,7 +183,7 @@ export default function Cards({
             color="transparent"
             className="absolute inset-0 m-0 h-full w-full rounded-none bg-[url('https://i.pinimg.com/564x/e3/1b/bc/e31bbcd2a4b103eea8c64fe05ea14f9c.jpg')] bg-cover bg-center"
           >
-            <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-t from-black/80 via-black/50" />
+            <div className="to-bg-[#df633a]-10 absolute inset-0 h-full w-full bg-gradient-to-t from-black/80 via-black/50" />
           </CardHeader>
           <CardBody className="relative py-14 px-6 md:px-12">
             <Typography
@@ -217,7 +217,7 @@ export default function Cards({
             <div className="mt-4 flex justify-between">
               <div>
                 <h3 className="text-sm text-gray-700">
-                  <a className=' text-2xl font-semibold text-gray-900 dark:text-white' href={product.href}>
+                  <a className=' text-2xl  text-gray-900 dark:text-white' href={product.href}>
                     <span aria-hidden="true" className="absolute inset-0" />
                     {product.name}
                   </a>

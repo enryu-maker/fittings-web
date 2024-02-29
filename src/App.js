@@ -41,6 +41,7 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/category" element={<Products />} />
+          <Route path="/scategory:/id" element={<Products />} />
           <Route path="/cards" element={<Cards />} />
           <Route path="/otp" element={<OTPForm />} />
           <Route path="/cards" element={<Cards />} />

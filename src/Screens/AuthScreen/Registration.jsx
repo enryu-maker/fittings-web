@@ -19,7 +19,7 @@ function Registration() {
       <div className=" font-Raleway mt-[140px]">
         <div className="flex min-h-full flex-col justify-center py-12 mr-100 lg:px-8 ">
           <div className="sm:mx-auto sm:w-full  sm:max-w-sm">
-            <h2 className="mt-10 text-center text-2xl font-bold tracking-widest text-gray-900">
+            <h2 className="mt-10 text-center text-2xl  tracking-widest text-gray-900">
               Sign up to continue
             </h2>
           </div>
@@ -105,7 +105,7 @@ function Registration() {
                 onClick={() => {
                   dispatch(RegisterAction(setLoading, data, navigate))
                 }}
-                className="flex w-full justify-center  bg-black hover:bg-white hover:text-black hover:border-black hover:border-[1px] p-5 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm "
+                className="flex w-full justify-center  bg-[#df633a] hover:bg-white hover:text-black hover:border-black hover:border-[1px] p-5 px-3 py-1.5 text-sm  leading-6 text-white shadow-sm "
               >
                 Signup
               </button>
@@ -135,7 +135,7 @@ function Registration() {
               Google
             </button>
             <p className="flex text-center text-sm py-2  justify-center items-center">
-              Already have an account? &nbsp; <a href="#/login" className="font-semibold leading-6 text-grey">
+              Already have an account? &nbsp; <a href="#/login" className=" leading-6 text-grey">
                 Sign In
               </a>
             </p>

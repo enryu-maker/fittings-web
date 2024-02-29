@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 function Products() {
   const navigate = useNavigate()
@@ -77,39 +77,24 @@ function Products() {
     }
 
   ]
+  const { state } = useLocation()
   return (
-    <div className=" w-[95%] flex justify-center items-center font-Raleway mt-[180px]">
-      <div className="mx-auto max-w-2xl px-4  lg:max-w-7xl ">
-        <h3 className="text-left text-4xl font-bold">
-          SCREW & NAIL
-        </h3>
-        <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 py-5 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-          {products.map((product) => (
-            <div
-            onClick={()=>{
-              navigate("/sub")
-            }}
-            key={product.id} className="group relative">
-              <div className="overflow-hidden h-[100px] rounded-md bg-gray-200 lg:aspect-none  group-hover:opacity-75 ">
-                <img
-                  src={product.imageSrc}
-                  alt={product.imageAlt}
-                  className="h-50 w-50 object-cover "
-                />
-              </div>
-              <div className="mt-4 flex justify-between">
-                <div>
-                  <h3 className="text-sm text-gray-700">
-                    <a className=' text-xl font-semibold text-gray-900 dark:text-white' href={product.href}>
-                      <span aria-hidden="true" className="absolute inset-0" />
-                      {product.name}
-                    </a>
-                  </h3>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+    <div className=" w-full flex flex-col justify-center items-center font-Raleway mt-[180px]">
+      <h3 className="text-center text-4xl ">
+        {state?.main_category_name}
+      </h3>
+      <div className='py-5 space-x-2'>
+        {
+          state?.category?.map((item, index) => (
+            <button
+              key={index}
+              onClick={() => {
+              }}
+              className={`box-border border-gray-200 border-2 hover:bg-[#df633a] hover:text-white  bg-white  text-black  px-4 py-1 `}>
+              <p>{item?.category_name}</p>
+            </button>
+          ))
+        }
       </div>
     </div>
   )

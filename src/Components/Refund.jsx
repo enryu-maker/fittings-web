@@ -28,7 +28,7 @@ const Refund = () => {
             <List>
               {data.map(section => (
                 <ListItem
-                  key={section.id} onClick={() => handleSectionClick(section.id)} className="cursor-pointer hover:font-bold              mb-2 font-Raleway">
+                  key={section.id} onClick={() => handleSectionClick(section.id)} className="cursor-pointer hover:              mb-2 font-Raleway">
                   {section.title}
                 </ListItem>
               ))}
@@ -48,7 +48,7 @@ const Refund = () => {
               <div ref={ref}>
                 {selectedSection !== null && (
                   <div>
-                    <h2 className="text-lg font-Raleway font-bold mb-4">{data[selectedSection - 1].title}</h2>
+                    <h2 className="text-lg font-Raleway  mb-4">{data[selectedSection - 1].title}</h2>
                     {
                       data[selectedSection - 1]?.description?.split('|').map((item, index) => (
                         <p

@@ -65,7 +65,7 @@ function Sub() {
           <Card className="h-[calc(100vh-2rem)] font-Raleway w-full max-w-[20rem] p-4 shadow-none">
             <div className="mb-2 flex items-center gap-4 p-4">
               <Typography
-                className="font-Raleway text-lg font-bold"
+                className="font-Raleway text-lg "
               >
                 Filter By
               </Typography>
@@ -97,7 +97,7 @@ function Sub() {
                     <ListItemPrefix>
                       <PresentationChartBarIcon className="h-5 w-5" />
                     </ListItemPrefix>
-                    <Typography className="mr-auto  font-Raleway font-bold">
+                    <Typography className="mr-auto  font-Raleway ">
                       Price
                     </Typography>
                   </AccordionHeader>
@@ -128,7 +128,7 @@ function Sub() {
                     <ListItemPrefix>
                       <ShoppingBagIcon className="h-5 w-5" />
                     </ListItemPrefix>
-                    <Typography className="mr-auto  font-Raleway font-bold">
+                    <Typography className="mr-auto  font-Raleway ">
                       Sort By
                     </Typography>
                   </AccordionHeader>
@@ -177,11 +177,11 @@ function Sub() {
                   >
                     <img
                       alt="icon"
-                      src={product?.image}
-                      className="w-full h-[60%] bg-blue-gray-200 mt-2 object-contain"
+                      src={product?.product_images[0]?.images[0].image}
+                      className="w-full h-[60%] mt-2 object-contain"
                     />
                     <p
-                      className="text-left mt-2 font-Raleway font-bold text-base w-full">
+                      className="text-left mt-2 font-Raleway  text-base w-full">
                       {product?.product_name}
                     </p>
                     <p
@@ -189,11 +189,11 @@ function Sub() {
                       {product?.description?.slice(0, 100)}
                     </p>
                     <p
-                      className="text-left font-Raleway font-bold text-lg w-full">
+                      className="text-left font-Raleway  text-lg w-full">
                       ₹{Math.round(parseInt(product?.size_chart[0]?.price_map[0]?.price_with_gst) - parseInt(product?.size_chart[0]?.price_map[0]?.price_with_gst) * (parseInt(product?.size_chart[0]?.price_map[0]?.gst_percent) / 100))} without GST
                     </p>
                     <p
-                      className="text-left font-Raleway font-bold text-base w-full">
+                      className="text-left font-Raleway  text-base w-full">
                       ₹{product?.size_chart[0]?.price_map[0]?.price_with_gst} with GST
                     </p>
                   </a>
