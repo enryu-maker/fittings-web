@@ -97,14 +97,14 @@ function Sub() {
                     <ListItemPrefix>
                       <PresentationChartBarIcon className="h-5 w-5" />
                     </ListItemPrefix>
-                    <Typography color="blue-gray" className="mr-auto font-normal">
+                    <Typography color="blue-gray" className="mr-auto  font-normal">
                       Price
                     </Typography>
                   </AccordionHeader>
                 </ListItem>
                 <AccordionBody className=" font-Raleway py-1">
                   <List className="p-0">
-                    <div className="w-40">
+                    <div className="w-60 m-5">
                       <Slider defaultValue={30} />
                     </div>
                   </List>
@@ -194,18 +194,19 @@ function Sub() {
             </List>
           </Card>
           <div className="h-50  grid grid-cols-subgrid gap-4 col-span-3">
+
             {
               loading ?
-              <div className="flex justify-center items-center h-[40vh]">
-                <Oval
-                  visible={true}
-                  height="40"
-                  width="40"
-                  color="#000"
-                  ariaLabel="oval-loading"
-                  wrapperStyle={{}}
-                  wrapperClass=""
-                />
+                <div className="flex justify-center items-center h-[40vh]">
+                  <Oval
+                    visible={true}
+                    height="40"
+                    width="40"
+                    color="#000"
+                    ariaLabel="oval-loading"
+                    wrapperStyle={{}}
+                    wrapperClass=""
+                  />
                 </div>
                 :
                 products?.products?.map((product, index) => (
@@ -219,7 +220,6 @@ function Sub() {
                         size="sm"
                         color="red"
                         variant="text"
-                        className="!absolute top-4 right-4 rounded-full"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"

@@ -43,7 +43,6 @@ export default function Header() {
                                 type="text"
                                 className='outline-none w-full text-xs'
                                 placeholder="Search..."
-
                             />
                         </div>
                         <a href='/login'>
@@ -54,10 +53,9 @@ export default function Header() {
                         </a>
                         <AiOutlineShoppingCart size={25} onClick={() => {
                             dispatch(OpenCartAction(!cartOpen))
-                        }} />
+                        }}/>
                     </div>
                 </div>
-                {/*  */}
                 <div
                     className='w-[92%] py-2 flex justify-between items-center'
                 >
