@@ -39,17 +39,17 @@ export default function Footer() {
                         </p>
                         <a 
                       //onClick={handleopen}
-                            href='/privacypage'
+                            href='#/privacypage'
                             className=' capitalize '>
                             Privacy Policy
                         </a>
                         <a
-                            href='/terms'
+                            href='#/terms'
                             className=' capitalize '>
                             Terms & Conditions
                         </a>
                         <a
-                            href='/refund'
+                            href='#/refund'
                             className=' capitalize '>
                             Refund & Cancellation Policy
                         </a>

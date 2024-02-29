@@ -7,7 +7,7 @@ module.exports = withMT({
   theme: {
     extend: {
       fontFamily:{
-        Raleway:"Raleway"
+        Raleway:"Poppins"
       }
     },
   },

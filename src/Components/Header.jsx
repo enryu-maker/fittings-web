@@ -28,7 +28,7 @@ export default function Header() {
                         className=' w-[40%] py-2'
                     />
                     <a
-                        href='/'
+                        href='#/'
                         className=' w-[20%] flex justify-center items-center text-2xl font-extrabold tracking-wider'
                     >
                         Fittings Wale
@@ -46,10 +46,10 @@ export default function Header() {
                                 placeholder="Search..."
                             />
                         </div>
-                        <a href='/login'>
+                        <a href='#/login'>
                             <AiOutlineUser size={25} />
                         </a>
-                        <a href='/mobile'>
+                        <a href='#/mobile'>
                             <AiOutlineMobile size={25} />
                         </a>
                         <AiOutlineShoppingCart size={25} onClick={() => {

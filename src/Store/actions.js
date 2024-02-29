@@ -12,7 +12,10 @@ export const LoginAction = (setLoading, data, navigate) => {
             await localStorage.setItem('access', response.data.access);
             dispatch({
                 type: 'LOGIN',
-                payload: response.data.access,
+                payload: {
+                    access: response?.data?.access,
+                    role : response?.data?.role
+                },
             })
             setLoading(false);
             navigate("/")
@@ -144,6 +147,30 @@ export const GetProducts = (id, setData, setLoading) => {
 
     return async dispatch => {
         await axios.get(baseURL + `product/sub-categories/${id}/`)
+            .then((res) => {
+                console.log(res.data)
+                setData(res.data)
+                setLoading(false);
+            }).catch((err) => {
+                toast.error(err?.response?.data?.msg, {
+                    position: "top-center",
+                    autoClose: 1000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+                setLoading(false);
+            })
+    }
+}
+
+export const GetProduct = (id,role, setData, setLoading) => {
+
+    return async dispatch => {
+        await axios.get(baseURL + `product/view/${id}/${role}/`)
             .then((res) => {
                 console.log(res.data)
                 setData(res.data)
