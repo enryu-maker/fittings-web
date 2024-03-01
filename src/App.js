@@ -19,6 +19,7 @@ import Refund from './Components/Refund'
 import Mobile from './Screens/Constants/Mobile'
 import MyAC from './Screens/Constants/MyAc'
 import CartCheckout from './Screens/Cart/Cartcheckout'
+import Paymentpage from './Screens/Cart/Paymentpage'
 
 export default function App() {
   const cartOpen = useSelector(state => state.Reducers.cartOpen)
@@ -47,6 +48,7 @@ export default function App() {
           <Route path="mobile"element={<Mobile/>}/>
           <Route path="myac"element={<MyAC/>}/>
           <Route path="cartcheckout"element={<CartCheckout/>}/>
+          <Route path="paymentpage"element={<Paymentpage/>}/>
 
         </Routes>
         <Footer />
