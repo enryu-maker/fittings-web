@@ -22,10 +22,7 @@ import CartCheckout from './Screens/Cart/Cartcheckout'
 
 export default function App() {
   const cartOpen = useSelector(state => state.Reducers.cartOpen)
-  const dispatch = useDispatch()
-  React.useEffect(() => {
-    dispatch(GetCateogry())
-  }, [dispatch])
+  
   return (
     <>
       {

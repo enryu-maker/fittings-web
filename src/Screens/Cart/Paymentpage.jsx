@@ -49,7 +49,7 @@ function Paymentpage() {
   };
 
   return (
-    <div className="flex flex-col mt-40 m-10 space-y-10 lg:flex-row lg:space-x-10">
+    <div className="flex flex-col mt-80 m-10 space-y-10 lg:flex-row lg:space-x-10">
       <div className="flex flex-col w-full lg:w-2/3 space-y-3">
       <div className="bg-gray-50 shadow-lg border-gray-200 border-2 rounded-lg p-6 relative">
           <h2 className="text-xl text-white  bg-black p-5 w-full font-semibold ">
