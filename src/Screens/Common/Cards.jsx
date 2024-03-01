@@ -6,7 +6,10 @@ import {
   Typography,
   Avatar,
 } from "@material-tailwind/react";
-export default function Cards() {
+import { baseURL } from '../../Helper/Helper';
+export default function Cards({
+  data
+}) {
   const images = [
     'https://i.pinimg.com/564x/8f/ec/d1/8fecd191e720d539f4654754f7ebfa9f.jpg',
     'https://i.pinimg.com/564x/fb/4f/c9/fb4fc9035dac89d721a4df102d0f9638.jpg',
@@ -93,16 +96,27 @@ export default function Cards() {
       <h3 className="text-left m-10 text-3xl	">
         Shop By Category
       </h3>
-      <div className='flex justify-evenly w-[95%]'>
-        {images.map((image, index) => (
-          <img
-            src={image}
-            className="h-[100px] rounded-full w-[100px] mx-6 "
-            alt="FURNITURE"
-            title='FURNITURE'
-          />
-
-        ))}
+      <div className='flex flex-wrap justify-evenly items-center w-[95%]'>
+        {
+          data?.map((item, index) => {
+            if (item?.status === "Activate") {
+              return (
+                <button
+                  key={index}
+                  className=' flex flex-col w-[110px] justify-center items-center capitalize text-xs '
+                >
+                  <img
+                  alt='icon'
+                  className='h-[100px] rounded-full w-[100px] border-2'
+                  src= {baseURL+item?.image}
+                  />
+                  {item?.main_category_name}
+                </button>
+              )
+            }
+          }
+          )
+        }
       </div>
       <h3 className="text-left m-10 text-3xl	">
         Our Spotlight

@@ -9,7 +9,7 @@ function Registration() {
     "email": "",
     "name": "",
     "role": "",
-    "phone": "",
+    "mobile_no": "",
     "password": ""
   })
   const [loading, setLoading] = React.useState(false)

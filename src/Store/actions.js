@@ -1,5 +1,4 @@
 import axios from "axios";
-
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { baseURL } from "../Helper/Helper";
@@ -9,7 +8,7 @@ export const LoginAction = (setLoading, data, navigate) => {
     setLoading(true);
     return async dispatch => {
         try {
-            let response = await axios.post(baseURL + 'login/', data);
+            let response = await axios.post(baseURL + 'account/login/', data);
             await localStorage.setItem('access', response.data.access);
             dispatch({
                 type: 'LOGIN',
@@ -37,7 +36,7 @@ export const RegisterAction = (setLoading, data, navigate) => {
     return async dispatch => {
         setLoading(true);
         try {
-            let response = await axios.post(baseURL + 'register/', data);
+            let response = await axios.post(baseURL + 'account/register/', data);
             if (response.status === 201) {
                 toast.success('Account Created Sucessfully Please Verify Otp', {
                     position: "top-center",
@@ -85,7 +84,7 @@ export const RegisterAction = (setLoading, data, navigate) => {
 export const VerifyAction = (data, navigate, setLoading) => {
     setLoading(true)
     return async dispatch => {
-        await axios.post(baseURL + 'verify/', data)
+        await axios.post(baseURL + 'account/verify/', data)
             .then(res => {
                 if (res.status === 200) {
                     toast.success("OTP verified Successfully", {
@@ -116,6 +115,51 @@ export const VerifyAction = (data, navigate, setLoading) => {
                     theme: "light",
                 });
                 setLoading(false)
+            })
+    }
+}
+export const GetCateogry = () => {
+    return async dispatch => {
+        await axios.get(baseURL + `product/main-categories/`).then((res) => {
+            dispatch({
+                type: 'CAT',
+                payload: res.data,
+            })
+        }).catch((err) => {
+            toast.error(err?.response?.data?.msg, {
+                position: "top-center",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+        })
+    }
+}
+
+export const GetProducts = (id, setData, setLoading) => {
+
+    return async dispatch => {
+        await axios.get(baseURL + `product/sub-categories/${id}/`)
+            .then((res) => {
+                console.log(res.data)
+                setData(res.data)
+                setLoading(false);
+            }).catch((err) => {
+                toast.error(err?.response?.data?.msg, {
+                    position: "top-center",
+                    autoClose: 1000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+                setLoading(false);
             })
     }
 }

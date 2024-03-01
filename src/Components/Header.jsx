@@ -4,26 +4,24 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { OpenCartAction } from '../Store/actions';
 export default function Header() {
-    const data = [
-        { "id": 1, "value": "Screw & Nail" },
-        { "id": 2, "value": "Door & Window Fittings" },
-        { "id": 3, "value": "Adhesive & Masking Tape" },
-        { "id": 4, "value": "Kitchen Fittings" },
-        { "id": 5, "value": "Glass Fittings" },
-        { "id": 6, "value": "Shelf Support" },
-        { "id": 7, "value": "Hardware Accessories" },
-        { "id": 8, "value": "Magnet Mesh Curtain" },
-        { "id": 9, "value": "Bath Fittings" }
-    ]
     const [open, setOpen] = React.useState(false);
     const dispatch = useDispatch();
     const cartOpen = useSelector(state => state.Reducers.cartOpen)
-
+    const cateogry = useSelector(state => state.Reducers.cateogry);
+    const [data, setData] = React.useState({})
+    const [sub, setSub] = React.useState({})
+    const navigate = useNavigate()
     return (
         <>
-            <div className='w-full fixed bg-white top-0 z-50  transition-all hover:border-b-2 font-Raleway h-[120px] lg:flex justify-between items-center flex-col'>
+            <div
+
+                className='w-full fixed bg-white top-0 z-50  transition-all hover:border-b-2 font-Raleway h-[120px] lg:flex justify-between items-center flex-col'>
                 {/* small header */}
                 <div
+                    onMouseLeave={() => {
+                        setOpen(false)
+                        setData({})
+                    }}
                     className='w-[95%] py-5 flex justify-evenly items-center'
                 >
                     <div
@@ -62,26 +60,91 @@ export default function Header() {
                     className='w-[92%] py-2 flex justify-between items-center'
                 >
                     {
-                        data?.map((item, index) => (
-                            <button
-                                key={index}
-                                onMouseEnter={() => setOpen(true)}
-                                onMouseLeave={() => setOpen(false)}
-                                className=' uppercase text-xs hover:underline underline-offset-4 '
-                            >
-                                {item?.value}
-                            </button>
-                        ))
+                        cateogry?.map((item, index) => {
+                            if (item?.status === "Activate") {
+                                return (
+                                    <button
+                                        key={index}
+                                        onMouseEnter={() => {
+                                            setOpen(true)
+                                            setData(item)
+                                        }}
+                                        // onMouseLeave={() => {
+                                        //     // setOpen(false)
+                                        //     // setData([])
+                                        // }}
+                                        className=' uppercase text-xs hover:underline underline-offset-4 '
+                                    >
+                                        {item?.main_category_name}
+                                    </button>
+                                )
+                            }
+                        }
+                        )
                     }
                 </div>
                 {
                     open ?
                         <div
-                            className='h-[400px] w-full bg-white transition-shadow shadow-sm flex justify-center items-center'
+                            onMouseEnter={() => {
+                                setOpen(true)
+                            }}
+                            onMouseLeave={() => {
+                                setOpen(false)
+                                setData({})
+                                setSub([])
+                            }}
+                            className='h-[400px] w-full bg-white transition-shadow shadow-sm flex flex-col items-center'
                         >
-                            <p>
-                                hello World
+                            <p
+                                className=' font-Raleway text-lg tracking-widest'
+                            >
+                                {data?.main_category_name}
                             </p>
+                            <div className='flex justify-between  items-start w-[68%] mt-2 py-5'>
+                                <div className='flex flex-col'>
+                                    <p
+                                        className=' font-Raleway text-base tracking-widest'
+                                    >
+                                        Category
+                                    </p>
+                                    {
+                                        data?.category?.map((item, index) => (
+                                            <p
+                                                onMouseEnter={() => {
+                                                    setOpen(true)
+                                                    setSub(item)
+                                                }}
+                                                className=' font-Raleway text-sm capitalize cursor-pointer'
+                                            >
+                                                {item?.category_name}
+                                            </p>
+                                        ))
+                                    }
+                                </div>
+                                <div className='flex flex-col '>
+                                    <p
+                                        className=' font-Raleway text-base tracking-widest'
+                                    >
+                                        Sub Category
+                                    </p>
+                                    {
+                                        sub?.sub_category?.map((item, index) => (
+                                            <button
+                                                onClick={()=>{
+                                                    navigate(`/subcategory/${item?.id}`,{
+                                                        state: item
+                                                    })
+                                                }}
+                                                className=' font-Raleway text-sm capitalize text-left space-y-2'
+                                            >
+                                                {item?.sub_category_name}
+                                            </button>
+                                        ))
+                                    }
+                                </div>
+                            </div>
+
                         </div>
                         :
                         <div
