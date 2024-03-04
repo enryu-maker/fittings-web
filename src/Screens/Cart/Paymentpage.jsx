@@ -23,12 +23,25 @@ function Paymentpage() {
       name: 'UPI',
       description: 'Pay using any UPI enabled app.',
       icon: <FaWallet />,
+      cardDetails: (
+        <div>
+          <input type="text" placeholder="Card Number" />
+          <input type="text" placeholder="CVV" />
+        </div>
+      ),
     },
     {
-      name: 'Card',
-      description: 'Pay using your debit or credit card.',
-      icon: <FaCreditCard />,
-    },
+        name: 'Card',
+        description: 'Pay using your debit or credit card.',
+        icon: <FaCreditCard />,
+        cardDetails: (
+          <div>
+            <input type="text" placeholder="Card Number" />
+            <input type="text" placeholder="CVV" />
+            <input type="text" placeholder="Valid Through (MM/YY)" />
+          </div>
+        ),
+      },
     {
       name: 'Cash on Delivery',
       description: 'Pay when your order is delivered.',
@@ -49,14 +62,14 @@ function Paymentpage() {
   };
 
   return (
-    <div className="flex flex-col mt-80 m-10 space-y-10 lg:flex-row lg:space-x-10">
+    <div className="flex flex-col mt-40 m-10 space-y-10 lg:flex-row lg:space-x-10">
       <div className="flex flex-col w-full lg:w-2/3 space-y-3">
       <div className="bg-gray-50 shadow-lg border-gray-200 border-2 rounded-lg p-6 relative">
-          <h2 className="text-xl text-white  bg-black p-5 w-full font-semibold ">
+          <h2 className="text-xl text-black  bg-white  w-full font-semibold ">
             Delivery Details
           </h2>
           <button
-            className="absolute bottom-0 right-0 mb-10 mr-8 bg-white text-black px-4 py-2 rounded-md hover:bg-gray-700 focus:outline-none"
+            className="absolute bottom-0 right-0 mb-5 mr-8 bg-black text-white px-4 py-2 rounded-md hover:bg-gray-700 focus:outline-none"
             onClick={handleDeliveryCheck}
           >
              CHANGE
@@ -64,11 +77,11 @@ function Paymentpage() {
         </div>
 
         <div className="bg-gray-50 shadow-lg border-gray-200 border-2 rounded-lg p-6 relative">
-          <h2 className="text-xl text-white  bg-black p-5 w-full font-semibold ">
+          <h2 className="text-xl text-black  bg-white  w-full font-semibold ">
             Summary Details
           </h2>
           <button
-            className="absolute bottom-0 right-0 mb-10 mr-8 bg-white text-black px-4 py-2 rounded-md hover:bg-gray-700 focus:outline-none"
+            className="absolute bottom-0 right-0 mb-5 mr-8 bg-black text-white px-4 py-2 rounded-md hover:bg-gray-700 focus:outline-none"
             onClick={handleLoginCheck}
           >
              CHANGE
@@ -76,18 +89,18 @@ function Paymentpage() {
         </div>
 
         <div className="bg-gray-50 shadow-lg border-gray-200 border-2 rounded-lg p-6 relative">
-          <h2 className="text-xl text-white  bg-black p-5 w-full font-semibold ">
+          <h2 className="text-xl text-black  bg-white  w-full font-semibold ">
             Login Details
           </h2>
           <button
-            className="absolute bottom-0 right-0 mb-10 mr-8 bg-white text-black px-4 py-2 rounded-md hover:bg-gray-700 focus:outline-none"
+            className="absolute bottom-0 right-0 mb-5 mr-8 bg-black  text-white px-4 py-2 rounded-md hover:bg-gray-700 focus:outline-none"
             onClick={handleLoginCheck}
           >
             CHANGE
           </button>
         </div>
         <div className="bg-gray-50 shadow-lg border-gray-200 border-2 rounded-lg p-6">
-          <h2 className="text-lg text-white p-5 w-full bg-black font-semibold mb-4">
+          <h2 className="text-lg text-white p-5 w-full rounded-lg  bg-black font-semibold mb-4">
             Choose Payment Method
           </h2>
           <div className="space-y-2">
@@ -125,10 +138,12 @@ function Paymentpage() {
                   </div>
                 </button>
                 {selectedMethod === index && (
-                  <div className="description p-4 bg-gray-100">
-                    <p className="text-sm text-gray-500 mt-2">
-                      {method.description}
+              <div className="description p-4 bg-white p-5">
+                    <p className="text-xl text-gray-500  m-5  p-5 mt-3">
+                      {method.cardDetails}  
+                      {method.description}                 
                     </p>
+                    <button className='bg-black p-3  w-40  rounded-lg text-white'> Pay Now</button>
                   </div>
                 )}
               </div>
@@ -139,7 +154,7 @@ function Paymentpage() {
 
       <div className="flex flex-col w-full lg:w-1/3 space-y-6">
         <div className="bg-gray-50 shadow-lg border-gray-200 border-2 rounded-lg p-6">
-          <h2 className="text-xl text-white bg-black p-5 w-full font-semibold ">
+          <h2 className="text-xl text-black bg-white p-5 w-full font-semibold ">
             Summary
           </h2>
           <div className="flex justify-between items-center mt-4 border-b pb-4">

@@ -6,6 +6,9 @@ module.exports = withMT({
   ],
   theme: {
     extend: {
+      color:{
+        primary:"#000000"
+      },
       fontFamily:{
         Raleway:"Raleway"
       }

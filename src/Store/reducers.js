@@ -2,7 +2,7 @@ const initialState = {
     access: null,
     cart: [],
     cartOpen: false,
-    cateogry: []
+    category: []
 };
 export default (state = initialState, action) => {
     switch (action.type) {
