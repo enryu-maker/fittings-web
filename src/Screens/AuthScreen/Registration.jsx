@@ -135,7 +135,7 @@ function Registration() {
               Google
             </button>
             <p className="flex text-center text-sm py-2  justify-center items-center">
-              Already have an account? &nbsp; <a href="/login" className="font-semibold leading-6 text-grey">
+              Already have an account? &nbsp; <a href="#/login" className="font-semibold leading-6 text-grey">
                 Sign In
               </a>
             </p>

@@ -46,10 +46,10 @@ export default function App() {
           <Route path="/privacypage" element={<Privacypage/>} />
           <Route path="/terms" element={<Terms/>} />
           <Route path="refund"element={<Refund/>}/>
-          <Route path="/mobile"element={<Mobile/>}/>
-          <Route path="/myac"element={<MyAC/>}/>
-          <Route path="/cartcheckout"element={<CartCheckout/>}/>
-          <Route path="/paymentpage"element={<Paymentpage/>}/>
+          <Route path="mobile"element={<Mobile/>}/>
+          <Route path="myac"element={<MyAC/>}/>
+          <Route path="cartcheckout"element={<CartCheckout/>}/>
+
         </Routes>
         <Footer />
       </div>

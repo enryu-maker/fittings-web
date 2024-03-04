@@ -39,17 +39,17 @@ export default function Footer() {
                         </p>
                         <a 
                       //onClick={handleopen}
-                            href='/privacypage'
+                            href='#/privacypage'
                             className=' capitalize '>
                             Privacy Policy
                         </a>
                         <a
-                            href='/terms'
+                            href='#/terms'
                             className=' capitalize '>
                             Terms & Conditions
                         </a>
                         <a
-                            href='/refund'
+                            href='#/refund'
                             className=' capitalize '>
                             Refund & Cancellation Policy
                         </a>
@@ -73,10 +73,10 @@ export default function Footer() {
                         <p
                             className=' text-sm '
                         >
-                            Suta combines India's centuries-old weaving traditions with contemporary style- so that what looks good, feels good too
+                            FittingsWale is an online platform for buying Hardware goods
                         </p>
                         <p className=' text-sm capitalize'>
-                            toll  free : <a className='underline underline-offset-4 hover:no-underline' href='tel:+917564211111'>+91 7564 211 111</a>
+                            toll  free : <a className='underline underline-offset-4 hover:no-underline' href='tel:+919155511522'>+91 9155511522</a>
                          </p>
                         <p className=' text-sm capitalize transition-all'>
                             email : <a className='underline underline-offset-4 hover:no-underline' href='mailto:info@fittingswale.in'>info@fittingswale.in</a>
