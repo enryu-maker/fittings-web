@@ -51,11 +51,9 @@ function Sub() {
 
   const dispatch = useDispatch()
   React.useEffect(() => {
-    console.log("started")
     setLoading(true)
     setProducts([])
     dispatch(GetProducts(state?.id, setProducts, setLoading))
-    console.log("product", products)
   }, [1])
   return (
     <div className="mt-[180px] w-full font-Raleway">
@@ -139,13 +137,13 @@ function Sub() {
                       <ListItemPrefix>
                         <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
                       </ListItemPrefix>
-                      Orders
+                      Low to High
                     </ListItem>
                     <ListItem>
                       <ListItemPrefix>
                         <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
                       </ListItemPrefix>
-                      Products
+                      High to Low
                     </ListItem>
                   </List>
                 </AccordionBody>
@@ -162,7 +160,7 @@ function Sub() {
                     visible={true}
                     height="40"
                     width="40"
-                    color="#000"
+                    color="#000000"
                     ariaLabel="oval-loading"
                     wrapperStyle={{}}
                     wrapperClass=""
@@ -173,15 +171,15 @@ function Sub() {
                   <a
                     href={"#/details/" + product?.id}
                     key={index}
-                    className="w-[75%]  h-[50%] px-2 flex flex-col items-center cursor-pointer "
+                    className="w-[75%]  h-[35%] px-2 flex flex-col justify-evenly items-center cursor-pointer"
                   >
                     <img
                       alt="icon"
                       src={product?.product_images[0]?.images[0].image}
-                      className="w-full h-[60%] mt-2 object-contain"
+                      className="w-full h-[50%]  object-cover"
                     />
                     <p
-                      className="text-left mt-2 font-Raleway  text-base w-full">
+                      className="text-left  font-Raleway  text-base w-full">
                       {product?.product_name}
                     </p>
                     <p
@@ -189,13 +187,25 @@ function Sub() {
                       {product?.description?.slice(0, 100)}
                     </p>
                     <p
-                      className="text-left font-Raleway  text-lg w-full">
+                      className="text-left font-Raleway  text-2xl w-full text-[#df633a]">
                       ₹{Math.round(parseInt(product?.size_chart[0]?.price_map[0]?.price_with_gst) - parseInt(product?.size_chart[0]?.price_map[0]?.price_with_gst) * (parseInt(product?.size_chart[0]?.price_map[0]?.gst_percent) / 100))} without GST
                     </p>
                     <p
                       className="text-left font-Raleway  text-base w-full">
                       ₹{product?.size_chart[0]?.price_map[0]?.price_with_gst} with GST
                     </p>
+                    <div className=' space-x-3 w-full justify-between items-center'>
+                      <button
+                        className=" font-Raleway justify-center  bg-[#df633a] hover:bg-white hover:text-black hover:border-black hover:border-[1px] p-5 px-3 py-1.5 text-sm leading-6 text-white shadow-sm "
+                      >
+                        Buy Now
+                      </button>
+                      <button
+                        className=" font-Raleway justify-center  bg-[#df633a] hover:bg-white hover:text-black hover:border-black hover:border-[1px] p-5 px-3 py-1.5 text-sm  leading-6 text-white shadow-sm "
+                      >
+                        Add to Cart
+                      </button>
+                    </div>
                   </a>
                 ))}
           </div>

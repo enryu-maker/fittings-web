@@ -12,13 +12,14 @@ export function Cart() {
     const navigate = useNavigate();
     const dispatch = useDispatch()
     const cartOpen = useSelector(state => state.Reducers.cartOpen)
+    const cart = useSelector(state => state.Reducers.cart)
     const closeDrawer = () => {
         dispatch(OpenCartAction(false))
     };
 
-    const handlechange = (e) =>{
-     e.preventDefault ()
-     navigate('/Cartcheckout');
+    const handlechange = (e) => {
+        e.preventDefault()
+        navigate('/Cartcheckout');
     }
     const theme = {
         drawer: {
@@ -89,15 +90,18 @@ export function Cart() {
                     </div>
 
                 </div>
-                <CartCard />
-                <CartCard />
+                {
+                    cart?.map((item, index) => (
+                        <CartCard key={index} item={item} />
+                    ))
+                }
                 <div
                     className="py-5 border-t-2 absolute bottom-0 w-full flex justify-center items-center ">
-                        <button onClick={handlechange}
+                    <button onClick={handlechange}
                         className="bg-[#df633a] hover:bg-white hover:text-black hover:border-black hover:border-[1px] transition-all uppercase text-xs text-white font-Raleway font-thin py-3 w-[88%] self-center"
-                        >
-                            Checkout Rs. 3100.00
-                        </button>
+                    >
+                        Checkout Rs. 3100.00
+                    </button>
                 </div>
             </div>
         </Drawer>

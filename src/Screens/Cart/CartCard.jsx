@@ -1,25 +1,31 @@
 import React from 'react'
-import { IMAGE } from '../../Assets/Image'
 
-export default function CartCard() {
+export default function CartCard({
+    item
+}) {
     return (
         <div
             className='w-[88%] self-center h-[150px] font-Raleway mt-4 flex justify-start items-center'
         >
             <img
-                src={"https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=150&q=60"}
-                className='h-full w-[120px] object-cover'
+                src={item?.finish?.images[0].image}
+                className='h-full w-[120px] object-fill'
             />
             <div
                 className='flex flex-col gap-2 pl-4'>
                 <p
                     className=' capitalize text-base'>
-                    A Night In Tokyo (Bag)
+                    {item.name}
                 </p>
                 <p
-                    className=' capitalize text-sm text-gray-600'>
-                    Rs. 1,500.00
+                    className='text-left font-Raleway  text-base w-full text-[#df633a]'>
+                    ₹{Math.round(parseInt(item?.price?.price_map[0]?.price_with_gst) - parseInt(item?.price?.price_map[0]?.price_with_gst) * (parseInt(item?.price?.price_map[0]?.gst_percent) / 100))} without GST
                 </p>
+                <p
+                    className='text-left font-Raleway  text-sm w-full text-black'>
+                    ₹{parseInt(item?.price?.price_map[0]?.price_with_gst)} with GST
+                </p>
+                
                 <div
                     className='flex space-x-5'>
                     <div
@@ -38,7 +44,7 @@ export default function CartCard() {
                         </p>
                     </div>
                     <button
-                    className='underline text-xs'>
+                        className='underline text-xs'>
                         Remove
                     </button>
                 </div>

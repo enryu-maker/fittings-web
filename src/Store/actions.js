@@ -143,6 +143,25 @@ export const GetCateogry = () => {
     }
 }
 
+export const GetSubCateogry = (id,setData) => {
+    return async dispatch => {
+        await axios.get(baseURL + `product/categories/${id}`).then((res) => {
+            setData(res.data);
+        }).catch((err) => {
+            toast.error(err?.response?.data?.msg, {
+                position: "top-center",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+        })
+    }
+}
+
 export const GetProducts = (id, setData, setLoading) => {
 
     return async dispatch => {
@@ -271,5 +290,92 @@ export const OpenCartAction = (status) => {
             type: 'OPEN_CART',
             payload: status,
         })
+    }
+}
+
+export const addCart = (cart, data, setLoading) => {
+    setLoading(true)
+    return async dispatch => {
+        if (cart.length > 0) {
+            cart?.map((item) => {
+                if (item.product_code === data.product_code) {
+                    toast.success('Added to Cart', {
+                        position: "top-center",
+                        autoClose: 1000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                    });
+                }
+                else {
+                    cart.push(data)
+                    dispatch({
+                        type: 'ADD_TO_CART',
+                        payload: cart,
+                    })
+                    console.log(cart)
+                    localStorage.setItem("cart", JSON.stringify(cart))
+                    toast.success('Added to Cart', {
+                        position: "top-center",
+                        autoClose: 1000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                    });
+                }
+            })
+            setLoading(false)
+        }
+        else {
+            cart.push(data)
+            dispatch({
+                type: 'ADD_TO_CART',
+                payload: cart,
+            })
+            console.log(cart)
+            localStorage.setItem("cart", JSON.stringify(cart))
+            toast.success('Added to Cart', {
+                position: "top-center",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+            setLoading(false)
+        }
+    }
+}
+
+export const removeCart = (cart, data, setLoading) => {
+    setLoading(true)
+    return async dispatch => {
+        const new_cart = cart.filter(function (item) {
+            return item.product_code !== data.product_code
+        })
+        await localStorage.setItem("cart", JSON.stringify(new_cart))
+        toast.success('Updated from Cart', {
+            position: "top-center",
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
+        dispatch({
+            type: 'CART',
+            payload: new_cart,
+        })
+        setLoading(false)
     }
 }

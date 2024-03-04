@@ -10,6 +10,8 @@ const Details = () => {
   id = id.pathname.split("/").pop();
   const dispatch = useDispatch()
   const role = useSelector(state => state.Reducers.role)
+  const cart = useSelector(state => state.Reducers.cart)
+  console.log(cart);
   const [data, setData] = React.useState(null)
   const [currentSize, setCurrentSize] = React.useState(0)
   const [currentFinish, setCurrentFinish] = React.useState(0)
@@ -73,7 +75,7 @@ const Details = () => {
             <div className="">
               <p className="text-black text-xl mb-2">Price:</p>
               <p
-                className="text-left font-Raleway  text-lg w-full">
+                className="text-left font-Raleway  text-2xl w-full text-[#df633a]">
                 ₹{Math.round(parseInt(data?.size_chart[currentSize]?.price_map[0]?.price_with_gst) - parseInt(data?.size_chart[currentSize]?.price_map[0]?.price_with_gst) * (parseInt(data?.size_chart[currentSize]?.price_map[0]?.gst_percent) / 100))} without GST
               </p>
               <p
@@ -119,6 +121,17 @@ const Details = () => {
                 Buy Now
               </button>
               <button
+                onClick={() => {
+                  dispatch({
+                    type: "ADD_TO_CART",
+                    payload: {
+                      id: data?.id,
+                      name: data?.product_name,
+                      price: data?.size_chart[currentSize],
+                      finish: data?.product_images[currentFinish]
+                    }
+                  })
+                }}
                 className=" font-Raleway justify-center  bg-[#df633a] hover:bg-white hover:text-black hover:border-black hover:border-[1px] p-5 px-3 py-1.5 text-sm  leading-6 text-white shadow-sm "
               >
                 Add to Cart
