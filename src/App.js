@@ -39,16 +39,18 @@ export default function App() {
           <Route path="/category" element={<Products />} />
           <Route path="/cards" element={<Cards />} />
           <Route path="/otp" element={<OTPForm />} />
-          <Route path="/cards" element={<Cards/>} />
-          <Route path="/products" element={<Sub/>} />
-          <Route path="/details" element={<Details/>} />
-          <Route path="/privacypage" element={<Privacypage/>} />
-          <Route path="/terms" element={<Terms/>} />
-          <Route path="refund"element={<Refund/>}/>
-          <Route path="mobile"element={<Mobile/>}/>
-          <Route path="myac"element={<MyAC/>}/>
-          <Route path="cartcheckout"element={<CartCheckout/>}/>
-
+          <Route path="/cards" element={<Cards />} />
+          <Route path="/products" element={<Sub />} />
+          <Route path="/details" element={<Details />} />
+          <Route path="/privacypage" element={<Privacypage />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="refund" element={<Refund />} />
+          <Route path="mobile" element={<Mobile />} />
+          <Route path="myac" element={<MyAC />} />
+          <Route path="cartcheckout" element={<CartCheckout />} />
+          <Route path="/cards" element={<Cards />} />
+          <Route path="/subcategory/:id" element={<Sub />} />
+          <Route path="/details" element={<Details />} />
         </Routes>
         <Footer />
       </div>

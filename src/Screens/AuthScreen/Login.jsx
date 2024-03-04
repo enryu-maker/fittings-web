@@ -55,7 +55,7 @@ function Login() {
                 </label>
                 <div className="text-sm">
                   <a
-                    href="/forgot"
+                    href="#/forgot"
                     className="font-semibold underline underline-offset-4 text-grey-600 hover:text-grey-500"
                   >
                     Forgot password?
@@ -108,7 +108,7 @@ function Login() {
             </button>
             <p className="flex text-center text-sm py-4  justify-center items-center">
               Don’t have an account? &nbsp;{" "}
-              <a href="/register" className="font-semibold leading-6 text-grey">
+              <a href="#/register" className="font-semibold leading-6 text-grey">
                 Sign Up
               </a>
             </p>

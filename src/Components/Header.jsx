@@ -27,11 +27,12 @@ export default function Header() {
                     <div
                         className=' w-[40%] py-2'
                     />
-                    <div
+                    <a
+                        href='#/'
                         className=' w-[20%] flex justify-center items-center text-2xl font-extrabold tracking-wider'
                     >
                         Fittings Wale
-                    </div>
+                    </a>
                     <div
                         className=' w-[40%] flex items-center space-x-6'
                     >
@@ -45,15 +46,15 @@ export default function Header() {
                                 placeholder="Search..."
                             />
                         </div>
-                        <a href='/login'>
+                        <a href='#/login'>
                             <AiOutlineUser size={25} />
                         </a>
-                        <a href='/mobile'>
+                        <a href='#/mobile'>
                             <AiOutlineMobile size={25} />
                         </a>
                         <AiOutlineShoppingCart size={25} onClick={() => {
                             dispatch(OpenCartAction(!cartOpen))
-                        }}/>
+                        }} />
                     </div>
                 </div>
                 <div
@@ -131,8 +132,8 @@ export default function Header() {
                                     {
                                         sub?.sub_category?.map((item, index) => (
                                             <button
-                                                onClick={()=>{
-                                                    navigate(`/subcategory/${item?.id}`,{
+                                                onClick={() => {
+                                                    navigate(`/subcategory/${item?.id}`, {
                                                         state: item
                                                     })
                                                 }}
