@@ -16,13 +16,14 @@ const Details = () => {
   const [currentSize, setCurrentSize] = React.useState(0)
   const [currentFinish, setCurrentFinish] = React.useState(0)
   const [currentImage, setCurrentImage] = React.useState(0)
-
+  const [count, setCount] = React.useState(0)
   const [loading, setLoading] = React.useState(false)
   const [mainImage, setMainImage] = useState(null);
 
   React.useEffect(() => {
     dispatch(GetProduct(id, role, setData, setLoading))
     setMainImage(data?.product_images[currentFinish]?.images[0].image)
+    setCount(data?.size_chart[currentSize]?.price_map[0]?.minimum_order_quantity)
   }, [])
   const TABLE_HEAD = ["Product details", "", "", ""];
   const handleSidebarImageClick = (image) => {
@@ -71,7 +72,7 @@ const Details = () => {
           </div>
 
           <div className="w-[40%] space-y-5 mt-5 ">
-            <h2 className="text-xl   mb-4">{data?.product_name}</h2>
+            <h2 className="text-3xl text-[#df633a]  mb-4">{data?.product_name}</h2>
             <div className="">
               <p className="text-black text-xl mb-2">Price:</p>
               <p
@@ -112,6 +113,27 @@ const Details = () => {
                 }
               })
               }
+            </div>
+
+            <div className=' space-x-3 flex text-sm'>
+              <button
+              className='bg-[#df633a] h-[20px] w-[20px] text-white rounded-full flex justify-center items-center'
+              >
+                -
+              </button>
+              <p
+              className='font-bold'
+              >
+                {count}
+              </p>
+              <button
+              onClick={()=>{
+                setCount(count+data?.size_chart[currentSize]?.price_map[0]?.minimum_order_quantity)
+              }}
+              className='bg-[#df633a] h-[20px] w-[20px] text-white rounded-full flex justify-center items-center'
+              >
+                +
+              </button>
             </div>
 
             <div className=' space-x-3'>

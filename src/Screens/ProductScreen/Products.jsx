@@ -48,7 +48,7 @@ function Products() {
                   <img
                   alt='icon'
                   className='h-[100px] rounded-full w-[100px] border-2'
-                  src= {baseURL+item?.image}
+                  src= {item?.image}
                   />  
                   {item?.sub_category_name}
                 </a>

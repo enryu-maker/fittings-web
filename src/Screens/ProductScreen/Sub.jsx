@@ -55,12 +55,13 @@ function Sub() {
     setProducts([])
     dispatch(GetProducts(state?.id, setProducts, setLoading))
   }, [1])
+  console.log(products)
   return (
     <div className="mt-[180px] w-full font-Raleway">
       <div className="mx-auto ">
         <p className="text-left ml-8 text-4xl">{state?.sub_category_name}</p>
-        <div className="grid grid-cols-4 gap-4">
-          <Card className="h-[calc(100vh-2rem)] font-Raleway w-full max-w-[20rem] p-4 shadow-none">
+        {/* <div className="grid grid-cols-4 gap-4"> */}
+          {/* <Card className="h-[calc(100vh-2rem)] font-Raleway w-full max-w-[20rem] p-4 shadow-none">
             <div className="mb-2 flex items-center gap-4 p-4">
               <Typography
                 className="font-Raleway text-lg "
@@ -150,8 +151,8 @@ function Sub() {
               </Accordion>
               <hr className="my-2 border-blue-gray-50" />
             </List>
-          </Card>
-          <div className="grid grid-cols-subgrid gap-4 col-span-3">
+          </Card> */}
+          <div className="flex flex-wrap items-start mt-2 justify-evenly w-[100%] py-5">
 
             {
               loading ?
@@ -160,7 +161,8 @@ function Sub() {
                     visible={true}
                     height="40"
                     width="40"
-                    color="#000000"
+                    color="#df633a"
+                    secondaryColor='#df633a40'
                     ariaLabel="oval-loading"
                     wrapperStyle={{}}
                     wrapperClass=""
@@ -171,12 +173,12 @@ function Sub() {
                   <a
                     href={"#/details/" + product?.id}
                     key={index}
-                    className="w-[75%]  h-[35%] px-2 flex flex-col justify-evenly items-center cursor-pointer"
+                    className=" px-2 flex flex-col h-[300px] justify-evenly items-center cursor-pointer "
                   >
                     <img
                       alt="icon"
                       src={product?.product_images[0]?.images[0].image}
-                      className="w-full h-[50%]  object-cover"
+                      className="w-[180px] h-[180px]  object-contain"
                     />
                     <p
                       className="text-left  font-Raleway  text-base w-full">
@@ -210,7 +212,7 @@ function Sub() {
                 ))}
           </div>
         </div>
-      </div>
+      {/* </div> */}
     </div>
   )
 }
