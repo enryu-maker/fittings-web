@@ -24,7 +24,7 @@ const Details = () => {
     dispatch(GetProduct(id, role, setData, setLoading))
     setMainImage(data?.product_images[currentFinish]?.images[0].image)
     setCount(data?.size_chart[currentSize]?.price_map[0]?.minimum_order_quantity)
-  }, [])
+  }, [dispatch])
   const TABLE_HEAD = ["Product details", "", "", ""];
   const handleSidebarImageClick = (image) => {
     setMainImage(image.image);
