@@ -19,6 +19,7 @@ import Refund from './Components/Refund'
 import Mobile from './Screens/Constants/Mobile'
 import MyAC from './Screens/Constants/MyAc'
 import CartCheckout from './Screens/Cart/Cartcheckout'
+import Paymentpage from './Screens/Cart/Paymentpage'
 
 export default function App() {
   const cartOpen = useSelector(state => state.Reducers.cartOpen)
@@ -40,18 +41,16 @@ export default function App() {
           <Route path="/scategory:/id" element={<Products />} />
           <Route path="/cards" element={<Cards />} />
           <Route path="/otp" element={<OTPForm />} />
-          <Route path="/cards" element={<Cards />} />
-          <Route path="/products" element={<Sub />} />
-          <Route path="/details" element={<Details />} />
-          <Route path="/privacypage" element={<Privacypage />} />
-          <Route path="/terms" element={<Terms />} />
-          <Route path="refund" element={<Refund />} />
-          <Route path="mobile" element={<Mobile />} />
-          <Route path="myac" element={<MyAC />} />
-          <Route path="cartcheckout" element={<CartCheckout />} />
-          <Route path="/cards" element={<Cards />} />
-          <Route path="/subcategory/:id" element={<Sub />} />
-          <Route path="/details" element={<Details />} />
+          <Route path="/cards" element={<Cards/>} />
+          <Route path="/products" element={<Sub/>} />
+          <Route path="/details" element={<Details/>} />
+          <Route path="/privacypage" element={<Privacypage/>} />
+          <Route path="/terms" element={<Terms/>} />
+          <Route path="refund"element={<Refund/>}/>
+          <Route path="mobile"element={<Mobile/>}/>
+          <Route path="myac"element={<MyAC/>}/>
+          <Route path="cartcheckout"element={<CartCheckout/>}/>
+
         </Routes>
         <Footer />
       </div>
