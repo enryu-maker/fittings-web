@@ -13,6 +13,7 @@ export function Cart() {
     const dispatch = useDispatch()
     const cartOpen = useSelector(state => state.Reducers.cartOpen)
     const cart = useSelector(state => state.Reducers.cart)
+    console.log(cart)
     const closeDrawer = () => {
         dispatch(OpenCartAction(false))
     };

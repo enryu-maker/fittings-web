@@ -66,6 +66,21 @@ export default (state = initialState, action) => {
                     cart: d,
                 };
             }
+        case "REMOVE_FROM_CART":
+            return {
+                ...state,
+                cart: state.cart.filter((item) => item.id !== action.payload),
+            };
+        case "EMPTY_CART":
+            return {
+                ...state,
+                cart: action.payload,
+            };
+        case "CHANGE_QUANTITY":
+            return {
+                ...state,
+                cart: action.payload,
+            };
         default:
             return state;
     }

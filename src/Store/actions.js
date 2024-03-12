@@ -143,6 +143,15 @@ export const GetCateogry = () => {
     }
 }
 
+export const updateCartAction = (data) => {
+    return async dispatch => {
+      dispatch({
+        type: 'CHANGE_QUANTITY',
+        payload: data,
+      })
+    }
+  }
+
 export const GetSubCateogry = (id,setData) => {
     return async dispatch => {
         await axios.get(baseURL + `product/categories/${id}`).then((res) => {

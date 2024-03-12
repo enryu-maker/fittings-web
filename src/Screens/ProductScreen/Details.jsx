@@ -11,20 +11,18 @@ const Details = () => {
   const dispatch = useDispatch()
   const role = useSelector(state => state.Reducers.role)
   const cart = useSelector(state => state.Reducers.cart)
-  console.log(cart);
+
   const [data, setData] = React.useState(null)
   const [currentSize, setCurrentSize] = React.useState(0)
   const [currentFinish, setCurrentFinish] = React.useState(0)
   const [currentImage, setCurrentImage] = React.useState(0)
-  const [count, setCount] = React.useState(0)
   const [loading, setLoading] = React.useState(false)
   const [mainImage, setMainImage] = useState(null);
-
+  const [count, setCount] = React.useState(1)
   React.useEffect(() => {
     dispatch(GetProduct(id, role, setData, setLoading))
     setMainImage(data?.product_images[currentFinish]?.images[0].image)
-    setCount(data?.size_chart[currentSize]?.price_map[0]?.minimum_order_quantity)
-  }, [dispatch])
+  }, [])
   const TABLE_HEAD = ["Product details", "", "", ""];
   const handleSidebarImageClick = (image) => {
     setMainImage(image.image);
@@ -67,8 +65,8 @@ const Details = () => {
                   />
                 ))}
           </div>
-          <div className="w-[40%]">
-            <img src={data?.product_images[currentFinish]?.images[currentImage].image} alt="Product" className="w-100 m-5" />
+          <div className="w-[40%] h-auto">
+            <img src={data?.product_images[currentFinish]?.images[currentImage].image} alt="Product" className="w-full h-auto object-cover" />
           </div>
 
           <div className="w-[40%] space-y-5 mt-5 ">
@@ -77,15 +75,16 @@ const Details = () => {
               <p className="text-black text-xl mb-2">Price:</p>
               <p
                 className="text-left font-Raleway  text-2xl w-full text-[#df633a]">
-                ₹{Math.round(parseInt(data?.size_chart[currentSize]?.price_map[0]?.price_with_gst) - parseInt(data?.size_chart[currentSize]?.price_map[0]?.price_with_gst) * (parseInt(data?.size_chart[currentSize]?.price_map[0]?.gst_percent) / 100))} without GST
+                ₹{Math.round(parseInt(data?.size_chart[currentSize]?.price_map[0]?.price_with_gst) / (parseInt(100) + (parseInt(data?.size_chart[currentSize]?.price_map[0]?.gst_percent)))*100)*data?.size_chart[currentSize]?.price_map[0]?.minimum_order_quantity * count} without GST
               </p>
               <p
                 className="text-left font-Raleway  text-base w-full">
-                ₹{data?.size_chart[currentSize]?.price_map[0]?.price_with_gst} with GST
+                ₹{data?.size_chart[currentSize]?.price_map[0]?.price_with_gst*data?.size_chart[currentSize]?.price_map[0]?.minimum_order_quantity * count} with GST
               </p>
             </div>
             <p className="text-gray-700 mb-2">
               Description: {data?.description}
+
             </p>
             <div className='flex space-x-2'>
               {data?.product_images?.map((des, index) => (
@@ -117,18 +116,23 @@ const Details = () => {
 
             <div className=' space-x-3 flex text-sm'>
               <button
+              onClick={()=>{
+                if(count>1){
+                setCount(count-1)
+                }
+              }}
               className='bg-[#df633a] h-[20px] w-[20px] text-white rounded-full flex justify-center items-center'
               >
                 -
               </button>
               <p
-              className='font-bold'
+              className=' font-Raleway'
               >
-                {count}
+                {data?.size_chart[currentSize]?.price_map[0]?.minimum_order_quantity * count}
               </p>
               <button
               onClick={()=>{
-                setCount(count+data?.size_chart[currentSize]?.price_map[0]?.minimum_order_quantity)
+                setCount(count+1)
               }}
               className='bg-[#df633a] h-[20px] w-[20px] text-white rounded-full flex justify-center items-center'
               >
@@ -150,7 +154,8 @@ const Details = () => {
                       id: data?.id,
                       name: data?.product_name,
                       price: data?.size_chart[currentSize],
-                      finish: data?.product_images[currentFinish]
+                      finish: data?.product_images[currentFinish],
+                      qty : data?.size_chart[currentSize]?.price_map[0]?.minimum_order_quantity * count
                     }
                   })
                 }}
