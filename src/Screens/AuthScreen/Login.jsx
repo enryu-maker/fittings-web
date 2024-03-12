@@ -16,7 +16,7 @@ function Login() {
       <div className="flex justify-center items-center font-Raleway mt-[140px]">
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 mr-100 lg:px-8">
           <div className="sm:mx-auto sm:w-full  sm:max-w-sm">
-            <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+            <h2 className="mt-10 text-center text-2xl  leading-9 tracking-tight text-gray-900">
               Sign in to your account
             </h2>
           </div>
@@ -56,7 +56,7 @@ function Login() {
                 <div className="text-sm">
                   <a
                     href="#/forgot"
-                    className="font-semibold underline underline-offset-4 text-grey-600 hover:text-grey-500"
+                    className=" underline underline-offset-4 text-grey-600 hover:text-grey-500"
                   >
                     Forgot password?
                   </a>
@@ -84,7 +84,7 @@ function Login() {
                 onClick={() => {
                   dispatch(LoginAction(setLoading, data, navigate));
                 }}
-                className="flex w-full justify-center  bg-black hover:bg-white hover:text-black hover:border-black hover:border-[1px] p-5 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm "
+                className="flex w-full justify-center  bg-[#df633a] hover:bg-white hover:text-black hover:border-black hover:border-[1px] p-5 px-3 py-1.5 text-sm  leading-6 text-white shadow-sm "
               >
                 Login
               </button>
@@ -108,7 +108,7 @@ function Login() {
             </button>
             <p className="flex text-center text-sm py-4  justify-center items-center">
               Don’t have an account? &nbsp;{" "}
-              <a href="#/register" className="font-semibold leading-6 text-grey">
+              <a href="#/register" className=" leading-6 text-grey">
                 Sign Up
               </a>
             </p>

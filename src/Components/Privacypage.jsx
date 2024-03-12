@@ -23,11 +23,11 @@ const Privacypage = () => {
     <>
       <div >
         <div className="flex flex-col mt-[150px] md:flex-row ">
-          <div className="w-full md:w-1/4 bg-gray-200 p-4">
+          <div className="w-full md:w-1/4  p-4">
             <List>
               {data.map(section => (
                 <ListItem
-                   onClick={() => handleSectionClick(section.id)} className="cursor-pointer hover:font-bold              mb-2 font-Raleway">
+                   onClick={() => handleSectionClick(section.id)} className="cursor-pointer hover:mb-2 hover:bg-[#df633a] hover:text-white font-Raleway">
                   {section?.section}
                 </ListItem>
               ))}
@@ -47,7 +47,7 @@ const Privacypage = () => {
               <div ref={ref}>
                 {selectedSection !== null && (
                   <div>
-                    <h2 className="text-lg font-Raleway font-bold mb-4">{data[selectedSection - 1].section}</h2>
+                    <h2 className="text-xl font-Raleway  mb-4">{data[selectedSection - 1].section}</h2>
                     {
                       data[selectedSection - 1]?.content?.split('|').map((item, index) => (
                         <p

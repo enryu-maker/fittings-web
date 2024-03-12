@@ -1,44 +1,97 @@
 import React from 'react'
-import { IMAGE } from '../../Assets/Image'
+import { useDispatch, useSelector } from 'react-redux'
+import { updateCartAction } from '../../Store/actions'
 
-export default function CartCard() {
+export default function CartCard({
+    item
+}) {
+    const cart = useSelector(state => state.Reducers.cart)
+    console.log("cartdata", cart)
+    console.log("item",item)
+    const dispatch = useDispatch()
+    const [count, setCount] = React.useState(item?.qty)
+    console.log("count",count)
     return (
         <div
             className='w-[88%] self-center h-[150px] font-Raleway mt-4 flex justify-start items-center'
         >
             <img
-                src={"https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=150&q=60"}
-                className='h-full w-[120px] object-cover'
+                src={item?.finish?.images[0].image}
+                className='h-full w-[120px] object-fill'
             />
             <div
                 className='flex flex-col gap-2 pl-4'>
                 <p
-                    className=' capitalize text-base'>
-                    A Night In Tokyo (Bag)
+                    className=' capitalize text-base font-medium'>
+                    {item?.name}
                 </p>
                 <p
-                    className=' capitalize text-sm text-gray-600'>
-                    Rs. 1,500.00
+                    className='text-left font-Raleway  text-base w-full text-[#df633a]'>
+                    ₹{Math.round(parseInt(item?.price?.price_map[0]?.price_with_gst) - parseInt(item?.price?.price_map[0]?.price_with_gst) * (parseInt(item?.price?.price_map[0]?.gst_percent) / 100)) * item?.qty} without GST
                 </p>
+                <p
+                    className='text-left font-Raleway  text-sm w-full text-black'>
+                    ₹{parseInt(item?.price?.price_map[0]?.price_with_gst) * item?.qty} with GST
+                </p>
+
                 <div
                     className='flex space-x-5'>
-                    <div
-                        className='flex w-[100px] px-3 justify-between items-center border-2'>
-                        <p
-                            className=' capitalize font-black text-3xl text-black'>
+                    <div className=' space-x-3 flex text-sm'>
+                        <button
+                            onClick={() => {
+                                if (count > 1) {
+                                    setCount(count - 1)
+                                    cart.map((product) => {
+                                        if (product.id === item?.id) {
+                                            product.qty = count - 1
+                                        }
+                                    }
+                                    )
+                                    dispatch(updateCartAction(cart))
+                                }
+                                else {
+                                    dispatch({
+                                        type: 'REMOVE_FROM_CART',
+                                        payload: item?.id
+                                    })
+                                }
+                            }}
+                            className='bg-[#df633a] h-[20px] w-[20px] text-white rounded-full flex justify-center items-center'
+                        >
                             -
-                        </p>
+                        </button>
                         <p
-                            className=' capitalize text-base text-gray-600'>
-                            1
+                            className=' font-Raleway'
+                        >
+                            {item?.qty}
                         </p>
-                        <p
-                            className=' capitalize font-black text-3xl text-black'>
+                        <button
+                            onClick={() => {
+                                setCount(count + 1)
+                                cart.map((product) => {
+                                    if (product.id === item?.id) {
+                                        product.qty = count + 1
+                                    }
+                                }
+                                )
+                                dispatch({
+                                    type: 'CHANGE_QUANTITY',
+                                    payload: cart
+                                })
+                            }}
+                            className='bg-[#df633a] h-[20px] w-[20px] text-white rounded-full flex justify-center items-center'
+                        >
                             +
-                        </p>
+                        </button>
                     </div>
                     <button
-                    className='underline text-xs'>
+                        onClick={()=>{
+                            dispatch({
+                                type: 'REMOVE_FROM_CART',
+                                payload: item?.id
+                            })
+                        }}
+                        className='underline text-xs'>
                         Remove
                     </button>
                 </div>

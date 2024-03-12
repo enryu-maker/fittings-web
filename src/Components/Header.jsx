@@ -29,7 +29,7 @@ export default function Header() {
                     />
                     <a
                         href='#/'
-                        className=' w-[20%] flex justify-center items-center text-2xl font-extrabold tracking-wider'
+                        className=' w-[20%] flex justify-center items-center text-2xl tracking-widest'
                     >
                         Fittings Wale
                     </a>
@@ -58,7 +58,7 @@ export default function Header() {
                     </div>
                 </div>
                 <div
-                    className='w-[92%] py-2 flex justify-between items-center'
+                    className='w-[92%]  py-2 flex justify-between items-center'
                 >
                     {
                         cateogry?.map((item, index) => {
@@ -95,17 +95,17 @@ export default function Header() {
                                 setData({})
                                 setSub([])
                             }}
-                            className='h-[400px] w-full bg-white transition-shadow shadow-sm flex flex-col items-center'
+                            className='h-[400px] border-t-2 pt-2 w-full bg-white transition-shadow shadow-sm flex flex-col items-center'
                         >
                             <p
-                                className=' font-Raleway text-lg tracking-widest'
+                                className=' font-Raleway text-xl tracking-widest'
                             >
                                 {data?.main_category_name}
                             </p>
                             <div className='flex justify-between  items-start w-[68%] mt-2 py-5'>
                                 <div className='flex flex-col'>
                                     <p
-                                        className=' font-Raleway text-base tracking-widest'
+                                        className=' font-Raleway text-lg tracking-widest'
                                     >
                                         Category
                                     </p>
@@ -125,7 +125,7 @@ export default function Header() {
                                 </div>
                                 <div className='flex flex-col '>
                                     <p
-                                        className=' font-Raleway text-base tracking-widest'
+                                        className=' font-Raleway text-lg tracking-widest'
                                     >
                                         Sub Category
                                     </p>
@@ -149,7 +149,7 @@ export default function Header() {
                         </div>
                         :
                         <div
-                            className='bg-black w-full transition-all py-2 text-xs font-Raleway flex text-white  justify-center items-center'
+                            className='bg-[#df633a] w-full transition-all py-2 text-xs font-Raleway flex text-white  justify-center items-center'
                         >
                             Install our app now to avail FLAT 5% OFF on your first app purchase! Use code APP5
                         </div>

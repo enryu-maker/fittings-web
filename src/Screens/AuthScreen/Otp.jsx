@@ -45,7 +45,7 @@ const OTPForm = () => {
         <div className="flex min-h-full space-x-4 flex-col justify-center px-6 py-12 mr-100 lg:px-8">
           <div className="sm:mx-auto sm:w-full  sm:max-w-sm">
 
-            <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+            <h2 className="mt-10 text-center text-2xl  leading-9 tracking-tight text-gray-900">
               Email Verification
             </h2>
             <p
@@ -79,7 +79,7 @@ const OTPForm = () => {
                 }, navigate, setLoading))
               }}
               type="submit"
-              className="group mt-8 relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-black hover:bg-black-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black-500"
+              className="group mt-8 relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#df633a] hover:bg-[#df633a]-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black-500"
             >
               Submit
             </button>

@@ -10,39 +10,39 @@ const MyAc = () => {
 
   return (
     <div className="container mx-auto py-6 mt-40">
-              <h2 className='text-center font-bold	text-4xl '>My Account</h2>
+              <h2 className='text-center 	text-4xl '>My Account</h2>
 
       <div className="flex flex-col md:flex-row">
 
         <div className="md:w-1/4 md:mr-4 mb-6 md:mb-0 ">
       <div className="bg-grey-100 shadow p-4 ">
-            <h2 className="text-lg font-semibold mb-4 ">My Account</h2>
+            <h2 className="text-lg  mb-4 ">My Account</h2>
             <ul className="space-y-2">
-              <li onClick={() => handleSectionChange('profile')} className={activeSection === 'profile' ? 'text-black hover:bg-orange-700 h-50 font-semibold' : 'text-black rounded-lg bg-white-500 ' }>
+              <li onClick={() => handleSectionChange('profile')} className={activeSection === 'profile' ? 'text-black hover:bg-orange-700 h-50 ' : 'text-black rounded-lg bg-white-500 ' }>
                 Profile
               </li>
               <hr></hr>
-              <li onClick={() => handleSectionChange('order-history')} className={activeSection === 'order-history' ? 'text-black   font-semibold' : 'text-black'}>
+              <li onClick={() => handleSectionChange('order-history')} className={activeSection === 'order-history' ? 'text-black   ' : 'text-black'}>
                 Order History
               </li>
               <hr></hr>
-              <li onClick={() => handleSectionChange('address')} className={activeSection === 'logout' ? 'text-black   font-semibold' : 'text-black'}>
+              <li onClick={() => handleSectionChange('address')} className={activeSection === 'logout' ? 'text-black   ' : 'text-black'}>
               Address
               </li>
               <hr></hr>
-              <li onClick={() => handleSectionChange('logout')} className={activeSection === 'logout' ? 'text-black  font-semibold' : 'text-black'}>
+              <li onClick={() => handleSectionChange('logout')} className={activeSection === 'logout' ? 'text-black  ' : 'text-black'}>
               Coupons
               </li>
               <hr></hr>
-              <li onClick={() => handleSectionChange('logout')} className={activeSection === 'logout' ? 'text-black  font-semibold' : 'text-black'}>
+              <li onClick={() => handleSectionChange('logout')} className={activeSection === 'logout' ? 'text-black  ' : 'text-black'}>
               Rating & Reviews
               </li>
               <hr></hr>
-              <li onClick={() => handleSectionChange('logout')} className={activeSection === 'logout' ? 'text-black   font-semibold' : 'text-black'}>
+              <li onClick={() => handleSectionChange('logout')} className={activeSection === 'logout' ? 'text-black   ' : 'text-black'}>
               Settings
               </li>
               <hr></hr>
-              <li onClick={() => handleSectionChange('logout')} className={activeSection === 'logout' ? 'text-black   font-semibold' : 'text-black'}>
+              <li onClick={() => handleSectionChange('logout')} className={activeSection === 'logout' ? 'text-black   ' : 'text-black'}>
                 Logout
               </li>
             </ul>
@@ -109,7 +109,7 @@ const ProfileSection = () => {
 
   return (
     <div className='grid grid-rows-4 grid-flow-col gap-4'>
-      {/* <h2 className="text-lg font-semibold mb-4">Profile</h2> */}
+      {/* <h2 className="text-lg  mb-4">Profile</h2> */}
       <div className="mb-4">
         <label className="block text-sm font-medium text-gray-700">Name</label>
         <input type="text" name="name" value={userData.name} onChange={handleChange} className="mt-1 p-2 border border-gray-300 rounded-md w-full" />
@@ -145,7 +145,7 @@ const ProfileSection = () => {
 const OrderHistorySection = () => {
   return (
     <div>
-      <h2 className="text-lg font-semibold mb-4">Order History</h2>
+      <h2 className="text-lg  mb-4">Order History</h2>
       {/* Display order history */}
     </div>
   );
@@ -153,7 +153,7 @@ const OrderHistorySection = () => {
 const AddressSection = () => {
     return (
   <div className='grid grid-cols-3 gap-3'>
-      <h2 className="text-lg font-semibold mb-4 text-pretty	">
+      <h2 className="text-lg  mb-4 text-pretty	">
           Akif Khan . +92 1234567890 123, Lorem Ipsum Dolor Sit Amet Consectetur
           Adipisicing Elit. Quisquam, Voluptatibus.
         </h2>
@@ -164,7 +164,7 @@ const AddressSection = () => {
 const LogoutSection = () => {
   return (
     <div>
-      <h2 className="text-lg font-semibold mb-4">Logout</h2>
+      <h2 className="text-lg  mb-4">Logout</h2>
       {/* Logout functionality */}
       <p>Click here to logout</p>
     </div>

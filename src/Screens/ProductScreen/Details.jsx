@@ -10,57 +10,20 @@ const Details = () => {
   id = id.pathname.split("/").pop();
   const dispatch = useDispatch()
   const role = useSelector(state => state.Reducers.role)
-  const [data, setData] = React.useState({})
+  const cart = useSelector(state => state.Reducers.cart)
+
+  const [data, setData] = React.useState(null)
   const [currentSize, setCurrentSize] = React.useState(0)
   const [currentFinish, setCurrentFinish] = React.useState(0)
+  const [currentImage, setCurrentImage] = React.useState(0)
   const [loading, setLoading] = React.useState(false)
-
+  const [mainImage, setMainImage] = useState(null);
+  const [count, setCount] = React.useState(1)
   React.useEffect(() => {
     dispatch(GetProduct(id, role, setData, setLoading))
-  }, [data])
+    setMainImage(data?.product_images[currentFinish]?.images[0].image)
+  }, [])
   const TABLE_HEAD = ["Product details", "", "", ""];
-  const [mainImage, setMainImage] = useState(null);
-  const TABLE_ROWS = [
-    {
-      name: "SKU",
-      job: "MAG-100208.00",
-    },
-    {
-      name: "MODEL NO.",
-      job: "100208",
-    },
-    {
-      name: "UNIT",
-      job: "PCS",
-    },
-    {
-      name: "DELIVERY TIME",
-      job: "1 Days",
-    },
-    {
-      name: "GST",
-      job: "18",
-    },
-    ,
-    {
-      name: "SIZE",
-      job: "3 x 3/8 x 6 mm",
-    },
-    {
-      name: "FINISH",
-      job: "Matt",
-    },
-    {
-      name: "MATERIAL TYPE",
-      job: "Stainless Steel",
-
-    },
-  ];
-
-
-
-
-
   const handleSidebarImageClick = (image) => {
     setMainImage(image.image);
   };
@@ -84,71 +47,119 @@ const Details = () => {
     return (
       <div className='mt-[180px] font-Raleway transition-all'>
         <div className="flex justify-evenly items-start ">
-          {/* <div className="w-20 h-50 m-5">
-            {data?.product_images[0]?.images?.map((image, index) => (
-              <img
-                key={index}
-                src={image.image}
-                alt={`prod_img ${index + 1}`}
-                onClick={() => {
-                  handleSidebarImageClick(image)
-                  setCurrentFinish(index)
-                }}
-                className={`w-50 mb-5 bg-black  cursor-pointer ${mainImage === image.image ? "border-2 border-gray-200" : ""
-                  }`}
-              />
-            ))}
-          </div> */}
-          <div className="w-[40%]">
-            <img src={mainImage} alt="Main Product" className="w-100 m-5" />
+          <div className="w-20 h-50 m-5">
+            {
+              loading ?
+                null :
+                data?.product_images[currentFinish]?.images?.map((image, index) => (
+                  <img
+                    key={index}
+                    src={image.image}
+                    alt={`prod_img ${index + 1}`}
+                    onClick={() => {
+                      handleSidebarImageClick(image)
+                      setCurrentImage(index)
+                    }}
+                    className={`w-50 mb-5 bg-[#df633a]  cursor-pointer ${mainImage === image.image ? "border-2 border-gray-200" : ""
+                      }`}
+                  />
+                ))}
+          </div>
+          <div className="w-[40%] h-auto">
+            <img src={data?.product_images[currentFinish]?.images[currentImage].image} alt="Product" className="w-full h-auto object-cover" />
           </div>
 
           <div className="w-[40%] space-y-5 mt-5 ">
-            <h2 className="text-xl font-bold  mb-4">{data?.product_name}</h2>
-            <p className="text-gray-700 mb-2">Price: $200</p>
+            <h2 className="text-3xl text-[#df633a]  mb-4">{data?.product_name}</h2>
+            <div className="">
+              <p className="text-black text-xl mb-2">Price:</p>
+              <p
+                className="text-left font-Raleway  text-2xl w-full text-[#df633a]">
+                ₹{Math.round(parseInt(data?.size_chart[currentSize]?.price_map[0]?.price_with_gst) / (parseInt(100) + (parseInt(data?.size_chart[currentSize]?.price_map[0]?.gst_percent)))*100)*data?.size_chart[currentSize]?.price_map[0]?.minimum_order_quantity * count} without GST
+              </p>
+              <p
+                className="text-left font-Raleway  text-base w-full">
+                ₹{data?.size_chart[currentSize]?.price_map[0]?.price_with_gst*data?.size_chart[currentSize]?.price_map[0]?.minimum_order_quantity * count} with GST
+              </p>
+            </div>
             <p className="text-gray-700 mb-2">
               Description: {data?.description}
+
             </p>
             <div className='flex space-x-2'>
               {data?.product_images?.map((des, index) => (
                 <button
-                  className=" box-border border-gray-200 border-2  bg-white  text-black  px-4 py-1  hover:bg-gray-200">
+                  key={index}
+                  onClick={(e) => { setCurrentFinish(index) }}
+                  className={`box-border border-gray-200 border-2 ${currentFinish === index ? "bg-[#df633a] text-white" : " bg-white  text-black"}  px-4 py-1 `}>
                   <p className='text-center'>{des?.finish?.title}</p>
                 </button>
               ))}
             </div>
             <div className='flex space-x-2'>
-              {data?.size_chart?.map((des, index) => (
-                <button
-                  key={index}
-                  onClick={() => {
-                    setCurrentSize(index)
-                    console.log(index)
-                    console.log('current size', data?.size_chart[currentSize])
-                  }}
-                  className=" box-border border-gray-200 border-2 h-30 w-30 bg-white  text-black  px-4 py-2  hover:bg-gray-200">
-                  <p>{des?.size}</p>
-                </button>
-              ))}
+              {data?.size_chart?.map((des, index) => {
+                if (data?.product_images[currentFinish]?.finish?.id === des?.finish) {
+                  return (
+                    <button
+                      key={index}
+                      onClick={() => {
+                        setCurrentSize(index)
+                      }}
+                      className={`box-border border-gray-200 border-2 ${currentSize === index ? "bg-[#df633a] text-white" : " bg-white  text-black"}  px-4 py-1 `}>
+                      <p>{des?.size}</p>
+                    </button>
+                  )
+                }
+              })
+              }
             </div>
-            <div className="">
-              {/* <p
-                className="text-left font-Raleway font-bold text-lg w-full">
-                ₹{Math.round(parseInt(data?.size_chart[currentSize]?.price_map[0]?.price_with_gst) - parseInt(data?.size_chart[currentSize]?.price_map[0]?.price_with_gst) * (parseInt(data?.size_chart[currentSize]?.price_map[0]?.gst_percent) / 100))} without GST
-              </p>
+
+            <div className=' space-x-3 flex text-sm'>
+              <button
+              onClick={()=>{
+                if(count>1){
+                setCount(count-1)
+                }
+              }}
+              className='bg-[#df633a] h-[20px] w-[20px] text-white rounded-full flex justify-center items-center'
+              >
+                -
+              </button>
               <p
-                className="text-left font-Raleway font-bold text-base w-full">
-                ₹{data?.size_chart[currentSize]?.price_map[0]?.price_with_gst} with GST
-              </p> */}
+              className=' font-Raleway'
+              >
+                {data?.size_chart[currentSize]?.price_map[0]?.minimum_order_quantity * count}
+              </p>
+              <button
+              onClick={()=>{
+                setCount(count+1)
+              }}
+              className='bg-[#df633a] h-[20px] w-[20px] text-white rounded-full flex justify-center items-center'
+              >
+                +
+              </button>
             </div>
+
             <div className=' space-x-3'>
               <button
-                className=" justify-center  bg-black hover:bg-white hover:text-black hover:border-black hover:border-[1px] p-5 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm "
+                className=" font-Raleway justify-center  bg-[#df633a] hover:bg-white hover:text-black hover:border-black hover:border-[1px] p-5 px-3 py-1.5 text-sm leading-6 text-white shadow-sm "
               >
                 Buy Now
               </button>
               <button
-                className=" justify-center  bg-black hover:bg-white hover:text-black hover:border-black hover:border-[1px] p-5 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm "
+                onClick={() => {
+                  dispatch({
+                    type: "ADD_TO_CART",
+                    payload: {
+                      id: data?.id,
+                      name: data?.product_name,
+                      price: data?.size_chart[currentSize],
+                      finish: data?.product_images[currentFinish],
+                      qty : data?.size_chart[currentSize]?.price_map[0]?.minimum_order_quantity * count
+                    }
+                  })
+                }}
+                className=" font-Raleway justify-center  bg-[#df633a] hover:bg-white hover:text-black hover:border-black hover:border-[1px] p-5 px-3 py-1.5 text-sm  leading-6 text-white shadow-sm "
               >
                 Add to Cart
               </button>
@@ -175,7 +186,7 @@ const Details = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {TABLE_ROWS.map(({ name, job, date }, index) => (
+                  {data?.product_details?.map(({ name, value, date }, index) => (
                     <tr key={name} className="even:bg-blue-gray-50/50">
                       <td className="p-4">
                         <Typography
@@ -192,7 +203,7 @@ const Details = () => {
                           color="blue-gray"
                           className="font-Raleway"
                         >
-                          {job}
+                          {value}
                         </Typography>
                       </td>
                       <td className="p-2">
@@ -212,13 +223,6 @@ const Details = () => {
             </Card>
           </div>
         </div>
-        {/* <div className="w-50 m-5">
-        <h2 className="text-xl font-bold  mb-4">Product Name</h2>
-        <p className="text-gray-700 mb-2">
-          Special Offers: Lorem ipsum dolor sit amet, consectetur adipiscing
-          elit.
-        </p>
-      </div> */}
       </div>
     );
   }

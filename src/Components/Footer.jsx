@@ -22,19 +22,19 @@ export default function Footer() {
                     className='w-[88%] flex justify-between items-start flex-wrap'>
                     <div>
                         <p
-                            className=' uppercase font-semibold'>
+                            className=' uppercase '>
                             Quick Link
                         </p>
                     </div>
                     <div>
                         <p
-                            className=' uppercase font-semibold'>
+                            className=' uppercase '>
                             Quick Link
                         </p>
                     </div>
                     <div className='flex flex-col space-y-2'>
                         <p
-                            className=' uppercase font-semibold'>
+                            className=' uppercase '>
                             customer Service
                         </p>
                         <a 
@@ -56,7 +56,7 @@ export default function Footer() {
                     </div>
                     <div>
                         <p
-                            className=' uppercase font-semibold'>
+                            className=' uppercase '>
                             news letter
                         </p>
                     </div>
@@ -67,7 +67,7 @@ export default function Footer() {
                         className='lg:w-[30%] space-y-2'
                     >
                         <p
-                            className=' uppercase font-semibold tracking-widest'>
+                            className=' uppercase  tracking-widest'>
                             ABOUT Fittingswale
                         </p>
                         <p
