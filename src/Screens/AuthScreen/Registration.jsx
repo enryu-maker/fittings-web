@@ -16,8 +16,8 @@ function Registration() {
   const dispatch = useDispatch()
   return (
     <>
-      <div className=" font-Raleway mt-[140px]">
-        <div className="flex min-h-full flex-col justify-center py-12 mr-100 lg:px-8 ">
+      <div className="  font-Raleway mt-[140px]">
+        <div className="flex min-h-full  flex-col justify-center py-12 mr-100 lg:px-8 ">
           <div className="sm:mx-auto sm:w-full  sm:max-w-sm">
             <h2 className="mt-10 text-center text-2xl  tracking-widest text-gray-900">
               Sign up to continue

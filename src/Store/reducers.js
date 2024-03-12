@@ -5,7 +5,7 @@ const initialState = {
     role: 1,
     cart: [],
     cartOpen: false,
-    cateogry: [],
+    category: []
 
 };
 export default (state = initialState, action) => {
