@@ -14,7 +14,7 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 access: action.payload.access,
-                role: action.payload.userid
+                role: action.payload.user_role
             };
         case "OPEN_CART":
             return {
@@ -71,6 +71,11 @@ export default (state = initialState, action) => {
                 ...state,
                 cart: state.cart.filter((item) => item.id !== action.payload),
             };
+        case "CART":
+            return {
+                ...state,
+                cart: action.payload
+            };
         case "EMPTY_CART":
             return {
                 ...state,
@@ -80,6 +85,12 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 cart: action.payload,
+            };
+        case "LOGOUT":
+            return {
+                ...state,
+                access: action.payload.access,
+                role: 1
             };
         default:
             return state;

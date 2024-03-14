@@ -3,13 +3,14 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { RegisterAction } from '../../Store/actions';
 import { Select, Option } from "@material-tailwind/react";
+import { Oval } from 'react-loader-spinner';
 function Registration() {
   const navigate = useNavigate();
   const [data, setData] = React.useState({
     "email": "",
     "name": "",
     "role": "",
-    "mobile_no": "",
+    "mobile_no": 0,
     "password": ""
   })
   const [loading, setLoading] = React.useState(false)
@@ -36,7 +37,10 @@ function Registration() {
                 onChange={(val) => setData({ ...data, role: val })}
                 className='font-Raleway'
               >
-                <Option>Business</Option>
+                <Option value='Business'>Business</Option>
+                <Option value='Interior'>Interior</Option>
+                <Option value='Customer'>Customer</Option>
+
               </Select>
             </div>
             <div>
@@ -51,6 +55,9 @@ function Registration() {
                   autoComplete="name"
                   required
                   className="block w-full px-3 border-2 py-1.5 text-gray-900 outline-none"
+                  onChange={(e)=>{
+                    setData({ ...data, name: e.target.value })
+                  }}
                 />
               </div>
               <label htmlFor="email" className="block text-sm text-left font-medium leading-6 text-gray-900">
@@ -64,6 +71,9 @@ function Registration() {
                   autoComplete="email"
                   required
                   className="block w-full px-3 border-2 py-1.5 text-gray-900 outline-none"
+                  onChange={(e)=>{
+                    setData({ ...data, email: e.target.value })
+                  }}
                 />
               </div>
               <label htmlFor="email" className="block text-sm text-left font-medium leading-6 text-gray-900">
@@ -73,10 +83,13 @@ function Registration() {
                 <input
                   id="number"
                   name="number"
-                  type="tel"
+                  type="number"
                   autoComplete="number"
                   required
                   className="block w-full px-3 border-2 py-1.5 text-gray-900 outline-none"
+                  onChange={(e)=>{
+                    setData({ ...data, mobile_no: e.target.value })
+                  }}
                 />
               </div>
             </div>
@@ -95,6 +108,9 @@ function Registration() {
                   autoComplete="current-password"
                   required
                   className="block w-full px-3 border-2 py-1.5 text-gray-900 outline-none"
+                  onChange={(e)=>{
+                    setData({ ...data, password:  e.target.value })
+                  }}
                 />
               </div>
             </div>
@@ -103,11 +119,26 @@ function Registration() {
               <button
                 type="submit"
                 onClick={() => {
+                  console.log(data)
                   dispatch(RegisterAction(setLoading, data, navigate))
                 }}
                 className="flex w-full justify-center  bg-[#df633a] hover:bg-white hover:text-black hover:border-black hover:border-[1px] p-5 px-3 py-1.5 text-sm  leading-6 text-white shadow-sm "
               >
-                Signup
+                {
+                  loading?
+                  <Oval
+                  visible={true}
+                  height="20"
+                  width="20"
+                  color="#df633a"
+                  secondaryColor='#df633a40'
+                  ariaLabel="oval-loading"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+                />
+                :  
+                'Register'
+                }
               </button>
             </div>
             <div className='flex flex-row justify-evenly items-center text-gray-500'>

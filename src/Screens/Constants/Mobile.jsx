@@ -4,7 +4,7 @@ import { FaYoutube, FaGooglePlay } from "react-icons/fa";
 
 const Mobile = () => {
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center h-screen bg-gray-100">    
+    <div className="flex flex-col md:flex-row items-center justify-center h-screen bg-white">    
       <div className="md:w-1/2 flex flex-col items-center justify-center space-y-4">
         <div className="flex flex-col items-center space-y-2">
           <h2 className="text-black  text-5xl">Get the FittingsWale App</h2><br></br>

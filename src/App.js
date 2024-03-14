@@ -20,12 +20,15 @@ import Mobile from './Screens/Constants/Mobile'
 import MyAC from './Screens/Constants/MyAc'
 import CartCheckout from './Screens/Cart/Cartcheckout'
 import Paymentpage from './Screens/Cart/Paymentpage'
-import { GetCateogry } from './Store/actions'
+import { GetCateogry, Init } from './Store/actions'
 
 export default function App() {
   const cartOpen = useSelector(state => state.Reducers.cartOpen)
+  const access = useSelector(state => state.Reducers.access)
+
   const dispatch = useDispatch()
   React.useEffect(() => {
+    dispatch(Init())
     dispatch(GetCateogry())
   }, [dispatch])
   return (
@@ -38,30 +41,25 @@ export default function App() {
       <div className='h-full w-full'>
         <Header />
         <Routes>
-          <Route path="/scategory:/id" element={<Products />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Registration />} />
+          <Route path="/category" element={<Products />} />
           <Route path="/cards" element={<Cards />} />
           <Route path="/otp" element={<OTPForm />} />
           <Route path="/cards" element={<Cards />} />
           <Route path="/products" element={<Sub />} />
-          <Route path="/details/:id" element={<Details />} />
+          <Route path="/details" element={<Details />} />
           <Route path="/privacypage" element={<Privacypage />} />
           <Route path="/terms" element={<Terms />} />
-          <Route path="refund" element={<Refund />} />
-          <Route path="mobile" element={<Mobile />} />
-          <Route path="myac" element={<MyAC />} />
-          <Route path="cartcheckout" element={<CartCheckout />} />
+          <Route path="/refund" element={<Refund />} />
+          <Route path="/mobile" element={<Mobile />} />
+          <Route path="/myaccount" element={access != null ? <MyAC /> : <Login />} />
+          <Route path="/cartcheckout" element={access != null ? <CartCheckout /> : <Login />} />
+          <Route path="/payment" element={access != null ? <Paymentpage /> : <Login />} />
           <Route path="/cards" element={<Cards />} />
           <Route path="/subcategory/:id" element={<Sub />} />
-          <Route path="/details" element={<Details />} />
-          <Route path="/cards" element={<Cards />} />
-          <Route path="/products" element={<Sub />} />
-          <Route path="/details" element={<Details />} />
-          <Route path="/privacypage" element={<Privacypage />} />
-          <Route path="/terms" element={<Terms />} />
-          <Route path="refund" element={<Refund />} />
-          <Route path="mobile" element={<Mobile />} />
-          <Route path="myac" element={<MyAC />} />
-          <Route path="cartcheckout" element={<CartCheckout />} />
+          <Route path="/details/:id" element={<Details />} />
         </Routes>
         <Footer />
       </div>

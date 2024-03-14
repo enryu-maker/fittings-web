@@ -10,8 +10,6 @@ const Details = () => {
   id = id.pathname.split("/").pop();
   const dispatch = useDispatch()
   const role = useSelector(state => state.Reducers.role)
-  const cart = useSelector(state => state.Reducers.cart)
-
   const [data, setData] = React.useState(null)
   const [currentSize, setCurrentSize] = React.useState(0)
   const [currentFinish, setCurrentFinish] = React.useState(0)
@@ -22,7 +20,8 @@ const Details = () => {
   React.useEffect(() => {
     dispatch(GetProduct(id, role, setData, setLoading))
     setMainImage(data?.product_images[currentFinish]?.images[0].image)
-  }, [])
+  }, [loading])
+  console.log(role)
   const TABLE_HEAD = ["Product details", "", "", ""];
   const handleSidebarImageClick = (image) => {
     setMainImage(image.image);
@@ -66,9 +65,8 @@ const Details = () => {
                 ))}
           </div>
           <div className="w-[40%] h-auto">
-            <img src={data?.product_images[currentFinish]?.images[currentImage].image} alt="Product" className="w-full h-auto object-cover" />
+            <img src={data?.product_images[currentFinish]?.images[currentImage].image} alt="Product" className="object-fill" />
           </div>
-
           <div className="w-[40%] space-y-5 mt-5 ">
             <h2 className="text-3xl text-[#df633a]  mb-4">{data?.product_name}</h2>
             <div className="">

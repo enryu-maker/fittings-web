@@ -6,11 +6,8 @@ export default function CartCard({
     item
 }) {
     const cart = useSelector(state => state.Reducers.cart)
-    console.log("cartdata", cart)
-    console.log("item",item)
     const dispatch = useDispatch()
     const [count, setCount] = React.useState(item?.qty)
-    console.log("count",count)
     return (
         <div
             className='w-[88%] self-center h-[150px] font-Raleway mt-4 flex justify-start items-center'

@@ -98,7 +98,7 @@ export default function Cards({
               return (
                 <button
                   onClick={()=>{
-                    navigate('/category',{
+                    navigate(`/category/`,{
                       state: item
                     })
                   }}

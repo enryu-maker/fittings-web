@@ -59,7 +59,7 @@ function Sub() {
       <div className="mx-auto ">
         <p className="text-left ml-8 text-4xl">{state?.sub_category_name}</p>
         {/* <div className="grid grid-cols-4 gap-4"> */}
-          {/* <Card className="h-[calc(100vh-2rem)] font-Raleway w-full max-w-[20rem] p-4 shadow-none">
+        {/* <Card className="h-[calc(100vh-2rem)] font-Raleway w-full max-w-[20rem] p-4 shadow-none">
             <div className="mb-2 flex items-center gap-4 p-4">
               <Typography
                 className="font-Raleway text-lg "
@@ -150,67 +150,67 @@ function Sub() {
               <hr className="my-2 border-blue-gray-50" />
             </List>
           </Card> */}
-          <div className="flex flex-wrap items-start mt-2 justify-evenly w-[100%] py-5">
+        <div className="flex flex-wrap items-start mt-2 justify-evenly w-[100%] py-5">
 
-            {
-              loading ?
-                <div className="flex justify-center items-center w-[70vw] h-[40vh]">
-                  <Oval
-                    visible={true}
-                    height="40"
-                    width="40"
-                    color="#df633a"
-                    secondaryColor='#df633a40'
-                    ariaLabel="oval-loading"
-                    wrapperStyle={{}}
-                    wrapperClass=""
+          {
+            loading ?
+              <div className="flex justify-center items-center w-[70vw] h-[40vh]">
+                <Oval
+                  visible={true}
+                  height="40"
+                  width="40"
+                  color="#df633a"
+                  secondaryColor='#df633a40'
+                  ariaLabel="oval-loading"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+                />
+              </div>
+              :
+              products?.products?.map((product, index) => (
+                <a
+                  href={"#/details/" + product?.id}
+                  key={index}
+                  className=" px-2 flex flex-col h-[300px] justify-evenly items-center cursor-pointer "
+                >
+                  <img
+                    alt="icon"
+                    src={product?.product_images[0]?.images[0].image}
+                    className="w-[180px] h-[180px]  object-contain"
                   />
-                </div>
-                :
-                products?.products?.map((product, index) => (
-                  <a
-                    href={"#/details/" + product?.id}
-                    key={index}
-                    className=" px-2 flex flex-col h-[300px] justify-evenly items-center cursor-pointer "
-                  >
-                    <img
-                      alt="icon"
-                      src={product?.product_images[0]?.images[0].image}
-                      className="w-[180px] h-[180px]  object-contain"
-                    />
-                    <p
-                      className="text-left  font-Raleway  text-base w-full">
-                      {product?.product_name}
-                    </p>
-                    <p
-                      className="text-justify font-Raleway text-sm w-full">
-                      {product?.description?.slice(0, 100)}
-                    </p>
-                    <p
-                      className="text-left font-Raleway  text-2xl w-full text-[#df633a]">
-                ₹{Math.round(parseInt(product?.size_chart[0]?.price_map[0]?.price_with_gst) / (parseInt(100) + (parseInt(product?.size_chart[0]?.price_map[0]?.gst_percent)))*100)} without GST
+                  <p
+                    className="text-left  font-Raleway  text-base w-full">
+                    {product?.product_name}
+                  </p>
+                  <p
+                    className="text-justify font-Raleway text-sm w-full">
+                    {product?.description?.slice(0, 100)}
+                  </p>
+                  <p
+                    className="text-left font-Raleway  text-2xl w-full text-[#df633a]">
+                    ₹{Math.round(parseInt(product?.size_chart[0]?.price_map[0]?.price_with_gst) / (parseInt(100) + (parseInt(product?.size_chart[0]?.price_map[0]?.gst_percent))) * 100)} without GST
 
-                    </p>
-                    <p
-                      className="text-left font-Raleway  text-base w-full">
-                      ₹{product?.size_chart[0]?.price_map[0]?.price_with_gst} with GST
-                    </p>
-                    <div className=' space-x-3 w-full justify-between items-center'>
-                      <button
-                        className=" font-Raleway justify-center  bg-[#df633a] hover:bg-white hover:text-black hover:border-black hover:border-[1px] p-5 px-3 py-1.5 text-sm leading-6 text-white shadow-sm "
-                      >
-                        Buy Now
-                      </button>
-                      <button
-                        className=" font-Raleway justify-center  bg-[#df633a] hover:bg-white hover:text-black hover:border-black hover:border-[1px] p-5 px-3 py-1.5 text-sm  leading-6 text-white shadow-sm "
-                      >
-                        Add to Cart
-                      </button>
-                    </div>
-                  </a>
-                ))}
-          </div>
+                  </p>
+                  <p
+                    className="text-left font-Raleway  text-base w-full">
+                    ₹{product?.size_chart[0]?.price_map[0]?.price_with_gst} with GST
+                  </p>
+                  <div className=' space-x-3 w-full justify-between items-center'>
+                    <button
+                      className=" font-Raleway justify-center  bg-[#df633a] hover:bg-white hover:text-black hover:border-black hover:border-[1px] p-5 px-3 py-1.5 text-sm leading-6 text-white shadow-sm "
+                    >
+                      Buy Now
+                    </button>
+                    <button
+                      className=" font-Raleway justify-center  bg-[#df633a] hover:bg-white hover:text-black hover:border-black hover:border-[1px] p-5 px-3 py-1.5 text-sm  leading-6 text-white shadow-sm "
+                    >
+                      Add to Cart
+                    </button>
+                  </div>
+                </a>
+              ))}
         </div>
+      </div>
       {/* </div> */}
     </div>
   )

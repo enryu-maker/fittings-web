@@ -13,14 +13,22 @@ export function Cart() {
     const dispatch = useDispatch()
     const cartOpen = useSelector(state => state.Reducers.cartOpen)
     const cart = useSelector(state => state.Reducers.cart)
-    console.log(cart)
+    function getTotal(cart){
+        var total=0
+        cart.map((item,index)=>{
+            total += item?.price?.price_map[0]?.price_with_gst * item?.qty
+        })
+        return total;
+    }
+
+
     const closeDrawer = () => {
         dispatch(OpenCartAction(false))
     };
 
     const handlechange = (e) => {
         e.preventDefault()
-        navigate('/Cartcheckout');
+        navigate('/cartcheckout');
     }
     const theme = {
         drawer: {
@@ -99,9 +107,9 @@ export function Cart() {
                 <div
                     className="py-5 border-t-2 absolute bottom-0 w-full flex justify-center items-center ">
                     <button onClick={handlechange}
-                        className="bg-[#df633a] hover:bg-white hover:text-black hover:border-black hover:border-[1px] transition-all uppercase text-xs text-white font-Raleway font-thin py-3 w-[88%] self-center"
+                        className="bg-[#df633a] hover:bg-white hover:text-black hover:border-black hover:border-[1px] transition-all uppercase text-xs text-white font-Raleway  py-3 w-[88%] self-center"
                     >
-                        Checkout Rs. 3100.00
+                        Checkout Rs. {getTotal(cart)}
                     </button>
                 </div>
             </div>

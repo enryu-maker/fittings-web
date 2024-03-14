@@ -9,7 +9,7 @@ const OTPForm = () => {
   const [otp, setOTP] = useState(['', '', '', '']);
   const inputRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
   const [loading, setLoading] = React.useState(false)
-
+  console.log(state);
   const handleChange = (index, value) => {
     if (isNaN(value)) return;
     const newOTP = [...otp];
@@ -29,16 +29,6 @@ const OTPForm = () => {
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const otpCode = otp.join('');
-    // console.log('OTP submitted:', otpCode);
-  };
-  const handleClick = (e) => {
-    e.preventDefault();
-    const otpCode = otp.join('');
-    console.log('OTP submitted:', otpCode);
-  };
   return (
     <>
       <div className="flex justify-center items-center font-Raleway mt-[140px]">
@@ -51,7 +41,7 @@ const OTPForm = () => {
             <p
               className=' text-xs'
             >
-              We have sent a code to your {state?.email}
+              We have sent a code to your <span className='text-[#df633a] font-medium'>{state}</span> 
             </p>
           </div>
           <div className="flex mt-8 justify-center items-center space-x-4">
@@ -74,14 +64,14 @@ const OTPForm = () => {
               onClick={(e) => {
                 e.preventDefault()
                 dispatch(VerifyAction({
-                  email: state?.email,
+                  email: state,
                   otp: otp.join(''),
                 }, navigate, setLoading))
               }}
               type="submit"
               className="group mt-8 relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#df633a] hover:bg-[#df633a]-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black-500"
             >
-              Submit
+              Verify
             </button>
           </div>
         </div>

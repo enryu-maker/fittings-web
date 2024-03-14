@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { LoginAction } from "../../Store/actions";
+import { Oval } from "react-loader-spinner";
 
 function Login() {
   const navigate = useNavigate();
@@ -86,7 +87,21 @@ function Login() {
                 }}
                 className="flex w-full justify-center  bg-[#df633a] hover:bg-white hover:text-black hover:border-black hover:border-[1px] p-5 px-3 py-1.5 text-sm  leading-6 text-white shadow-sm "
               >
-                Login
+                {
+                  loading?
+                  <Oval
+                  visible={true}
+                  height="20"
+                  width="20"
+                  color="#df633a"
+                  secondaryColor='#df633a40'
+                  ariaLabel="oval-loading"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+                />
+                :  
+                'Login'
+                }
               </button>
             </div>
             <div className="flex flex-row justify-evenly items-center text-gray-500">
