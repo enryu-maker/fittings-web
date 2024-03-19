@@ -109,7 +109,7 @@ export function Cart() {
                     <button onClick={handlechange}
                         className="bg-[#df633a] hover:bg-white hover:text-black hover:border-black hover:border-[1px] transition-all uppercase text-xs text-white font-Raleway  py-3 w-[88%] self-center"
                     >
-                        Checkout Rs. {getTotal(cart)}
+                        Checkout ₹ {getTotal(cart)}
                     </button>
                 </div>
             </div>

@@ -175,7 +175,7 @@ function Sub() {
                 >
                   <img
                     alt="icon"
-                    src={product?.product_images[0]?.images[0].image}
+                    src={product?.product_images[0]?.images[0]?.image}
                     className="w-[180px] h-[180px]  object-contain"
                   />
                   <p

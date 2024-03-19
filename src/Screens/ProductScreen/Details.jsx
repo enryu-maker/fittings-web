@@ -65,7 +65,7 @@ const Details = () => {
                 ))}
           </div>
           <div className="w-[40%] h-auto">
-            <img src={data?.product_images[currentFinish]?.images[currentImage].image} alt="Product" className="object-fill" />
+            <img src={data?.product_images[currentFinish]?.images[currentImage]?.image} alt="Product" className="object-fill" />
           </div>
           <div className="w-[40%] space-y-5 mt-5 ">
             <h2 className="text-3xl text-[#df633a]  mb-4">{data?.product_name}</h2>
