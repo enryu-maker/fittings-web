@@ -171,7 +171,7 @@ function Sub() {
                 <a
                   href={"#/details/" + product?.id}
                   key={index}
-                  className=" px-2 flex flex-col h-[300px] justify-evenly items-center cursor-pointer "
+                  className=" px-5 flex flex-col h-[300px] justify-evenly items-center cursor-pointer shadow-lg "
                 >
                   <img
                     alt="icon"
@@ -195,7 +195,7 @@ function Sub() {
                     className="text-left font-Raleway  text-base w-full">
                     ₹{product?.size_chart[0]?.price_map[0]?.price_with_gst} with GST
                   </p>
-                  <div className=' space-x-3 w-full justify-between items-center'>
+                  {/* <div className=' space-x-3 w-full justify-between items-center'>
                     <button
                       className=" font-Raleway justify-center  bg-[#df633a] hover:bg-white hover:text-black hover:border-black hover:border-[1px] p-5 px-3 py-1.5 text-sm leading-6 text-white shadow-sm "
                     >
@@ -206,7 +206,7 @@ function Sub() {
                     >
                       Add to Cart
                     </button>
-                  </div>
+                  </div> */}
                 </a>
               ))}
         </div>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Card, Typography } from "@material-tailwind/react";
 import { useLocation } from "react-router";
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { GetProduct } from '../../Store/actions';
 import { Oval } from 'react-loader-spinner';
@@ -21,7 +22,7 @@ const Details = () => {
     dispatch(GetProduct(id, role, setData, setLoading))
     setMainImage(data?.product_images[currentFinish]?.images[0].image)
   }, [loading])
-  console.log(role)
+  const navigate = useNavigate()
   const TABLE_HEAD = ["Product details", "", "", ""];
   const handleSidebarImageClick = (image) => {
     setMainImage(image.image);
@@ -73,11 +74,11 @@ const Details = () => {
               <p className="text-black text-xl mb-2">Price:</p>
               <p
                 className="text-left font-Raleway  text-2xl w-full text-[#df633a]">
-                ₹{Math.round(parseInt(data?.size_chart[currentSize]?.price_map[0]?.price_with_gst) / (parseInt(100) + (parseInt(data?.size_chart[currentSize]?.price_map[0]?.gst_percent)))*100)*data?.size_chart[currentSize]?.price_map[0]?.minimum_order_quantity * count} without GST
+                ₹{Math.round(parseInt(data?.size_chart[currentSize]?.price_map[0]?.price_with_gst) / (parseInt(100) + (parseInt(data?.size_chart[currentSize]?.price_map[0]?.gst_percent))) * 100) * data?.size_chart[currentSize]?.price_map[0]?.minimum_order_quantity * count} without GST
               </p>
               <p
                 className="text-left font-Raleway  text-base w-full">
-                ₹{data?.size_chart[currentSize]?.price_map[0]?.price_with_gst*data?.size_chart[currentSize]?.price_map[0]?.minimum_order_quantity * count} with GST
+                ₹{data?.size_chart[currentSize]?.price_map[0]?.price_with_gst * data?.size_chart[currentSize]?.price_map[0]?.minimum_order_quantity * count} with GST
               </p>
             </div>
             <p className="text-gray-700 mb-2">
@@ -114,25 +115,25 @@ const Details = () => {
 
             <div className=' space-x-3 flex text-sm'>
               <button
-              onClick={()=>{
-                if(count>1){
-                setCount(count-1)
-                }
-              }}
-              className='bg-[#df633a] h-[20px] w-[20px] text-white rounded-full flex justify-center items-center'
+                onClick={() => {
+                  if (count > 1) {
+                    setCount(count - 1)
+                  }
+                }}
+                className='bg-[#df633a] h-[20px] w-[20px] text-white rounded-full flex justify-center items-center'
               >
                 -
               </button>
               <p
-              className=' font-Raleway'
+                className=' font-Raleway'
               >
                 {data?.size_chart[currentSize]?.price_map[0]?.minimum_order_quantity * count}
               </p>
               <button
-              onClick={()=>{
-                setCount(count+1)
-              }}
-              className='bg-[#df633a] h-[20px] w-[20px] text-white rounded-full flex justify-center items-center'
+                onClick={() => {
+                  setCount(count + 1)
+                }}
+                className='bg-[#df633a] h-[20px] w-[20px] text-white rounded-full flex justify-center items-center'
               >
                 +
               </button>
@@ -140,6 +141,19 @@ const Details = () => {
 
             <div className=' space-x-3'>
               <button
+                onClick={() => {
+                  dispatch({
+                    type: "ADD_TO_CART",
+                    payload: {
+                      id: data?.id,
+                      name: data?.product_name,
+                      price: data?.size_chart[currentSize],
+                      finish: data?.product_images[currentFinish],
+                      qty: data?.size_chart[currentSize]?.price_map[0]?.minimum_order_quantity * count
+                    }
+                  })
+                  navigate('/cartcheckout')
+                }}
                 className=" font-Raleway justify-center  bg-[#df633a] hover:bg-white hover:text-black hover:border-black hover:border-[1px] p-5 px-3 py-1.5 text-sm leading-6 text-white shadow-sm "
               >
                 Buy Now
@@ -153,7 +167,7 @@ const Details = () => {
                       name: data?.product_name,
                       price: data?.size_chart[currentSize],
                       finish: data?.product_images[currentFinish],
-                      qty : data?.size_chart[currentSize]?.price_map[0]?.minimum_order_quantity * count
+                      qty: data?.size_chart[currentSize]?.price_map[0]?.minimum_order_quantity * count
                     }
                   })
                 }}

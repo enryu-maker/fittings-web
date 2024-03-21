@@ -9,7 +9,6 @@ export const Init = () => {
             const access = await localStorage.getItem('access');
             const user_role = await localStorage.getItem('role');
             const cart = await localStorage.getItem('cart');
-            console.log('init',user_role)
             dispatch(
                 {
                     type: 'LOGIN',
