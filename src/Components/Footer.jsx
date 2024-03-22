@@ -73,7 +73,7 @@ export default function Footer() {
                         <p
                             className=' text-sm '
                         >
-                            FittingsWale is an online platform for buying Hardware goods
+                            Mittal bhawan gol building manaitand dhanbad jharkhand 826001
                         </p>
                         <p className=' text-sm capitalize'>
                             toll  free : <a className='underline underline-offset-4 hover:no-underline' href='tel:+919155511522'>+91 9155511522</a>

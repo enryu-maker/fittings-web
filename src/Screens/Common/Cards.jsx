@@ -19,7 +19,7 @@ export default function Cards({
       href: '#',
       imageSrc: " https://www.mobelhomestore.com/cdn/shop/files/Untitled_design_c4e9bc56-67e6-426b-af38-58bf94a49ef2.jpg?v=1670843886",
       imageAlt: "Front of men's Basic Tee in black.",
-      price: '$35',
+      price: '₹35',
       color: 'Black',
     },
     {
@@ -28,7 +28,7 @@ export default function Cards({
       href: '#',
       imageSrc: "https://d2dwxeidp9b9gl.cloudfront.net/images/products/169200833856802.jpg",
       imageAlt: "Front of men's Basic Tee in black.",
-      price: '$35',
+      price: '₹35',
       color: 'Black',
     },
     {
@@ -37,7 +37,7 @@ export default function Cards({
       href: '#',
       imageSrc: "https://static.asianpaints.com/content/dam/asian_paints/resources/aphomes-categorypage/furniture/ap-homes-usage-furniture-living-room-asian-paints.jpg",
       imageAlt: "Front of men's Basic Tee in black.",
-      price: '$35',
+      price: '₹35',
       color: 'Black',
     },
     {
@@ -46,7 +46,7 @@ export default function Cards({
       href: '#',
       imageSrc: "https://imgmedia.lbb.in/media/2022/05/62736afa42d07e2c4a83ea34_1651731194487.jpg",
       imageAlt: "Front of men's Basic Tee in black.",
-      price: '$35',
+      price: '₹35',
       color: 'Black',
     }, {
       id: 5,
@@ -54,7 +54,7 @@ export default function Cards({
       href: '#',
       imageSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEtEV_BTV53q_pwsbgsl79Nk1b7a1522t_6g&usqp=CAU",
       imageAlt: "Front of men's Basic Tee in black.",
-      price: '$35',
+      price: '₹35',
       color: 'Black',
     }
     , {
@@ -63,7 +63,7 @@ export default function Cards({
       href: '#',
       imageSrc: "https://i.pinimg.com/564x/52/66/40/52664088bb364f0b2ff731cdb88eedee.jpg",
       imageAlt: "Front of men's Basic Tee in black.",
-      price: '$35',
+      price: '₹35',
       color: 'Black',
     }
     , {
@@ -72,7 +72,7 @@ export default function Cards({
       href: '#',
       imageSrc: "https://i.pinimg.com/564x/a0/ed/b0/a0edb091eccb6084362613756cc06203.jpg",
       imageAlt: "Front of men's Basic Tee in black.",
-      price: '$35',
+      price: '₹35',
       color: 'Black',
     }
     , {
@@ -81,7 +81,7 @@ export default function Cards({
       href: '#',
       imageSrc: "https://i.pinimg.com/564x/94/0e/cb/940ecb862d684587726ef15db97b8e8b.jpg",
       imageAlt: "Front of men's Basic Tee in black.",
-      price: '$35',
+      price: '₹35',
       color: 'Black',
     }
 
