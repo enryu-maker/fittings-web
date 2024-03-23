@@ -81,9 +81,11 @@ const Details = () => {
                 ₹{data?.size_chart[currentSize]?.price_map[0]?.price_with_gst * data?.size_chart[currentSize]?.price_map[0]?.minimum_order_quantity * count} with GST
               </p>
             </div>
-            <p className="text-gray-700 mb-2">
-              Description: {data?.description}
-
+            <p className="text-black mb-2">
+              SKU Code: <span className="text-gray-700">{data?.sku_code}</span> 
+            </p>
+            <p className="text-black mb-2">
+              Description: <span className="text-gray-700">{data?.description}</span> 
             </p>
             <div className='flex space-x-2'>
               {data?.product_images?.map((des, index) => (

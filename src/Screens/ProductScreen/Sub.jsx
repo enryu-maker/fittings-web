@@ -182,10 +182,10 @@ function Sub() {
                     className="text-left  font-Raleway  text-base w-full">
                     {product?.product_name}
                   </p>
-                  <p
+                  {/* <p
                     className="text-justify font-Raleway text-sm w-full">
                     {product?.description?.slice(0, 100)}
-                  </p>
+                  </p> */}
                   <p
                     className="text-left font-Raleway  text-2xl w-full text-[#df633a]">
                     ₹{Math.round(parseInt(product?.size_chart[0]?.price_map[0]?.price_with_gst) / (parseInt(100) + (parseInt(product?.size_chart[0]?.price_map[0]?.gst_percent))) * 100)} without GST

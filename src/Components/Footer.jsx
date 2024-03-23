@@ -3,10 +3,7 @@ import { IMAGE } from '../Assets/Image'
 import { AiOutlineFacebook, AiOutlineInstagram, AiOutlineYoutube, AiOutlineTwitter } from "react-icons/ai";
 import Privacypage from './Privacypage';
 export default function Footer() {
-    // const handleopen = (e) => {
-    //     e.preventDefault();
-    //    navigate ('/privacypage');
-    //  }
+    
     return (
         <div
             style={{
