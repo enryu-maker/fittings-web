@@ -18,7 +18,7 @@ function Cartcheckout() {
     const summary = {
         subtotal: 56.00,
         discount: { amount: 28.00, percentage: 50 },
-        shipping: 0.0,
+        shipping: Math.round(distance * 3) ,
         total: 36.00
     };
 
@@ -227,8 +227,50 @@ function Cartcheckout() {
                                 </div>
                             </div>
                         </div>
-                        <h1 className="text-lg  text-black  tracking-widest pt-5">Payment Method</h1>
-                        <h1 className="text-lg  text-black  tracking-widest pt-5">{distance}</h1>
+                        <h1 className="text-lg  text-black  tracking-widest pt-5">Payment Method <span className="text-red-600">*</span> </h1>
+                        <div className='w-[15%] flex items-center space-x-4 mt-2'>
+                                <label
+                                    htmlFor="pincode"
+                                    className="block text-base text-left font-medium leading-6 text-gray-900"
+                                >
+                                    Cash 
+                                </label>
+                                <div className="">
+                                    <input
+                                        id="pincode"
+                                        name="pincode"
+                                        type="radio"
+                                        // value={"India"}
+                                        onChange={(e) => {
+                                            // setData({ ...data, email: e.target.value });
+                                        }}
+                                        required
+                                        className="block w-full  p-5 border-2 py-1.5 text-gray-900"
+                                    />
+                                </div>
+                            </div>
+                            <div className='w-[15%] flex items-center  space-x-4 mt-2'>
+                                <label
+                                    htmlFor="pincode"
+                                    className="block text-base text-left font-medium leading-6 text-gray-900"
+                                >
+                                    Online 
+                                </label>
+                                <div className="">
+                                    <input
+                                        id="pincode"
+                                        name="pincode"
+                                        type="radio"
+                                        // value={"India"}
+                                        onChange={(e) => {
+                                            // setData({ ...data, email: e.target.value });
+                                        }}
+                                        required
+                                        className="block w-full  p-5 border-2 py-1.5 text-gray-900"
+                                    />
+                                </div>
+                            </div>
+                        
                         
                     </div>
                     <div className="w-full md:w-1/3   ">
@@ -254,7 +296,7 @@ function Cartcheckout() {
                                 <p className="text-base text-gray-800">₹ {getTotal(cart)}</p>
                             </div>
                             <div className="flex justify-between items-center mt-4 border-b pb-4">
-                                <p className="text-base text-gray-800">Shipping</p>
+                                <p className="text-base text-gray-800">Shipping / Delivery cost</p>
                                 <p className="text-base text-gray-800">₹ {summary.shipping.toFixed(2)}</p>
                             </div>
                             <div className="flex justify-between items-center mt-4">
