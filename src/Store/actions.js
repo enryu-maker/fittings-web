@@ -416,3 +416,26 @@ export const removeCart = (cart, data, setLoading) => {
         setLoading(false)
     }
 }
+
+export const createOrder = (setLoading, data, navigate) => {
+    setLoading(true);
+    return async dispatch => {
+        try {
+            await axios.post(baseURL + 'account/paymenttransactions/', data);
+            setLoading(false);
+            navigate("/success")
+        } catch (error) {
+            toast.error(error.response.data.msg, {
+                position: "top-center",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+            setLoading(false);
+        }
+    }
+}

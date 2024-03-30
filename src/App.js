@@ -21,6 +21,7 @@ import MyAC from './Screens/Constants/MyAc'
 import CartCheckout from './Screens/Cart/Cartcheckout'
 import Paymentpage from './Screens/Cart/Paymentpage'
 import { GetCateogry, Init } from './Store/actions'
+import Sucess from './Screens/Cart/Sucess'
 
 export default function App() {
   const cartOpen = useSelector(state => state.Reducers.cartOpen)
@@ -60,6 +61,7 @@ export default function App() {
           <Route path="/cards" element={<Cards />} />
           <Route path="/subcategory/:id" element={<Sub />} />
           <Route path="/details/:id" element={<Details />} />
+          <Route path="/success" element={<Sucess />} />
         </Routes>
         <Footer />
       </div>
