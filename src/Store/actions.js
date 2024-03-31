@@ -1,7 +1,7 @@
 import axios from "axios";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { baseURL } from "../Helper/Helper";
+import axiosIns, { baseURL } from "../Helper/Helper";
 
 export const Init = () => {
     return async dispatch => {
@@ -421,7 +421,7 @@ export const createOrder = (setLoading, data, navigate) => {
     setLoading(true);
     return async dispatch => {
         try {
-            await axios.post(baseURL + 'account/paymenttransactions/', data);
+            await axiosIns.post(baseURL + 'account/paymenttransactions/', data);
             setLoading(false);
             navigate("/success")
         } catch (error) {
