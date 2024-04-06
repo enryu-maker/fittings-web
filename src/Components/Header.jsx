@@ -112,46 +112,54 @@ export default function Header() {
                         >
                             {data?.main_category_name}
                         </p>
-                        <div className='flex justify-between  items-start w-[68%] mt-2 py-5'>
-                            <div className='flex flex-col'>
+                        <div className='flex justify-between  items-start w-[45%] mt-2 py-5'>
+                            <div className='flex flex-col space-y-2'>
                                 <p
                                     className=' font-Raleway text-lg tracking-widest'
                                 >
                                     Category
                                 </p>
                                 {
-                                    data?.category?.map((item, index) => (
-                                        <p
-                                            onMouseEnter={() => {
-                                                setOpen(true)
-                                                setSub(item)
-                                            }}
-                                            className=' font-Raleway text-sm capitalize cursor-pointer'
-                                        >
-                                            {item?.category_name}
-                                        </p>
-                                    ))
+                                    data?.category?.map((item, index) => {
+                                        if (item?.status === "Activate") {
+                                            return (
+                                                <p
+                                                    onMouseEnter={() => {
+                                                        setOpen(true)
+                                                        setSub(item)
+                                                    }}
+                                                    className=' font-Raleway text-sm capitalize cursor-pointer'
+                                                >
+                                                    {item?.category_name}
+                                                </p>
+                                            )
+                                        }
+                                    })
                                 }
                             </div>
-                            <div className='flex flex-col '>
+                            <div className='flex flex-col space-y-2 '>
                                 <p
                                     className=' font-Raleway text-lg tracking-widest'
                                 >
                                     Sub Category
                                 </p>
                                 {
-                                    sub?.sub_category?.map((item, index) => (
-                                        <button
-                                            onClick={() => {
-                                                navigate(`/subcategory/${item?.id}`, {
-                                                    state: item
-                                                })
-                                            }}
-                                            className=' font-Raleway text-sm capitalize text-left space-y-2'
-                                        >
-                                            {item?.sub_category_name}
-                                        </button>
-                                    ))
+                                    sub?.sub_category?.map((item, index) => {
+                                        if (item?.status === "Activate") {
+                                            return (
+                                                <button
+                                                    onClick={() => {
+                                                        navigate(`/subcategory/${item?.id}`, {
+                                                            state: item
+                                                        })
+                                                    }}
+                                                    className=' font-Raleway text-sm capitalize text-left space-y-2'
+                                                >
+                                                    {item?.sub_category_name}
+                                                </button>
+                                            )
+                                        }
+                                    })
                                 }
                             </div>
                         </div>
