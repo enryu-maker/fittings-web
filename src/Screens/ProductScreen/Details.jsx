@@ -82,10 +82,15 @@ const Details = () => {
               </p>
             </div>
             <p className="text-black mb-2">
-              SKU Code: <span className="text-gray-700">{data?.sku_code}</span> 
+              SKU Code: <span className="text-gray-700">{data?.sku_code}</span>
             </p>
             <p className="text-black mb-2">
-              Description: <span className="text-gray-700">{data?.description}</span> 
+              Description: {data?.description.split("|").map((el, index) => (
+                <span className="text-gray-700">
+                  {el}
+                  <br/>
+                </span>
+              ))}
             </p>
             <div className='flex space-x-2'>
               {data?.product_images?.map((des, index) => (
@@ -97,7 +102,7 @@ const Details = () => {
                 </button>
               ))}
             </div>
-            <div className='flex space-x-2'>
+            <div className='w-[100%] h-auto '>
               {data?.size_chart?.map((des, index) => {
                 if (data?.product_images[currentFinish]?.finish?.id === des?.finish) {
                   return (
@@ -106,7 +111,7 @@ const Details = () => {
                       onClick={() => {
                         setCurrentSize(index)
                       }}
-                      className={`box-border border-gray-200 border-2 ${currentSize === index ? "bg-[#df633a] text-white" : " bg-white  text-black"}  px-4 py-1 `}>
+                      className={`box-border mr-2 mb-2 border-gray-200 border-2 ${currentSize === index ? "bg-[#df633a] text-white" : " bg-white  text-black"}  px-4 py-1 `}>
                       <p>{des?.size}</p>
                     </button>
                   )
