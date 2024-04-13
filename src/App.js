@@ -23,6 +23,7 @@ import Paymentpage from './Screens/Cart/Paymentpage'
 import { GetBanner, GetCateogry, Init } from './Store/actions'
 import Sucess from './Screens/Cart/Sucess'
 import Complete from './Screens/Common/Complete'
+import ScrollToTop from './Components/ScrollTo'
 
 export default function App() {
   const cartOpen = useSelector(state => state.Reducers.cartOpen)
@@ -42,6 +43,7 @@ export default function App() {
           : null
       }
       <div className='h-full w-full'>
+        <ScrollToTop />
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />

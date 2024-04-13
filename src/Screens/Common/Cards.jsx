@@ -6,8 +6,8 @@ import {
   Typography,
   Avatar,
 } from "@material-tailwind/react";
-import { baseURL } from '../../Helper/Helper';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 export default function Cards({
   data
 }) {
@@ -96,9 +96,11 @@ export default function Cards({
           data?.map((item, index) => {
             if (item?.status === "Activate") {
               return (
-                <button
-                  onClick={()=>{
-                    navigate(`/category/`,{
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.85 }}
+                  onClick={() => {
+                    navigate(`/category/`, {
                       state: item
                     })
                   }}
@@ -106,12 +108,12 @@ export default function Cards({
                   className=' flex flex-col w-[110px] justify-center items-center capitalize text-xs '
                 >
                   <img
-                  alt='icon'
-                  className='h-[100px] rounded-full w-[100px] border-2'
-                  src= {item?.image}
+                    alt='icon'
+                    className='h-[100px] rounded-full w-[100px] border-2'
+                    src={item?.image}
                   />
                   {item?.main_category_name}
-                </button>
+                </motion.button>
               )
             }
           }
