@@ -14,7 +14,7 @@ export default function Header() {
     const [data, setData] = React.useState({})
     const [sub, setSub] = React.useState({})
     const navigate = useNavigate();
-
+    console.log(cateogry)
     return (
         <div className="w-full fixed bg-white top-0 z-50 transition-all font-Raleway lg:h-[120px] lg:flex lg:justify-between lg:items-center flex-col">
             {/* Small header */}
@@ -26,7 +26,7 @@ export default function Header() {
                     href='#/'
                     className=' w-[20%] flex justify-center items-center text-2xl tracking-widest'
                 >
-                    Fittings Wale
+                    fittings <span className='text-[#df633a]'>Wale</span> 
                 </a>
                 <div
                     className=' w-[40%] flex items-center space-x-6'
@@ -112,51 +112,47 @@ export default function Header() {
                         >
                             {data?.main_category_name}
                         </p>
-                        <div className='flex justify-between  items-start w-[45%] mt-2 py-5'>
-                            <div className='flex flex-col space-y-2'>
-                                <p
-                                    className=' font-Raleway text-lg tracking-widest'
-                                >
-                                    Category
-                                </p>
+                        <div className='flex justify-between flex-col  items-center w-[75%]  py-5'>
+                            <div className='flex  space-x-2'>
                                 {
                                     data?.category?.map((item, index) => {
                                         if (item?.status === "Activate") {
                                             return (
-                                                <p
-                                                    onMouseEnter={() => {
+                                                <button
+                                                    key={index}
+                                                    onClick={() => {
                                                         setOpen(true)
                                                         setSub(item)
                                                     }}
-                                                    className=' font-Raleway text-sm capitalize cursor-pointer'
-                                                >
-                                                    {item?.category_name}
-                                                </p>
+                                                    className={`${item?.id === sub?.id ? "bg-[#df633a] text-white" : "bg-white"} box-border border-gray-200 border-2 hover:bg-[#df633a] hover:text-white    text-black  px-4 py-1 `}>
+                                                    <p>{item?.category_name}</p>
+                                                </button>
                                             )
                                         }
                                     })
                                 }
                             </div>
-                            <div className='flex flex-col space-y-2 '>
-                                <p
-                                    className=' font-Raleway text-lg tracking-widest'
-                                >
-                                    Sub Category
-                                </p>
+                            <div className='flex  space-x-2 mt-5 items-start '>
                                 {
                                     sub?.sub_category?.map((item, index) => {
                                         if (item?.status === "Activate") {
                                             return (
-                                                <button
+                                                <a
                                                     onClick={() => {
-                                                        navigate(`/subcategory/${item?.id}`, {
+                                                        navigate('/subcategory/' + item?.id, {
                                                             state: item
                                                         })
                                                     }}
-                                                    className=' font-Raleway text-sm capitalize text-left space-y-2'
+                                                    key={index}
+                                                    className=' flex flex-col w-[120px] text-center justify-center hover:text-[#df633a] items-center capitalize text-base '
                                                 >
+                                                    <img
+                                                        alt='icon'
+                                                        className='h-[100px] rounded-full w-[100px] border-2'
+                                                        src={item?.image}
+                                                    />
                                                     {item?.sub_category_name}
-                                                </button>
+                                                </a>
                                             )
                                         }
                                     })

@@ -20,8 +20,9 @@ import Mobile from './Screens/Constants/Mobile'
 import MyAC from './Screens/Constants/MyAc'
 import CartCheckout from './Screens/Cart/Cartcheckout'
 import Paymentpage from './Screens/Cart/Paymentpage'
-import { GetCateogry, Init } from './Store/actions'
+import { GetBanner, GetCateogry, Init } from './Store/actions'
 import Sucess from './Screens/Cart/Sucess'
+import Complete from './Screens/Common/Complete'
 
 export default function App() {
   const cartOpen = useSelector(state => state.Reducers.cartOpen)
@@ -31,6 +32,7 @@ export default function App() {
   React.useEffect(() => {
     dispatch(Init())
     dispatch(GetCateogry())
+    dispatch(GetBanner())
   }, [dispatch])
   return (
     <>
@@ -58,6 +60,7 @@ export default function App() {
           <Route path="/myaccount" element={access != null ? <MyAC /> : <Login />} />
           <Route path="/cartcheckout" element={access != null ? <CartCheckout /> : <Login />} />
           <Route path="/payment" element={access != null ? <Paymentpage /> : <Login />} />
+          <Route path="/complete" element={access != null ? <Complete /> : <Login />} />
           <Route path="/cards" element={<Cards />} />
           <Route path="/subcategory/:id" element={<Sub />} />
           <Route path="/details/:id" element={<Details />} />

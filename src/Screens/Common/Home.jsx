@@ -5,8 +5,8 @@ import React from "react";
 import Cards from "./Cards";
 import { useSelector } from 'react-redux';
 export default function Home() {
-  const banner = [1,2,3]
   const cateogry = useSelector(state => state.Reducers.cateogry)
+  const banner = useSelector(state => state.Reducers.banner)
 
   return (
     <div
@@ -28,15 +28,13 @@ export default function Home() {
             <img
               key={index}
               alt='banner'
-              className='w-full h-[60vh] object-cover'
-              // src={URLS.imageurl + item?.image}
-              src='https://www.mobelhomestore.com/cdn/shop/files/Untitled_design_c4e9bc56-67e6-426b-af38-58bf94a49ef2.jpg?v=1670843886'
+              className='w-full h-[60vh] object-contain'
+              src={item?.image}
             />
           ))
         }
       </Carousel>
       <Cards data={cateogry}/>
-      {/* <Products /> */}
     </div>
   );
 }

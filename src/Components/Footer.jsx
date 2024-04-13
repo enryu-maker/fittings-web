@@ -51,12 +51,6 @@ export default function Footer() {
                             Refund & Cancellation Policy
                         </a>
                     </div>
-                    <div>
-                        <p
-                            className=' uppercase '>
-                            news letter
-                        </p>
-                    </div>
                 </div>
                 <div
                     className='w-[88%] flex flex-col justify-between items-start'>

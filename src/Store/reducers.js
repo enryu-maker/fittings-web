@@ -5,8 +5,9 @@ const initialState = {
     role: 1,
     cart: [],
     cartOpen: false,
-    category: []
-
+    category: [],
+    profile_complete: false,
+    banner: []
 };
 export default (state = initialState, action) => {
     switch (action.type) {
@@ -14,12 +15,18 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 access: action.payload.access,
-                role: action.payload.user_role
+                role: action.payload.user_role,
+                profile_complete: action.payload.profile_complete
             };
         case "OPEN_CART":
             return {
                 ...state,
                 cartOpen: action.payload,
+            };
+        case "BANNER":
+            return {
+                ...state,
+                banner: action.payload,
             };
         case "CAT":
             return {

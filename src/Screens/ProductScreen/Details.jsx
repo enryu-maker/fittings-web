@@ -82,9 +82,6 @@ const Details = () => {
               </p>
             </div>
             <p className="text-black mb-2">
-              SKU Code: <span className="text-gray-700">{data?.sku_code}</span>
-            </p>
-            <p className="text-black mb-2">
               Description: {data?.description.split("|").map((el, index) => (
                 <span className="text-gray-700">
                   {el}

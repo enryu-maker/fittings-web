@@ -141,30 +141,7 @@ function Registration() {
                 }
               </button>
             </div>
-            <div className='flex flex-row justify-evenly items-center text-gray-500'>
-              <div
-              >
-                ----------
-              </div>
-              <p
-                className='text-center text-[15px]  tracking-wider font-regular text-gray-500'
-              >
-                Or sign up with
-              </p>
-              <div
-              >
-                ----------
-              </div>
-            </div>
-            <button
-              type="submit"
-              className="flex justify-center items-center w-full p-5  border-2 py-1.5 text-gray-900 ">
-              <img
-                className=" mr-5 h-5 w-5"
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAMAAABiM0N1AAABIFBMVEX////qQzU0qFNChfT7vAUwffPY5Pw9g/Rpmvb7ugAwp1AppUzpNSTqPi/pOCf7uADL2/tunfYfo0bpLBfubWX8wwD2vbr1tbHpMh/qRzr++vr97u3+9uT80XFflfXl8uhCrF612r3J5M/T6dj75uT50c74ycb629nwgXrsV0vynZf0qqbsXVPudm7oJAjwjIXtZVz94aLygwfpNDj3pBn+577sVTL8yFHwdyr/+vD1lx/947H5rxLvay3ziiL5u2Lz9v4WdPO5zvr91YWgvfn8zGH7xDyMsPd7pvfbyGydsj9vr0+n1LGtxfneuSW4tjqEr0bvvB3NtyxxvYOfry2ExZMynYw5p2dCks0zqz9AnKY7pHlGj91Al7mCwaJbtXFYly4pAAADKklEQVRYhdXVa3vSMBQH8K60Y72ypVwK27izAdtgc84554XpVFSmTmSKt37/b2EKvSQhTUPxedT/yzbPj5PTkyAI/1tKzdZevpDP7+1vJ0eahXZHt2xbh7Etay3bbZUSKN2OpRvGGhLDtIz23nJMK2uZGBJgdvGAv6zWoUVV5tHNAz6mdMRiZlSxxeHk4xg3vX6s07biGRizwx6H7Y7J5cCu6/sMp7nGsS0vepbhGPyOyXC2l3GOo51Ske4YhmmSP8FyhCylz6bd6xz1u93+sQ0PDJ9zYC+UYhv9cPKahWN/wlj9EZo90rE7eXJNe0YxHaFDdMHQC5RV+3DO2E6B2Jh5GDG57R7TEYh67KPon2Q6J/dOUUdvM1czIuXuo/uKricmZxlJyjzwizKKSR3hXJEkKffQk6xmUucCFuRKj2aS2U1c0OUcknKPZztL8J/j5aUi+Xlyynu10yKFUO6pnvwvdScjIXm2uGCwzo6/7gyFMpeL0OaVzMqVL51g0A4FklOsyM+9dS8UBFIoe4+Drr11yEeTlFfLQ+nX3rpzFNpNAA3/FLT1z0IrN9uHVv38QbNXHcjg88cfETlNBoXkG2/dBQopbyhQeYMMKgVHRLgNmqQobwGlSQsZoJuVg+O/60OK9E4EIw7oBoXSwWP/qlXei6KoihxQGdlauhw89pqkfBDdcJS0ju3sOnzhjqSifBTnAZU4aIj1ejN8AQdAuRX9qNVlCkJaJLjX/ycxjDZmQ/RxnOXys4gGTFjOFj6O69hLTcQlRk1DfGNl/G0N4JLmRHR8sIEfvHCsvVRVXFLpU1C7k7GNpVPkigpREtxetUYuqlcB+FLGhmiTXCOMFiQVaJMGokw0oLpPv4ZScKehcTRSgq0CoDqewDgiAP776bdAkge0/ZNt8urS3GCvpt9T6aiNzdqkUSVKNPGHTJyyhJI6/Smn5GGEAyWVVxKndwwHSlVKxyOkXwwHZrwwBfTE31o1wFGUBhpxzqyomE6p7NshTMNhURpweMqZp+4A+iioGhjzM24qI3hAcQwiwBnFXugUqzaGWBDNmdQSKIHWqNdg6o0VjL+T37LOV58YHsy6AAAAAElFTkSuQmCC"
-              />
-              Google
-            </button>
+            
             <p className="flex text-center text-sm py-2  justify-center items-center">
               Already have an account? &nbsp; <a href="#/login" className=" leading-6 text-grey">
                 Sign In

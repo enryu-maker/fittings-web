@@ -9,6 +9,11 @@ body {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'Mundo-Medium';
+  src: local('Mundo'), url(./Assets/Fonts/Mundo\ Sans\ Std\ Medium.otf) format('opentype');
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
