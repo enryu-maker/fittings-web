@@ -1,16 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.5b7f70b5.css",
-    "main.js": "/static/js/main.52b299a5.js",
+    "main.css": "/static/css/main.e0e6afa4.css",
+    "main.js": "/static/js/main.1c23fbb8.js",
     "static/js/453.ae9aaf54.chunk.js": "/static/js/453.ae9aaf54.chunk.js",
     "static/media/bg.png": "/static/media/bg.57fcd83b9197769afb8a.png",
+    "static/media/Mundo Sans Std Medium.otf": "/static/media/Mundo Sans Std Medium.91d025b44892fd5a72c3.otf",
     "index.html": "/index.html",
-    "main.5b7f70b5.css.map": "/static/css/main.5b7f70b5.css.map",
-    "main.52b299a5.js.map": "/static/js/main.52b299a5.js.map",
+    "main.e0e6afa4.css.map": "/static/css/main.e0e6afa4.css.map",
+    "main.1c23fbb8.js.map": "/static/js/main.1c23fbb8.js.map",
     "453.ae9aaf54.chunk.js.map": "/static/js/453.ae9aaf54.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5b7f70b5.css",
-    "static/js/main.52b299a5.js"
+    "static/css/main.e0e6afa4.css",
+    "static/js/main.1c23fbb8.js"
   ]
 }
