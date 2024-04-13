@@ -14,7 +14,7 @@ export default function Header() {
     const [data, setData] = React.useState({})
     const [sub, setSub] = React.useState({})
     const navigate = useNavigate();
-    console.log(cateogry)
+
     return (
         <div className="w-full fixed bg-white top-0 z-50 transition-all font-Raleway lg:h-[120px] lg:flex lg:justify-between lg:items-center flex-col">
             {/* Small header */}
