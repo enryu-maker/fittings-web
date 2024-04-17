@@ -58,7 +58,7 @@ export default function Header() {
               <a href='#/mobile'>
                 <AiOutlineMobile size={25} />
               </a>
-              <div>
+              <div className=' cursor-pointer'>
                 <p className=' font-Raleway text-[8px] px-[5px] py-[2px] flex justify-center items-center rounded-full h-[12px] w-[12px] text-white bg-[#df633a]'>
                   {cart?.length}
                 </p>
@@ -168,29 +168,69 @@ export default function Header() {
         )}
       </div>
       {/* // Mobile Menu Here */}
-      <div className=''>
+      <div className='md:hidden'>
         {IsOpen && (
-          <motion.div
-            initial={{ x: 200, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.25, duration: 0.5, ease: 'linear' }}
-            className=' flex flex-col justify-between items-center  w-full h-screen mt-10 '>
-            {category?.map((item, index) => {
-              if (item?.status === 'Activate') {
-                return (
-                  <button
-                    key={index}
-                    onMouseEnter={() => {
-                      setOpen(true);
-                      setData(item);
-                    }}
-                    className=' uppercase text-xs hover:underline underline-offset-4  '>
-                    {item?.main_category_name}
-                  </button>
-                );
-              }
-            })}
-          </motion.div>
+          <>
+            <motion.div
+              initial={{ x: 200, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.5, ease: 'linear' }}
+              className=' flex flex-col justify-between items-center  w-full h-screen mt-10 '>
+              {category?.map((item, index) => {
+                if (item?.status === 'Activate') {
+                  return (
+                    <button
+                      key={index}
+                      onMouseEnter={() => {
+                        setOpen(true);
+                        setData(item);
+                      }}
+                      className=' uppercase text-xs hover:underline underline-offset-4  '>
+                      {item?.main_category_name}
+                    </button>
+                  );
+                }
+              })}
+            </motion.div>
+            <div className=' flex  items-center justify-between  mt-20 px-10 '>
+              {access != null ? (
+                <a
+                  href='#/myaccount'
+                  onClick={() => {
+                    setIsOpen(!IsOpen);
+                  }}>
+                  <AiOutlineUser size={25} />
+                </a>
+              ) : (
+                <a
+                  href='#/login'
+                  onClick={() => {
+                    setIsOpen(!IsOpen);
+                  }}>
+                  <AiOutlineUser size={25} />
+                </a>
+              )}
+              <a
+                href='#/mobile'
+                onClick={() => {
+                  setIsOpen(!IsOpen);
+                }}>
+                <AiOutlineMobile size={25} />
+              </a>
+              <div className=' cursor-pointer'>
+                <p className=' font-Raleway text-[8px] px-[5px] py-[2px] flex justify-center items-center rounded-full h-[12px] w-[12px] text-white bg-[#df633a]'>
+                  {cart?.length}
+                </p>
+                <AiOutlineShoppingCart
+                  size={25}
+                  onClick={() => {
+                    dispatch(OpenCartAction(!cartOpen));
+                    setIsOpen(!IsOpen);
+                  }}
+                />
+              </div>
+            </div>
+          </>
         )}
       </div>
     </>
