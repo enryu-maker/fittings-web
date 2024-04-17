@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { OpenCartAction } from '../Store/actions';
 import { IoIosMenu } from 'react-icons/io';
 import { RxCross2 } from 'react-icons/rx';
+import { motion } from 'framer-motion';
 
 export default function Header() {
   const [open, setOpen] = React.useState(false);
@@ -167,9 +168,13 @@ export default function Header() {
         )}
       </div>
       {/* // Mobile Menu Here */}
-      <div className=''>
+      <div>
         {IsOpen && (
-          <div className=' flex flex-col justify-between items-center  w-full h-screen mt-10 '>
+          <motion.div
+            initial={{ x: 200, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.25, duration: 0.5, ease: 'linear' }}
+            className=' flex flex-col justify-between items-center w-full h-screen mt-10 '>
             {category?.map((item, index) => {
               if (item?.status === 'Activate') {
                 return (
@@ -185,7 +190,7 @@ export default function Header() {
                 );
               }
             })}
-          </div>
+          </motion.div>
         )}
       </div>
     </>
