@@ -1,9 +1,9 @@
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import React from 'react';
-import Cards from './Cards';
+import Cards from '../Common/Cards';
 import { useSelector } from 'react-redux';
-export default function Home() {
+export default function HomePage() {
   const cateogry = useSelector((state) => state.Reducers.cateogry);
   const banner = useSelector((state) => state.Reducers.banner);
 
