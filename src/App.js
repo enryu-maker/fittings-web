@@ -24,6 +24,8 @@ import ScrollToTop from './Components/ScrollTo';
 import SuccessPage from './Screens/PaymentScreen/SuccessPage';
 import PaymentPage from './Screens/PaymentScreen/PaymentPage';
 import HomePage from './Screens/Home/HomePage';
+import MenuIcons from './Components/MenuIcons';
+import Search from './Screens/SearchScreen/Search';
 
 export default function App() {
   const cartOpen = useSelector((state) => state.Reducers.cartOpen);
@@ -41,6 +43,9 @@ export default function App() {
       <div className='h-full w-full'>
         <ScrollToTop />
         <Header />
+        <div className=' md:hidden fixed bottom-0 left-0 z-50 w-full h-16 bg-white border-t border-gray-200 dark:bg-gray-700 dark:border-gray-600 '>
+          <MenuIcons />
+        </div>
         <Routes>
           <Route
             path='/'
@@ -67,8 +72,8 @@ export default function App() {
             element={<OTPForm />}
           />
           <Route
-            path='/cards'
-            element={<Cards />}
+            path='/search'
+            element={<Search />}
           />
           <Route
             path='/products'
@@ -127,6 +132,7 @@ export default function App() {
             element={<SuccessPage />}
           />
         </Routes>
+
         <Footer />
       </div>
     </>
