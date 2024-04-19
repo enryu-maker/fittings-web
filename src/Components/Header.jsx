@@ -69,20 +69,16 @@ export default function Header() {
               </div>
             </div>
           </div>
-
-          <div className='md:hidden mr-5 cursor-pointer text-2xl flex items-center justify-center gap-5'>
-            <AiOutlineSearch />
-            <div className='cursor-pointer mr-5'>
-              <p className=' font-Raleway text-[8px] px-[5px] py-[2px] flex justify-center items-center rounded-full h-[12px] w-[12px] text-white bg-[#df633a]'>
-                {cart?.length}
-              </p>
-              <AiOutlineShoppingCart
-                size={25}
-                onClick={() => {
-                  dispatch(OpenCartAction(!cartOpen));
-                }}
-              />
-            </div>
+          <div className='cursor-pointer mr-5'>
+            <p className=' font-Raleway text-[8px] px-[5px] py-[2px] flex justify-center items-center rounded-full h-[12px] w-[12px] text-white bg-[#df633a]'>
+              {cart?.length}
+            </p>
+            <AiOutlineShoppingCart
+              size={25}
+              onClick={() => {
+                dispatch(OpenCartAction(!cartOpen));
+              }}
+            />
           </div>
         </div>
         <div className='w-[92%]  py-2 md:flex justify-between items-center hidden'>
