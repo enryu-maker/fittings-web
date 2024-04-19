@@ -69,7 +69,7 @@ export default function Header() {
               </div>
             </div>
           </div>
-          <div className='cursor-pointer mr-5'>
+          <div className='cursor-pointer mr-5 md:hidden'>
             <p className=' font-Raleway text-[8px] px-[5px] py-[2px] flex justify-center items-center rounded-full h-[12px] w-[12px] text-white bg-[#df633a]'>
               {cart?.length}
             </p>
