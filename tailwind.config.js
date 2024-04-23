@@ -10,7 +10,7 @@ module.exports = withMT({
         primary:"#000000"
       },
       fontFamily:{
-        Raleway:"Mundo-Medium"
+        Raleway:"Helvetica"
       }
     },
   },

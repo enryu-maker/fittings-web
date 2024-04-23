@@ -14,6 +14,11 @@ body {
   font-family: 'Mundo-Medium';
   src: local('Mundo'), url(./Assets/Fonts/Mundo\ Sans\ Std\ Medium.otf) format('opentype');
 }
+
+@font-face {
+  font-family: 'Helvetica';
+  src: local('Helvetica'), url(./Assets/Fonts/Helvetica.ttf) format('opentype');
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

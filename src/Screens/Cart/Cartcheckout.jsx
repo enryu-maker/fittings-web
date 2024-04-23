@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import pincode from 'pincode-distance';
 import { createOrder } from '../../Store/actions';
 import { Oval } from 'react-loader-spinner';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function Cartcheckout() {
   const Pincode = new pincode();
   const [items, setItems] = React.useState([]);
@@ -342,14 +344,28 @@ function Cartcheckout() {
               </div>
               <button
                 onClick={() => {
-                  data['payment_method'] = pay;
-                  data['items'] = getProduct();
-                  data['address'] = address;
-                  data['contact_details'] = contact;
-                  getDistance(address?.zipcode);
-                  data['total'] = getTotal(cart) + summary.shipping;
-                  console.log(data);
-                  dispatch(createOrder(setLoading, data, navigate));
+                  if (address.street==="" || address.city==="" || address.zipcode==="" ||  address.state==="" || contact.name==="" || contact.contact_number===""){
+                    toast.error("Please fill all the fields", {
+                      position: "top-center",
+                      autoClose: 1000,
+                      hideProgressBar: false,
+                      closeOnClick: true,
+                      pauseOnHover: true,
+                      draggable: true,
+                      progress: undefined,
+                      theme: "light",
+                  });
+                  }
+                  else{
+                    data['payment_method'] = pay;
+                    data['items'] = getProduct();
+                    data['address'] = address;
+                    data['contact_details'] = contact;
+                    getDistance(address?.zipcode);
+                    data['total'] = getTotal(cart) + summary.shipping;
+                    dispatch(createOrder(setLoading, data, navigate));
+                  }
+                  
                 }}
                 className=' w-full mt-4  bg-[#df633a] hover:bg-white hover:text-black hover:border-black hover:border-[1px] p-5 px-3 py-1.5 text-sm  leading-6 text-white shadow-sm '>
                 {loading ? (

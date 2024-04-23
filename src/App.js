@@ -18,7 +18,7 @@ import Refund from './Components/Refund';
 import Mobile from './Screens/Constants/Mobile';
 import MyAccount from './Screens/Constants/MyAccount';
 import CartCheckout from './Screens/Cart/Cartcheckout';
-import { GetBanner, GetCateogry, Init } from './Store/actions';
+import { GetBanner, GetBest, GetCateogry, GetSpotlight, Init } from './Store/actions';
 import Complete from './Screens/Common/Complete';
 import ScrollToTop from './Components/ScrollTo';
 import SuccessPage from './Screens/PaymentScreen/SuccessPage';
@@ -36,6 +36,9 @@ export default function App() {
     dispatch(Init());
     dispatch(GetCateogry());
     dispatch(GetBanner());
+    dispatch(GetSpotlight());
+    dispatch(GetBest());
+
   }, [dispatch]);
   return (
     <>

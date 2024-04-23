@@ -162,6 +162,50 @@ export const VerifyAction = (data, navigate, setLoading) => {
             })
     }
 }
+
+
+
+export const patchProfile = (setLoading, data, navigate) => {
+    let formData = new FormData();
+    formData.append('gst_certificate', data.gst_certificate);
+    formData.append('gst_no', data.gst_no);
+    formData.append('pan_no', data.pan_no);
+    formData.append('pan_card', data.pan_card);
+    setLoading(true)
+    return async dispatch => {
+        await axios.patch(baseURL + `account/edit-profile/`, formData, {
+            headers: {
+                "content-Type": "multipart/form-data"
+            }
+        }).then((res) => {
+            setLoading(false)
+            toast.success(res?.data?.msg, {
+                position: "top-center",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+        }).catch((err) => {
+            setLoading(false)
+            console.log(err?.response)
+            toast.error(err?.response?.data?.msg, {
+                position: "top-center",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+        })
+    }
+}
+
 export const GetCateogry = () => {
     return async dispatch => {
         await axios.get(baseURL + `product/main-categories/`).then((res) => {
@@ -189,6 +233,50 @@ export const updateCartAction = (data) => {
         dispatch({
             type: 'CHANGE_QUANTITY',
             payload: data,
+        })
+    }
+}
+
+export const GetSpotlight = () => {
+    return async dispatch => {
+        await axios.get(baseURL + `web/spotlights/`).then((res) => {
+            dispatch({
+                type: 'SPOT',
+                payload: res.data,
+            })
+        }).catch((err) => {
+            toast.error(err?.response?.data?.msg, {
+                position: "top-center",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+        })
+    }
+}
+
+export const GetBest = () => {
+    return async dispatch => {
+        await axios.get(baseURL + `web/bestsellers/`).then((res) => {
+            dispatch({
+                type: 'BEST',
+                payload: res.data,
+            })
+        }).catch((err) => {
+            toast.error(err?.response?.data?.msg, {
+                position: "top-center",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
         })
     }
 }
@@ -257,6 +345,16 @@ export const GetProduct = (id, role, setData, setLoading) => {
                 });
                 setLoading(false);
             })
+    }
+}
+
+export const LogoutAction = () => {
+    return async dispatch => {
+        await localStorage.clear()
+        dispatch({
+            type: "LOGOUT",
+            payload: null
+        })
     }
 }
 

@@ -1,10 +1,17 @@
 import React from 'react';
 import { Oval } from 'react-loader-spinner';
+import { patchProfile } from '../../Store/actions';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 export default function Complete() {
   const [loading, setLoading] = React.useState(false);
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
   const [data, setData] = React.useState({
-    pan: '',
-    gst: '',
+    gst_certificate: "",
+    gst_no: "",
+    pan_no: "",
+    pan_card: "",
   });
   return (
     <>
@@ -27,9 +34,9 @@ export default function Complete() {
                   id='pan'
                   name='pan'
                   type='text'
-                  value={data.pan}
+                  value={data.pan_no}
                   onChange={(e) => {
-                    setData({ ...data, pan: e.target.value });
+                    setData({ ...data, pan_no: e.target.value });
                   }}
                   required
                   className='block w-full p-5 border-2 py-1.5 text-gray-900'
@@ -47,6 +54,9 @@ export default function Complete() {
                   type='file'
                   name='uploadFile'
                   id='cv-upload'
+                  onChange={(e)=>{
+                    setData({ ...data, pan_card: e.target.files[0] });
+                  }}
                   placeholder='ATTACH RESUME / CV'
                   className=' w-full items-center space-x-2 flex p-5 border-2 py-1 text-gray-900'
                 />
@@ -65,9 +75,9 @@ export default function Complete() {
                   id='pan'
                   name='pan'
                   type='text'
-                  value={data.gst}
+                  value={data.gst_no}
                   onChange={(e) => {
-                    setData({ ...data, gst: e.target.value });
+                    setData({ ...data, gst_no: e.target.value });
                   }}
                   required
                   className='block w-full p-5 border-2 py-1.5 text-gray-900'
@@ -88,8 +98,7 @@ export default function Complete() {
                   className=' w-full items-center space-x-2 flex p-5 border-2 py-1 text-gray-900'
                   required
                   onChange={(e) => {
-                    console.log(e);
-                    // setData({ ...data, gst: e.target.value });
+                    setData({ ...data, gst_certificate: e.target.files[0] });
                   }}
                 />
               </div>
@@ -99,7 +108,8 @@ export default function Complete() {
             <button
               type='submit'
               onClick={() => {
-                //   dispatch(LoginAction(setLoading, data, navigate));
+                console.log(data)
+                  dispatch(patchProfile(setLoading, data, navigate));
               }}
               className='flex self-center w-[40%] justify-center  bg-[#df633a] hover:bg-white hover:text-black hover:border-black hover:border-[1px] p-5 px-3 py-1.5 text-sm  leading-6 text-white shadow-sm '>
               {loading ? (

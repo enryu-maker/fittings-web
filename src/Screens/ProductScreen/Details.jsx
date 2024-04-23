@@ -186,7 +186,7 @@ const Details = () => {
                   dispatch({
                     type: 'ADD_TO_CART',
                     payload: {
-                      id: data?.id,
+                      id: data?.size_chart[currentSize]?.id,
                       name: data?.product_name,
                       price: data?.size_chart[currentSize],
                       finish: data?.product_images[currentFinish],
@@ -205,7 +205,7 @@ const Details = () => {
                   dispatch({
                     type: 'ADD_TO_CART',
                     payload: {
-                      id: data?.id,
+                      id: data?.size_chart[currentSize]?.id,
                       name: data?.product_name,
                       price: data?.size_chart[currentSize],
                       finish: data?.product_images[currentFinish],

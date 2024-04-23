@@ -8,6 +8,9 @@ const initialState = {
   category: [],
   profile_complete: false,
   banner: [],
+  spot: [],
+  best: [],
+  profile: {}
 };
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (state = initialState, action) => {
@@ -33,6 +36,16 @@ export default (state = initialState, action) => {
       return {
         ...state,
         cateogry: action.payload,
+      };
+    case "SPOT":
+      return {
+        ...state,
+        spot: action.payload,
+      };
+    case "BEST":
+      return {
+        ...state,
+        best: action.payload,
       };
     case 'ADD_TO_CART':
       const existingProduct = state.cart.find(
@@ -86,6 +99,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         cart: action.payload,
+      };
+    case "PROFILE":
+      return {
+        ...state,
+        profile: action.payload,
       };
     case 'EMPTY_CART':
       return {

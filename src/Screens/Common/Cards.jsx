@@ -8,8 +8,13 @@ import {
 } from '@material-tailwind/react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import Sub from '../ProductScreen/Sub';
+import { useSelector } from 'react-redux';
 export default function Cards({ data }) {
   const navigate = useNavigate();
+  const spot = useSelector(state => state.Reducers.spot);
+  console.log(spot)
+  const best = useSelector(state => state.Reducers.best);
   const products = [
     {
       id: 1,
@@ -121,116 +126,77 @@ export default function Cards({ data }) {
         })}
       </div>
       <h3 className='text-left m-10 text-3xl	'>Our Spotlight</h3>
-      <div className=' w-[85%] grid md:grid-cols-3 gap-5   '>
-        <Card
-          shadow={false}
-          className='w-[100%] h-full'>
-          <CardHeader
-            floated={false}
-            shadow={false}
-            color='transparent'
-            className="absolute inset-0 m-0 h-full w-full rounded-none bg-[url('https://i.pinimg.com/564x/e3/1b/bc/e31bbcd2a4b103eea8c64fe05ea14f9c.jpg')] bg-cover bg-center">
-            <div className='to-bg-[#df633a]-10 absolute inset-0 h-full w-full bg-gradient-to-t from-black/80 via-black/50' />
-          </CardHeader>
-          <CardBody className='relative py-14 px-6 md:px-12'>
-            <Typography
-              variant='h2'
-              color='white'
-              className='mb-6 font-Raleway leading-[1.5]'>
-              Our fully furshined dressing table with lights
-            </Typography>
-            <Typography
-              variant='h5'
-              className='mb-4 font-Raleway text-gray-400'>
-              Bedroom
-            </Typography>
-          </CardBody>
-        </Card>
-        <Card
-          shadow={false}
-          className='w-[100%] h-full'>
-          <CardHeader
-            floated={false}
-            shadow={false}
-            color='transparent'
-            className="absolute inset-0 m-0 h-full w-full rounded-none bg-[url('https://i.pinimg.com/564x/e3/1b/bc/e31bbcd2a4b103eea8c64fe05ea14f9c.jpg')] bg-cover bg-center">
-            <div className='to-bg-[#df633a]-10 absolute inset-0 h-full w-full bg-gradient-to-t from-black/80 via-black/50' />
-          </CardHeader>
-          <CardBody className='relative py-14 px-6 md:px-12'>
-            <Typography
-              variant='h2'
-              color='white'
-              className='mb-6 font-Raleway leading-[1.5]'>
-              Our fully furshined dressing table with lights
-            </Typography>
-            <Typography
-              variant='h5'
-              className='mb-4 font-Raleway text-gray-400'>
-              Bedroom
-            </Typography>
-          </CardBody>
-        </Card>
-        <Card
-          shadow={false}
-          className='w-[100%] h-full'>
-          <CardHeader
-            floated={false}
-            shadow={false}
-            color='transparent'
-            className="absolute inset-0 m-0 h-full w-full rounded-none bg-[url('https://i.pinimg.com/564x/e3/1b/bc/e31bbcd2a4b103eea8c64fe05ea14f9c.jpg')] bg-cover bg-center">
-            <div className='to-bg-[#df633a]-10 absolute inset-0 h-full w-full bg-gradient-to-t from-black/80 via-black/50' />
-          </CardHeader>
-          <CardBody className='relative py-14 px-6 md:px-12'>
-            <Typography
-              variant='h2'
-              color='white'
-              className='mb-6 font-Raleway leading-[1.5]'>
-              Our fully furshined dressing table with lights
-            </Typography>
-            <Typography
-              variant='h5'
-              className='mb-4 font-Raleway text-gray-400'>
-              Bedroom
-            </Typography>
-          </CardBody>
-        </Card>
+      <div className=' w-[85%] grid md:grid-cols-3 gap-5 font-Raleway   '>
+        {spot?.map((item, index) => {
+          if (item?.product?.status === 'Activate') {
+            return (
+              <a
+              href={`#/details/${item?.product?.id}`}
+
+                key={item?.id}
+                className='group relative'>
+                <div className='w-150 overflow-hidden  rounded-md shadow-lg  lg:aspect-none  group-hover:opacity-75 lg:h-80'>
+                  <img
+                    src={item?.product?.image}
+                    alt={item?.imageAlt}
+                    className='h-full w-100 object-contain object-center lg:h-full lg:w-full'
+                  />
+
+                  <button className='bg-orange text-gray-700'> Shop Now</button>
+                </div>
+                <div className='mt-4 flex justify-between'>
+                  <div>
+                    <h3 className='text-sm text-gray-700'>
+                      <a
+                        className=' text-2xl  text-gray-900 dark:text-white'
+                        href={item?.href}>
+                        <span
+                          aria-hidden='true'
+                          className='absolute inset-0'
+                        />
+                        {item?.product?.product_name}
+                      </a>
+                    </h3>
+                    <p className='mt-1 text-sm text-gray-500'>{item?.color}</p>
+                  </div>
+                  <p className='text-m font-medium text-black-900'>
+                    {item?.price}
+                  </p>
+                </div>
+              </a>
+            )
+          }
+        })
+        }
       </div>
       <h3 className='text-left m-10 text-3xl	'>Best Sellers</h3>
-      <div className='flex flex-wrap w-[88%] gap-5 justify-evenly items-start'>
-        {products.map((product) => (
-          <div
-            key={product.id}
-            className='group relative'>
-            <div className='w-150 overflow-hidden  rounded-md bg-gray-200 lg:aspect-none  group-hover:opacity-75 lg:h-80'>
-              <img
-                src={product.imageSrc}
-                alt={product.imageAlt}
-                className='h-full w-100 object-cover object-center lg:h-full lg:w-full'
-              />
+      <div className=' w-[85%] grid md:grid-cols-3 gap-5 font-Raleway   '>
+        {best?.map((item, index) => {
+          if (item?.product?.status === 'Activate') {
+            return (
+              <a
+                href={`#/details/${item?.product?.id}`}
+                key={item?.product?.id}
+                className='group relative'>
+                <div className='w-150 overflow-hidden  rounded-md shadow-lg  lg:aspect-none  group-hover:opacity-75 lg:h-80'>
+                  <img
+                    src={item?.product?.image}
+                    alt={item?.imageAlt}
+                    className='h-full w-100 object-contain object-center lg:h-full lg:w-full'
+                  />
 
-              <button className='bg-orange text-gray-700'> Shop Now</button>
-            </div>
-            <div className='mt-4 flex justify-between'>
-              <div>
-                <h3 className='text-sm text-gray-700'>
-                  <a
-                    className=' text-2xl  text-gray-900 dark:text-white'
-                    href={product.href}>
-                    <span
-                      aria-hidden='true'
-                      className='absolute inset-0'
-                    />
-                    {product.name}
-                  </a>
-                </h3>
-                <p className='mt-1 text-sm text-gray-500'>{product.color}</p>
-              </div>
-              <p className='text-m font-medium text-black-900'>
-                {product.price}
-              </p>
-            </div>
-          </div>
-        ))}
+                  <button className='bg-orange text-gray-700'> Shop Now</button>
+                </div>
+                <div className='mt-4 flex justify-between'>
+                  <p className='text-m font-medium text-black-900'>
+                    {item?.price}
+                  </p>
+                </div>
+              </a>
+            )
+          }
+        })
+        }
       </div>
     </div>
   );

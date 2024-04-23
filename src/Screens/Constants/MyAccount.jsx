@@ -1,95 +1,87 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { IMAGE } from '../../Assets/Image';
+import { GetProfile, LogoutAction } from '../../Store/actions';
 
 const MyAccount = () => {
   const [activeSection, setActiveSection] = useState('profile');
+  const profile = useSelector((state) => state.Reducers.profile);
 
   const handleSectionChange = (section) => {
     setActiveSection(section);
   };
+  const dispatch = useDispatch()
+  React.useEffect(() => {
+    dispatch(GetProfile())
+  }, [])
 
   return (
     <div className='container mx-auto py-6 mt-40 font-Raleway'>
-      <h2 className='text-center 	text-4xl '>My Account</h2>
 
-      <div className='flex flex-col md:flex-row'>
-        <div className='md:w-1/4 md:mr-4 mb-6 md:mb-0 '>
-          <div className='bg-grey-100 shadow p-4 '>
-            <h2 className='text-lg  mb-4 '>My Account</h2>
-            <ul className='space-y-2 cursor-pointer'>
-              <li
-                onClick={() => handleSectionChange('profile')}
-                className={
-                  activeSection === 'profile'
-                    ? 'text-black hover:bg-orange-700 h-50 '
-                    : 'text-black rounded-lg bg-white-500 '
-                }>
-                Profile
-              </li>
-              <hr></hr>
-              <li
-                onClick={() => handleSectionChange('order-history')}
-                className={
-                  activeSection === 'order-history'
-                    ? 'text-black   '
-                    : 'text-black'
-                }>
-                Order History
-              </li>
-              <hr></hr>
-              <li
-                onClick={() => handleSectionChange('address')}
-                className={
-                  activeSection === 'logout' ? 'text-black   ' : 'text-black'
-                }>
-                Address
-              </li>
-              <hr></hr>
-              <li
-                onClick={() => handleSectionChange('logout')}
-                className={
-                  activeSection === 'logout' ? 'text-black  ' : 'text-black'
-                }>
-                Coupons
-              </li>
-              <hr></hr>
-              <li
-                onClick={() => handleSectionChange('logout')}
-                className={
-                  activeSection === 'logout' ? 'text-black  ' : 'text-black'
-                }>
-                Rating & Reviews
-              </li>
-              <hr></hr>
-              <li
-                onClick={() => handleSectionChange('logout')}
-                className={
-                  activeSection === 'logout' ? 'text-black   ' : 'text-black'
-                }>
-                Settings
-              </li>
-              <hr></hr>
-              <li
-                onClick={() => handleSectionChange('logout')}
-                className={
-                  activeSection === 'logout' ? 'text-black   ' : 'text-black'
-                }>
-                Logout
-              </li>
-            </ul>
+      <div className='mt-5  w-[25%] flex flex-col justify-start space-y-2 border-r-2 '>
+        <button className='w-[88%] flex flex-row justify-between  items-center  rounded-xl h-[120px]'>
+          <img src={IMAGE.man} className='h-[80px] w-[80px]' />
+          <div className=' flex flex-col items-start justify-start '>
+            <p className='text-[#5c5c5c] text-2xl font-Mundoregular font-medium tracking-widest '>
+              {profile?.name}
+            </p>
+            <p className='text-[#8c8c8c] text-base font-Mundoregular font-medium tracking-widest '>
+              {profile?.role}
+            </p>
           </div>
-        </div>
+          {
+            profile?.is_verified ?
+              <img src={IMAGE.checked} className='h-[40px] w-[40px]' />
+              :
+              <img src={IMAGE.cancel} className='h-[40px] w-[40px]' />
+          }
 
-        <div className='md:flex-1'>
-          <div className='bg-white shadow p-4'>
-            {activeSection === 'profile' && <ProfileSection />}
-            {activeSection === 'order-history' && <OrderHistorySection />}
-            {activeSection === 'address' && <AddressSection />}
-
-            {activeSection === 'logout' && <LogoutSection />}
-          </div>
-        </div>
+        </button>
+        <button
+          onClick={() => {
+            setActiveSection(0)
+          }}
+          className='  self-start '>
+          <p className='text-black text-lg font-Raleway font-medium tracking-widest '>
+            Order
+          </p>
+        </button>
+        <button
+          onClick={() => {
+            setActiveSection(1)
+          }}
+          className='self-start '>
+          <p className='text-black text-lg font-Raleway font-medium tracking-widest '>
+            Coupons
+          </p>
+        </button>
+        <button
+          onClick={() => {
+            setActiveSection(2)
+          }}
+          className=' self-start '>
+          <p className='text-black text-lg font-Raleway font-medium tracking-widest '>
+            Settings
+          </p>
+        </button>
+        <button
+          onClick={() => {
+            localStorage.clear();
+            dispatch({
+              type: 'LOGOUT',
+              payload: {
+                access: null,
+                role: 1,
+              },
+            });
+          }}
+          className='self-start '>
+          <p className='text-red-500 text-lg font-Raleway font-medium tracking-widest '>
+            Logout
+          </p>
+        </button>
       </div>
+
     </div>
   );
 };

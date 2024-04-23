@@ -1,30 +1,4 @@
 import React from 'react';
-import { Slider } from '@material-tailwind/react';
-
-import {
-  IconButton,
-  Typography,
-  List,
-  ListItem,
-  ListItemPrefix,
-  Accordion,
-  AccordionHeader,
-  AccordionBody,
-  Input,
-  Drawer,
-  Card,
-  CardHeader,
-  CardBody,
-} from '@material-tailwind/react';
-import {
-  PresentationChartBarIcon,
-  ShoppingBagIcon,
-} from '@heroicons/react/24/solid';
-import {
-  ChevronRightIcon,
-  ChevronDownIcon,
-  MagnifyingGlassIcon,
-} from '@heroicons/react/24/outline';
 import { useNavigate, useLocation } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { GetProducts } from '../../Store/actions';
@@ -86,10 +60,6 @@ function Sub() {
                 <p className='text-left  font-Raleway  text-base w-full'>
                   {product?.product_name}
                 </p>
-                {/* <p
-                    className="text-justify font-Raleway text-sm w-full">
-                    {product?.description?.slice(0, 100)}
-                  </p> */}
                 <p className='text-left font-Raleway  text-2xl w-full text-[#df633a]'>
                   ₹
                   {Math.round(
@@ -108,18 +78,6 @@ function Sub() {
                   ₹{product?.size_chart[0]?.price_map[0]?.price_with_gst} with
                   GST
                 </p>
-                {/* <div className=' space-x-3 w-full justify-between items-center'>
-                    <button
-                      className=" font-Raleway justify-center  bg-[#df633a] hover:bg-white hover:text-black hover:border-black hover:border-[1px] p-5 px-3 py-1.5 text-sm leading-6 text-white shadow-sm "
-                    >
-                      Buy Now
-                    </button>
-                    <button
-                      className=" font-Raleway justify-center  bg-[#df633a] hover:bg-white hover:text-black hover:border-black hover:border-[1px] p-5 px-3 py-1.5 text-sm  leading-6 text-white shadow-sm "
-                    >
-                      Add to Cart
-                    </button>
-                  </div> */}
               </a>
             ))
           )}
