@@ -3,14 +3,14 @@ import { Card, Typography } from '@material-tailwind/react';
 import { useLocation } from 'react-router';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { GetProduct } from '../../Store/actions';
+import { GetProduct, Init } from '../../Store/actions';
 import { Oval } from 'react-loader-spinner';
 
 const Details = () => {
   let id = useLocation();
   id = id.pathname.split('/').pop();
   const dispatch = useDispatch();
-  const role = useSelector((state) => state.Reducers.role);
+  const role = useSelector(state => state.Reducers.role);
   const [data, setData] = React.useState(null);
   const [currentSize, setCurrentSize] = React.useState(0);
   const [currentFinish, setCurrentFinish] = React.useState(0);
@@ -19,9 +19,11 @@ const Details = () => {
   const [mainImage, setMainImage] = useState(null);
   const [count, setCount] = React.useState(1);
   React.useEffect(() => {
+    setData([])
+    dispatch(Init())
     dispatch(GetProduct(id, role, setData, setLoading));
     setMainImage(data?.product_images[currentFinish]?.images[0].image);
-  }, [loading]);
+  }, [dispatch]);
   const navigate = useNavigate();
   const TABLE_HEAD = ['Product details', '', '', ''];
   const handleSidebarImageClick = (image) => {
@@ -29,7 +31,7 @@ const Details = () => {
   };
   if (loading) {
     return (
-      <div className='h-screen w-screen'>
+      <div className='h-screen w-screen flex justify-center items-center'>
         <Oval
           visible={true}
           height='40'
@@ -58,7 +60,7 @@ const Details = () => {
                         handleSidebarImageClick(image);
                         setCurrentImage(index);
                       }}
-                      className={`w-50 mb-5 bg-[#df633a]  cursor-pointer ${
+                      className={`w-50 mb-5   cursor-pointer ${
                         mainImage === image.image
                           ? 'border-2 border-gray-200'
                           : ''

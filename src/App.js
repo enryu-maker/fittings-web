@@ -31,8 +31,7 @@ export default function App() {
   const cartOpen = useSelector((state) => state.Reducers.cartOpen);
   const access = useSelector((state) => state.Reducers.access);
   const profile_complete = useSelector((state) => state.Reducers.profile_complete);
-  const profile = useSelector((state) => state.Reducers.profile);
-  console.log(profile)
+  const is_verified = useSelector((state) => state.Reducers.is_verified);
   const dispatch = useDispatch();
   React.useEffect(() => {
     dispatch(Init());
@@ -104,19 +103,19 @@ export default function App() {
           />
           <Route
             path='/mobile'
-            element={profile_complete ? profile?.is_verified ?   <Mobile /> :  <Verification />  : <Complete />}
+            element={profile_complete ? is_verified ?   <Mobile /> :  <Verification />  : <Complete />}
           />
           <Route
             path='/myaccount'
-            element={access != null ? profile_complete ? profile?.is_verified ? <MyAccount />  : <Verification /> : <Complete /> : <Login />}
+            element={access != null ? profile_complete ? is_verified ? <MyAccount />  : <Verification /> : <Complete /> : <Login />}
           />
           <Route
             path='/cartcheckout'
-            element={access != null ? profile_complete ? profile?.is_verified ? <CartCheckout />  : <Verification /> : <Complete /> : <Login />}
+            element={access != null ? profile_complete ? is_verified ? <CartCheckout />  : <Verification /> : <Complete /> : <Login />}
           />
           <Route
             path='/payment'
-            element={access != null ? profile_complete ? profile?.is_verified ? <PaymentPage /> : <Verification /> : <Complete />  : <Login />}
+            element={access != null ? profile_complete ? is_verified ? <PaymentPage /> : <Verification /> : <Complete />  : <Login />}
           />
           <Route
             path='/cards'
