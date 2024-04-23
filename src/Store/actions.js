@@ -311,16 +311,13 @@ export const GetSubCateogry = (id, setData) => {
     }
 }
 
-export const GetProducts = (id, setLoading, role) => {
+export const GetProducts = (id, setData, setLoading, role) => {
     console.log("dd", role)
     setLoading(true)
     return async dispatch => {
         await axios.get(baseURL + `product/sub-categories/${id}/`)
             .then((res) => {
-                dispatch({
-                    type: "PRO",
-                    payload: res.data
-                })
+                setData(res.data)
                 setLoading(false);
             }).catch((err) => {
                 toast.error(err?.response?.data?.msg, {

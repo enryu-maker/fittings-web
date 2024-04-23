@@ -45,8 +45,8 @@ const Details = () => {
     );
   } else {
     return (
-      <div className='mt-[180px] font-Raleway transition-all '>
-        <div className='flex flex-col md:flex-row  justify-end items-start '>
+      <div className='mt-[180px] font-Raleway transition-all items-center flex flex-col '>
+        <div className='flex flex-col md:flex-row  justify-evenly items-start '>
           <div className='w-20 h-50 m-5 flex md:flex-col flex-row items-end  gap-5'>
             {loading
               ? null
@@ -77,6 +77,7 @@ const Details = () => {
               alt='Product'
               className='object-fill'
             />
+            
           </div>
           <div className='md:w-[40%] space-y-5 mt-5 p-5 '>
             <h2 className='text-3xl text-[#df633a]  mb-4'>
@@ -110,15 +111,7 @@ const Details = () => {
                 with GST
               </p>
             </div>
-            <p className='text-black mb-2'>
-              Description:{' '}
-              {data?.description.split('|').map((el, index) => (
-                <span className='text-gray-700'>
-                  {el}
-                  <br />
-                </span>
-              ))}
-            </p>
+            
             <div className='flex space-x-2'>
               {data?.product_images?.map((des, index) => (
                 <button
@@ -278,7 +271,17 @@ const Details = () => {
               </table>
             </Card>
           </div>
+          
         </div>
+        <p className='text-black mb-2 w-[88%] text-lg text-justify self-center'>
+              Description:{' '}
+              {data?.description.split('|').map((el, index) => (
+                <span className='text-gray-700 text-base'>
+                  {el}
+                  <br />
+                </span>
+              ))}
+            </p>
       </div>
     );
   }
