@@ -10,5 +10,7 @@ export const IMAGE = {
     man:require('./Images/man.png'),
     checked:require('./Images/checked.png'),
     cancel:require('./Images/cancel.png'),
+    verified:require('./Images/verified.png'),
+
 
 }

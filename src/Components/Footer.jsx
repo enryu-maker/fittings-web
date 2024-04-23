@@ -35,7 +35,6 @@ export default function Footer() {
                             customer Service
                         </p>
                         <a 
-                      //onClick={handleopen}
                             href='#/privacypage'
                             className=' capitalize '>
                             Privacy Policy
@@ -67,7 +66,7 @@ export default function Footer() {
                             Mittal bhawan gol building manaitand dhanbad jharkhand 826001
                         </p>
                         <p className=' text-sm capitalize'>
-                            toll  free : <a className='underline underline-offset-4 hover:no-underline' href='tel:+919155511522'>+91 9155511522</a>
+                            Contact Number : <a className='underline underline-offset-4 hover:no-underline' href='tel:+919155511522'>+91 9155511522</a>
                          </p>
                         <p className=' text-sm capitalize transition-all'>
                             email : <a className='underline underline-offset-4 hover:no-underline' href='mailto:info@fittingswale.in'>info@fittingswale.in</a>

@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Login from './Screens/AuthScreen/Login';
 import Cards from './Screens/Common/Cards';
 import Category from './Screens/Common/Category';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Registration from './Screens/AuthScreen/Registration';
 import OTPForm from './Screens/AuthScreen/Otp';
 import Products from './Screens/ProductScreen/Products';
@@ -18,7 +18,7 @@ import Refund from './Components/Refund';
 import Mobile from './Screens/Constants/Mobile';
 import MyAccount from './Screens/Constants/MyAccount';
 import CartCheckout from './Screens/Cart/Cartcheckout';
-import { GetBanner, GetBest, GetCateogry, GetSpotlight, Init } from './Store/actions';
+import { GetBanner, GetBest, GetCateogry, GetProfile, GetSpotlight, Init } from './Store/actions';
 import Complete from './Screens/Common/Complete';
 import ScrollToTop from './Components/ScrollTo';
 import SuccessPage from './Screens/PaymentScreen/SuccessPage';
@@ -26,12 +26,13 @@ import PaymentPage from './Screens/PaymentScreen/PaymentPage';
 import HomePage from './Screens/Home/HomePage';
 import MenuIcons from './Components/MenuIcons';
 import Search from './Screens/SearchScreen/Search';
+import Verification from './Screens/Constants/Verification';
 
 export default function App() {
   const cartOpen = useSelector((state) => state.Reducers.cartOpen);
   const access = useSelector((state) => state.Reducers.access);
   const profile_complete = useSelector((state) => state.Reducers.profile_complete);
-  console.log(profile_complete)
+  const profile = useSelector((state) => state.Reducers.profile);
   const dispatch = useDispatch();
   React.useEffect(() => {
     dispatch(Init());
@@ -39,7 +40,9 @@ export default function App() {
     dispatch(GetBanner());
     dispatch(GetSpotlight());
     dispatch(GetBest());
-
+    if (access != null) {
+      dispatch(GetProfile())
+    }
   }, [dispatch]);
   return (
     <>
@@ -57,11 +60,11 @@ export default function App() {
           />
           <Route
             path='/login'
-            element={<Login />}
+            element={access===null?<Login />:<HomePage/>}
           />
           <Route
             path='/register'
-            element={<Registration />}
+            element={access===null?<Registration />:<HomePage/>}
           />
           <Route
             path='/category'
@@ -73,7 +76,7 @@ export default function App() {
           />
           <Route
             path='/otp'
-            element={<OTPForm />}
+            element={access===null?<OTPForm />:<HomePage/>}
           />
           <Route
             path='/search'
@@ -101,23 +104,19 @@ export default function App() {
           />
           <Route
             path='/mobile'
-            element={<Mobile />}
+            element={!profile_complete ? !profile?.is_verified ?   <Mobile />  : <Complete />:  <Verification />}
           />
           <Route
             path='/myaccount'
-            element={access != null ? profile_complete? <MyAccount /> : <Complete/> : <Login />}
+            element={access != null ? profile_complete ? profile?.is_verified ? <MyAccount />  : <Verification /> : <Complete /> : <Login />}
           />
           <Route
             path='/cartcheckout'
-            element={access != null ? profile_complete?  <CartCheckout /> : <Complete/> : <Login />}
+            element={access != null ? profile_complete ? profile?.is_verified ? <CartCheckout />  : <Verification /> : <Complete /> : <Login />}
           />
           <Route
             path='/payment'
-            element={access != null ? profile_complete?  <PaymentPage /> : <Complete/> : <Login />}
-          />
-          <Route
-            path='/complete'
-            element={access != null ? <Complete /> : <Login />}
+            element={access != null ? profile_complete ? profile?.is_verified ? <PaymentPage /> : <Verification /> : <Complete />  : <Login />}
           />
           <Route
             path='/cards'
@@ -133,10 +132,17 @@ export default function App() {
           />
           <Route
             path='/success'
-            element={<SuccessPage />}
+            element={access != null ? <SuccessPage /> : <Login />}
+          />
+          <Route
+            path='/kycverification'
+            element={<Complete />}
+          />
+          <Route
+            path='/under-verification'
+            element={<Verification />}
           />
         </Routes>
-
         <Footer />
       </div>
     </>
