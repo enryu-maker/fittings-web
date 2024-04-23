@@ -40,7 +40,7 @@ export default function App() {
   const profile_complete = useSelector(
     (state) => state.Reducers.profile_complete
   );
-  const profile = useSelector((state) => state.Reducers.profile);
+  const is_verified = useSelector((state) => state.Reducers.is_verified);
   const dispatch = useDispatch();
   React.useEffect(() => {
     dispatch(Init());
@@ -113,14 +113,14 @@ export default function App() {
           <Route
             path='/mobile'
             element={
-              !profile_complete ? (
-                !profile?.is_verified ? (
+              profile_complete ? (
+                is_verified ? (
                   <Mobile />
                 ) : (
-                  <Complete />
+                  <Verification />
                 )
               ) : (
-                <Verification />
+                <Complete />
               )
             }
           />
