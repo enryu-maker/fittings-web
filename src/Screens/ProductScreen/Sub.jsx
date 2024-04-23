@@ -1,30 +1,20 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router';
-import { useDispatch } from 'react-redux';
-import { GetProducts } from '../../Store/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { GetProducts,Init } from '../../Store/actions';
 import { Oval } from 'react-loader-spinner';
 
 function Sub() {
-  const navigate = useNavigate();
-
-  const [open, setOpen] = React.useState(0);
   const { state } = useLocation();
-  const handleOpen = (value) => {
-    setOpen(open === value ? 0 : value);
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    navigate('/details');
-  };
-  const [products, setProducts] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
+  const role = useSelector((state) => state.Reducers.role);
+  const [products,setproducts] =  React.useState([]);
 
+  // console.log(role)
   const dispatch = useDispatch();
   React.useEffect(() => {
-    setLoading(true);
-    setProducts([]);
-    dispatch(GetProducts(state?.id, setProducts, setLoading));
-  }, [1]);
+    dispatch(GetProducts(state?.id,setproducts, setLoading, role));
+  }, []);
   console.log(products);
   return (
     <div className='mt-[180px] w-full font-Raleway'>

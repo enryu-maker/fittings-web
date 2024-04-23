@@ -3,14 +3,14 @@ import { Card, Typography } from '@material-tailwind/react';
 import { useLocation } from 'react-router';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { GetProduct } from '../../Store/actions';
+import { GetProduct, Init } from '../../Store/actions';
 import { Oval } from 'react-loader-spinner';
 
 const Details = () => {
   let id = useLocation();
   id = id.pathname.split('/').pop();
   const dispatch = useDispatch();
-  const role = useSelector((state) => state.Reducers.role);
+  const role = useSelector(state => state.Reducers.role);
   const [data, setData] = React.useState(null);
   const [currentSize, setCurrentSize] = React.useState(0);
   const [currentFinish, setCurrentFinish] = React.useState(0);
@@ -19,9 +19,11 @@ const Details = () => {
   const [mainImage, setMainImage] = useState(null);
   const [count, setCount] = React.useState(1);
   React.useEffect(() => {
+    setData([])
+    dispatch(Init())
     dispatch(GetProduct(id, role, setData, setLoading));
     setMainImage(data?.product_images[currentFinish]?.images[0].image);
-  }, [loading]);
+  }, [dispatch]);
   const navigate = useNavigate();
   const TABLE_HEAD = ['Product details', '', '', ''];
   const handleSidebarImageClick = (image) => {
@@ -29,7 +31,7 @@ const Details = () => {
   };
   if (loading) {
     return (
-      <div className='h-screen w-screen'>
+      <div className='h-screen w-screen flex justify-center items-center'>
         <Oval
           visible={true}
           height='40'
@@ -43,8 +45,8 @@ const Details = () => {
     );
   } else {
     return (
-      <div className='mt-[180px] font-Raleway transition-all '>
-        <div className='flex flex-col md:flex-row  justify-end items-start '>
+      <div className='mt-[180px] font-Raleway transition-all items-center flex flex-col '>
+        <div className='flex flex-col md:flex-row  justify-evenly items-start '>
           <div className='w-20 h-50 m-5 flex md:flex-col flex-row items-end  gap-5'>
             {loading
               ? null
@@ -58,7 +60,7 @@ const Details = () => {
                         handleSidebarImageClick(image);
                         setCurrentImage(index);
                       }}
-                      className={`w-50 mb-5 bg-[#df633a]  cursor-pointer ${
+                      className={`w-50 mb-5   cursor-pointer ${
                         mainImage === image.image
                           ? 'border-2 border-gray-200'
                           : ''
@@ -75,6 +77,7 @@ const Details = () => {
               alt='Product'
               className='object-fill'
             />
+            
           </div>
           <div className='md:w-[40%] space-y-5 mt-5 p-5 '>
             <h2 className='text-3xl text-[#df633a]  mb-4'>
@@ -108,15 +111,7 @@ const Details = () => {
                 with GST
               </p>
             </div>
-            <p className='text-black mb-2'>
-              Description:{' '}
-              {data?.description.split('|').map((el, index) => (
-                <span className='text-gray-700'>
-                  {el}
-                  <br />
-                </span>
-              ))}
-            </p>
+            
             <div className='flex space-x-2'>
               {data?.product_images?.map((des, index) => (
                 <button
@@ -276,7 +271,17 @@ const Details = () => {
               </table>
             </Card>
           </div>
+          
         </div>
+        <p className='text-black mb-2 w-[88%] text-lg text-justify self-center'>
+              Description:{' '}
+              {data?.description.split('|').map((el, index) => (
+                <span className='text-gray-700 text-base'>
+                  {el}
+                  <br />
+                </span>
+              ))}
+            </p>
       </div>
     );
   }

@@ -7,6 +7,8 @@ const initialState = {
   cartOpen: false,
   category: [],
   profile_complete: false,
+  products: [],
+  is_verified: false,
   banner: [],
   spot: [],
   best: [],
@@ -21,6 +23,7 @@ export default (state = initialState, action) => {
         access: action.payload.access,
         role: action.payload.user_role,
         profile_complete: action.payload.profile_complete,
+        is_verified: action.payload.is_verified
       };
     case 'OPEN_CART':
       return {
@@ -31,6 +34,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         banner: action.payload,
+      };
+    case 'PRO':
+      return {
+        ...state,
+        products: action.payload,
       };
     case 'CAT':
       return {

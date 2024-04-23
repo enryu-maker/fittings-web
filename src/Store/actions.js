@@ -10,13 +10,16 @@ export const Init = () => {
             const user_role = await localStorage.getItem('role');
             const cart = await localStorage.getItem('cart');
             const profile_complete = JSON.parse(await localStorage.getItem('profile_complete'));
+            const is_verified = JSON.parse(await localStorage.getItem('is_verified'));
+            console.log("init", user_role)
             dispatch(
                 {
                     type: 'LOGIN',
                     payload: {
                         access: access,
                         user_role: user_role === null ? 1 : user_role,
-                        profile_complete: profile_complete === null ? false : profile_complete
+                        profile_complete: profile_complete === null ? false : profile_complete,
+                        is_verified: is_verified === null ? false : is_verified
                     },
                 },
                 {
@@ -38,23 +41,26 @@ export const LoginAction = (setLoading, data, navigate) => {
             await localStorage.setItem('access', response.data.access);
             await localStorage.setItem('role', response.data.user_role);
             await localStorage.setItem('profile_complete', response.data.is_profile_complete);
+            await localStorage.setItem('is_verified', response.data.is_verify);
+
             dispatch({
                 type: 'LOGIN',
                 payload: {
                     access: response?.data?.access,
                     user_role: response?.data?.user_role,
-                    profile_complete: response?.data?.is_profile_complete
+                    profile_complete: response?.data?.is_profile_complete,
+                    is_verified: response?.data?.is_verify
                 },
             })
             setLoading(false);
 
-            if (response?.data?.is_verify ) {
+            if (response?.data?.is_verify) {
                 navigate("/")
             }
-            if(!response.data.is_profile_complete){
+            else if (!response.data.is_profile_complete) {
                 navigate("/kycverification")
             }
-            if(response.data.is_profile_complete && !response.data.is_verify){
+            else if (response.data.is_profile_complete && !response.data.is_verify) {
                 navigate("/under-verification")
 
             }
@@ -190,10 +196,10 @@ export const patchProfile = (setLoading, data, navigate) => {
                 progress: undefined,
                 theme: "light",
             });
-            setTimeout(()=>{
-            setLoading(false)
-            navigate("/")
-            },2000)
+            setTimeout(() => {
+                setLoading(false)
+                navigate("/")
+            }, 2000)
         }).catch((err) => {
             setLoading(false)
             console.log(err?.response?.data)
@@ -305,12 +311,12 @@ export const GetSubCateogry = (id, setData) => {
     }
 }
 
-export const GetProducts = (id, setData, setLoading) => {
-
+export const GetProducts = (id, setData, setLoading, role) => {
+    console.log("dd", role)
+    setLoading(true)
     return async dispatch => {
         await axios.get(baseURL + `product/sub-categories/${id}/`)
             .then((res) => {
-                console.log(res.data)
                 setData(res.data)
                 setLoading(false);
             }).catch((err) => {
@@ -330,7 +336,8 @@ export const GetProducts = (id, setData, setLoading) => {
 }
 
 export const GetProduct = (id, role, setData, setLoading) => {
-
+    console.log(role)
+    setLoading(true)
     return async dispatch => {
         await axios.get(baseURL + `product/view/${id}/${role}/`)
             .then((res) => {
@@ -416,7 +423,8 @@ export const GetProfile = () => {
                 dispatch({
                     type: 'PROFILE',
                     payload: res.data,
-                })
+                }
+                )
             }).catch((err) => {
                 toast.error(err?.response?.data?.msg, {
                     position: "top-center",
