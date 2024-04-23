@@ -17,7 +17,14 @@ import Refund from './Components/Refund';
 import Mobile from './Screens/Constants/Mobile';
 import MyAccount from './Screens/Constants/MyAccount';
 import CartCheckout from './Screens/Cart/Cartcheckout';
-import { GetBanner, GetBest, GetCateogry, GetProfile, GetSpotlight, Init } from './Store/actions';
+import {
+  GetBanner,
+  GetBest,
+  GetCateogry,
+  GetProfile,
+  GetSpotlight,
+  Init,
+} from './Store/actions';
 import Complete from './Screens/Common/Complete';
 import ScrollToTop from './Components/ScrollTo';
 import SuccessPage from './Screens/PaymentScreen/SuccessPage';
@@ -30,9 +37,10 @@ import Verification from './Screens/Constants/Verification';
 export default function App() {
   const cartOpen = useSelector((state) => state.Reducers.cartOpen);
   const access = useSelector((state) => state.Reducers.access);
-  const profile_complete = useSelector((state) => state.Reducers.profile_complete);
-  const profile = useSelector((state) => state.Reducers.profile);
-  console.log(profile)
+  const profile_complete = useSelector(
+    (state) => state.Reducers.profile_complete
+  );
+  const is_verified = useSelector((state) => state.Reducers.is_verified);
   const dispatch = useDispatch();
   React.useEffect(() => {
     dispatch(Init());
@@ -41,7 +49,7 @@ export default function App() {
     dispatch(GetSpotlight());
     dispatch(GetBest());
     if (access != null) {
-      dispatch(GetProfile())
+      dispatch(GetProfile());
     }
   }, [dispatch]);
   return (
@@ -60,11 +68,11 @@ export default function App() {
           />
           <Route
             path='/login'
-            element={access===null?<Login />:<HomePage/>}
+            element={access === null ? <Login /> : <HomePage />}
           />
           <Route
             path='/register'
-            element={access===null?<Registration />:<HomePage/>}
+            element={access === null ? <Registration /> : <HomePage />}
           />
           <Route
             path='/category'
@@ -76,7 +84,7 @@ export default function App() {
           />
           <Route
             path='/otp'
-            element={access===null?<OTPForm />:<HomePage/>}
+            element={access === null ? <OTPForm /> : <HomePage />}
           />
           <Route
             path='/search'
@@ -104,19 +112,71 @@ export default function App() {
           />
           <Route
             path='/mobile'
-            element={profile_complete ? profile?.is_verified ?   <Mobile /> :  <Verification />  : <Complete />}
+            element={
+              profile_complete ? (
+                is_verified ? (
+                  <Mobile />
+                ) : (
+                  <Verification />
+                )
+              ) : (
+                <Complete />
+              )
+            }
           />
           <Route
             path='/myaccount'
-            element={access != null ? profile_complete ? profile?.is_verified ? <MyAccount />  : <Verification /> : <Complete /> : <Login />}
+            element={
+              access != null ? (
+                profile_complete ? (
+                  is_verified ? (
+                    <MyAccount />
+                  ) : (
+                    <Verification />
+                  )
+                ) : (
+                  <Complete />
+                )
+              ) : (
+                <Login />
+              )
+            }
           />
           <Route
             path='/cartcheckout'
-            element={access != null ? profile_complete ? profile?.is_verified ? <CartCheckout />  : <Verification /> : <Complete /> : <Login />}
+            element={
+              access != null ? (
+                profile_complete ? (
+                  is_verified ? (
+                    <CartCheckout />
+                  ) : (
+                    <Verification />
+                  )
+                ) : (
+                  <Complete />
+                )
+              ) : (
+                <Login />
+              )
+            }
           />
           <Route
             path='/payment'
-            element={access != null ? profile_complete ? profile?.is_verified ? <PaymentPage /> : <Verification /> : <Complete />  : <Login />}
+            element={
+              access != null ? (
+                profile_complete ? (
+                  is_verified ? (
+                    <PaymentPage />
+                  ) : (
+                    <Verification />
+                  )
+                ) : (
+                  <Complete />
+                )
+              ) : (
+                <Login />
+              )
+            }
           />
           <Route
             path='/cards'
