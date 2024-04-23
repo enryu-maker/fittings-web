@@ -306,6 +306,29 @@ export const GetBanner = () => {
             })
     }
 }
+export const GetProfile = () => {
+    return async dispatch => {
+        await axiosIns.get(baseURL + `account/`)
+            .then((res) => {
+                dispatch({
+                    type: 'PROFILE',
+                    payload: res.data,
+                })
+            }).catch((err) => {
+                toast.error(err?.response?.data?.msg, {
+                    position: "top-center",
+                    autoClose: 1000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+            })
+    }
+}
+
 
 export const GetTerms = (setData, setLoading) => {
 
