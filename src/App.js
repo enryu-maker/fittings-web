@@ -30,7 +30,8 @@ import Search from './Screens/SearchScreen/Search';
 export default function App() {
   const cartOpen = useSelector((state) => state.Reducers.cartOpen);
   const access = useSelector((state) => state.Reducers.access);
-
+  const profile_complete = useSelector((state) => state.Reducers.profile_complete);
+  console.log(profile_complete)
   const dispatch = useDispatch();
   React.useEffect(() => {
     dispatch(Init());
@@ -104,15 +105,15 @@ export default function App() {
           />
           <Route
             path='/myaccount'
-            element={access != null ? <MyAccount /> : <Login />}
+            element={access != null ? profile_complete? <MyAccount /> : <Complete/> : <Login />}
           />
           <Route
             path='/cartcheckout'
-            element={access != null ? <CartCheckout /> : <Login />}
+            element={access != null ? profile_complete?  <CartCheckout /> : <Complete/> : <Login />}
           />
           <Route
             path='/payment'
-            element={access != null ? <PaymentPage /> : <Login />}
+            element={access != null ? profile_complete?  <PaymentPage /> : <Complete/> : <Login />}
           />
           <Route
             path='/complete'
