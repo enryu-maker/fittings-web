@@ -5,7 +5,6 @@ import { Cart } from './Screens/Cart/Cart';
 import { useDispatch, useSelector } from 'react-redux';
 import Login from './Screens/AuthScreen/Login';
 import Cards from './Screens/Common/Cards';
-import Category from './Screens/Common/Category';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Registration from './Screens/AuthScreen/Registration';
 import OTPForm from './Screens/AuthScreen/Otp';
@@ -33,6 +32,7 @@ export default function App() {
   const access = useSelector((state) => state.Reducers.access);
   const profile_complete = useSelector((state) => state.Reducers.profile_complete);
   const profile = useSelector((state) => state.Reducers.profile);
+  console.log(profile)
   const dispatch = useDispatch();
   React.useEffect(() => {
     dispatch(Init());
@@ -104,7 +104,7 @@ export default function App() {
           />
           <Route
             path='/mobile'
-            element={!profile_complete ? !profile?.is_verified ?   <Mobile />  : <Complete />:  <Verification />}
+            element={profile_complete ? profile?.is_verified ?   <Mobile /> :  <Verification />  : <Complete />}
           />
           <Route
             path='/myaccount'

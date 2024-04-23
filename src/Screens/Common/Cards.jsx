@@ -157,7 +157,6 @@ export default function Cards({ data }) {
                         {item?.product?.product_name}
                       </a>
                     </h3>
-                    <p className='mt-1 text-sm text-gray-500'>{item?.color}</p>
                   </div>
                   <p className='text-m font-medium text-black-900'>
                     {item?.price}
@@ -170,7 +169,7 @@ export default function Cards({ data }) {
         }
       </div>
       <h3 className='text-left m-10 text-3xl	'>Best Sellers</h3>
-      <div className=' w-[85%] grid md:grid-cols-3 gap-5 font-Raleway   '>
+      <div className=' w-[85%] grid md:grid-cols-3 gap-5 font-Raleway pb-10   '>
         {best?.map((item, index) => {
           if (item?.product?.status === 'Activate') {
             return (
@@ -188,6 +187,19 @@ export default function Cards({ data }) {
                   <button className='bg-orange text-gray-700'> Shop Now</button>
                 </div>
                 <div className='mt-4 flex justify-between'>
+                  <div>
+                    <h3 className='text-sm text-gray-700'>
+                      <a
+                        className=' text-2xl  text-gray-900 dark:text-white'
+                        href={item?.href}>
+                        <span
+                          aria-hidden='true'
+                          className='absolute inset-0'
+                        />
+                        {item?.product?.product_name}
+                      </a>
+                    </h3>
+                  </div>
                   <p className='text-m font-medium text-black-900'>
                     {item?.price}
                   </p>
