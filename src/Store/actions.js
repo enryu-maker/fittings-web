@@ -9,15 +9,14 @@ export const Init = () => {
             const access = await localStorage.getItem('access');
             const user_role = await localStorage.getItem('role');
             const cart = await localStorage.getItem('cart');
-            const profile_complete = await localStorage.getItem('profile_complete');
-
+            const profile_complete = JSON.parse(await localStorage.getItem('profile_complete'));
             dispatch(
                 {
                     type: 'LOGIN',
                     payload: {
                         access: access,
                         user_role: user_role === null ? 1 : user_role,
-                        profile_complete: profile_complete
+                        profile_complete: profile_complete === null ? false : profile_complete
                     },
                 },
                 {
@@ -36,25 +35,28 @@ export const LoginAction = (setLoading, data, navigate) => {
     return async dispatch => {
         try {
             let response = await axios.post(baseURL + 'account/login/', data);
-            console.log(response.data)
             await localStorage.setItem('access', response.data.access);
             await localStorage.setItem('role', response.data.user_role);
-            await localStorage.setItem('profile_complete', response.data.profile_complete);
-
+            await localStorage.setItem('profile_complete', response.data.is_profile_complete);
             dispatch({
                 type: 'LOGIN',
                 payload: {
                     access: response?.data?.access,
                     user_role: response?.data?.user_role,
-                    profile_complete: response?.data?.profile_complete
+                    profile_complete: response?.data?.is_profile_complete
                 },
             })
             setLoading(false);
-            if (response.data.profile_complete) {
+
+            if (response?.data?.is_verify ) {
                 navigate("/")
             }
-            else {
-                navigate("/complete")
+            if(!response.data.is_profile_complete){
+                navigate("/kycverification")
+            }
+            if(response.data.is_profile_complete && !response.data.is_verify){
+                navigate("/under-verification")
+
             }
 
         } catch (error) {
@@ -173,13 +175,12 @@ export const patchProfile = (setLoading, data, navigate) => {
     formData.append('pan_card', data.pan_card);
     setLoading(true)
     return async dispatch => {
-        await axios.patch(baseURL + `account/edit-profile/`, formData, {
+        await axiosIns.patch(baseURL + `account/edit-profile/`, formData, {
             headers: {
-                "content-Type": "multipart/form-data"
+                'content-type': 'multipart/form-data',
             }
         }).then((res) => {
-            setLoading(false)
-            toast.success(res?.data?.msg, {
+            toast.success("Document Uploading Done under KYC", {
                 position: "top-center",
                 autoClose: 1000,
                 hideProgressBar: false,
@@ -189,9 +190,13 @@ export const patchProfile = (setLoading, data, navigate) => {
                 progress: undefined,
                 theme: "light",
             });
+            setTimeout(()=>{
+            setLoading(false)
+            navigate("/")
+            },2000)
         }).catch((err) => {
             setLoading(false)
-            console.log(err?.response)
+            console.log(err?.response?.data)
             toast.error(err?.response?.data?.msg, {
                 position: "top-center",
                 autoClose: 1000,
