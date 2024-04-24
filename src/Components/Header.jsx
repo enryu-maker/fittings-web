@@ -36,7 +36,9 @@ export default function Header() {
 
           <div className=' w-[40%] flex items-center justify-center gap-5'>
             <div className=' hidden md:flex py-1 space-x-2 items-center pl-2 rounded-lg  '>
-              <AiOutlineSearch size={25} />
+              <a href='#/search'>
+                <AiOutlineSearch size={25} />
+              </a>
             </div>
             <div className=' md:flex items-center justify-center gap-5 hidden '>
               {access != null ? (
@@ -119,10 +121,11 @@ export default function Header() {
                           setSub(item);
                           setIsOpen(!IsOpen);
                         }}
-                        className={`${item?.id === sub?.id
+                        className={`${
+                          item?.id === sub?.id
                             ? 'bg-[#df633a] text-white'
                             : 'bg-white'
-                          } box-border border-gray-200 border-2 hover:bg-[#df633a] hover:text-white text-black px-4 py-1 `}>
+                        } box-border border-gray-200 border-2 hover:bg-[#df633a] hover:text-white text-black px-4 py-1 `}>
                         <p>{item?.category_name}</p>
                       </button>
                     );
