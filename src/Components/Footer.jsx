@@ -7,6 +7,7 @@ import {
   AiOutlineTwitter,
 } from 'react-icons/ai';
 import { FaAppStoreIos } from 'react-icons/fa';
+
 export default function Footer() {
   return (
     <div
@@ -72,17 +73,8 @@ export default function Footer() {
               Refund & Cancellation Policy
             </a>
           </div>
+
           <div className=' flex flex-col justify-center items-center gap-3 w-full md:w-auto'>
-            <div className='flex gap-1 w-full'>
-              <input
-                type='text'
-                placeholder='Enter your email address'
-                className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full outline-gray-300  block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white '
-              />
-              <button className='bg-orange-900 rounded-full p-2 text-white'>
-                Subscribe
-              </button>
-            </div>
             <div className='flex flex-col justify-center gap-2'>
               <h1 className=' text-2xl'>Download our app</h1>
               <div className='flex justify-around'>
