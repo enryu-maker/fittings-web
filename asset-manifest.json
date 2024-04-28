@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.2a7642d7.css",
-    "main.js": "/static/js/main.802c5897.js",
+    "main.css": "/static/css/main.6d90bd50.css",
+    "main.js": "/static/js/main.c9a05278.js",
     "static/js/453.ae9aaf54.chunk.js": "/static/js/453.ae9aaf54.chunk.js",
     "static/media/bg.png": "/static/media/bg.57fcd83b9197769afb8a.png",
     "static/media/Helvetica.ttf": "/static/media/Helvetica.06113bf748ae7dc33e05.ttf",
@@ -9,21 +9,22 @@
     "static/media/orderh.png": "/static/media/orderh.5259c484a3073ec7960f.png",
     "static/media/profile.png": "/static/media/profile.711d334c997851fa0ae0.png",
     "static/media/logout.png": "/static/media/logout.08510c9451406acd4676.png",
+    "static/media/verified.png": "/static/media/verified.7913e16ddfa0551cf9b3.png",
     "static/media/man.png": "/static/media/man.6f678b05521261910525.png",
+    "static/media/kyc.png": "/static/media/kyc.3415c0908d0428d8897c.png",
     "static/media/Mundo Sans Std Medium.otf": "/static/media/Mundo Sans Std Medium.91d025b44892fd5a72c3.otf",
     "static/media/rating.png": "/static/media/rating.b4660f2a8abc169e8309.png",
     "static/media/order.png": "/static/media/order.16b69a466ae906f110d2.png",
     "static/media/coupons.png": "/static/media/coupons.299526bc969dcb39adde.png",
-    "static/media/verified.png": "/static/media/verified.03e498800aca82da88b9.png",
     "static/media/cancel.png": "/static/media/cancel.1583723861a66fb05605.png",
     "static/media/checked.png": "/static/media/checked.6f298cca57a5a8b36055.png",
     "index.html": "/index.html",
-    "main.2a7642d7.css.map": "/static/css/main.2a7642d7.css.map",
-    "main.802c5897.js.map": "/static/js/main.802c5897.js.map",
+    "main.6d90bd50.css.map": "/static/css/main.6d90bd50.css.map",
+    "main.c9a05278.js.map": "/static/js/main.c9a05278.js.map",
     "453.ae9aaf54.chunk.js.map": "/static/js/453.ae9aaf54.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2a7642d7.css",
-    "static/js/main.802c5897.js"
+    "static/css/main.6d90bd50.css",
+    "static/js/main.c9a05278.js"
   ]
 }
