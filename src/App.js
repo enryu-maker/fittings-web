@@ -41,6 +41,9 @@ export default function App() {
     (state) => state.Reducers.profile_complete
   );
   const is_verified = useSelector((state) => state.Reducers.is_verified);
+  const profile = useSelector((state) => state.Reducers.profile);
+
+  console.log(profile)
   const dispatch = useDispatch();
   React.useEffect(() => {
     dispatch(Init());

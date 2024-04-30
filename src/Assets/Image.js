@@ -11,6 +11,8 @@ export const IMAGE = {
     checked:require('./Images/checked.png'),
     cancel:require('./Images/cancel.png'),
     verified:require('./Images/verified.png'),
+    kyc:require('./Images/kyc.png'),
+
 
 
 }
