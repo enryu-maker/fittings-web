@@ -339,7 +339,7 @@ export const GetProduct = (id, role, setData, setLoading) => {
     console.log(role)
     setLoading(true)
     return async dispatch => {
-        await axios.get(baseURL + `product/view/${id}/${role}/`)
+        await axiosIns.get(baseURL + `product/view/${id}/`)
             .then((res) => {
                 console.log(res.data)
                 setData(res.data)
@@ -376,6 +376,29 @@ export const GetPrivacy = (setData, setLoading) => {
         await axios.get(baseURL + `static-data/privacy-policy/`)
             .then((res) => {
                 console.log(res.data)
+                setData(res.data)
+                setLoading(false);
+            }).catch((err) => {
+                toast.error(err?.response?.data?.msg, {
+                    position: "top-center",
+                    autoClose: 1000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+                setLoading(false);
+            })
+    }
+}
+
+export const GetSearch = (query, setData, setLoading) => {
+    setLoading(true)
+    return async dispatch => {
+        await axios.get(baseURL + `product/search/?query=${query}`)
+            .then((res) => {
                 setData(res.data)
                 setLoading(false);
             }).catch((err) => {

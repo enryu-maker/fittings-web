@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { IMAGE } from '../../Assets/Image';
 import { GetProfile, LogoutAction } from '../../Store/actions';
+import { useNavigate } from 'react-router-dom';
 
 const MyAccount = () => {
   const [activeSection, setActiveSection] = useState('profile');
   const profile = useSelector((state) => state.Reducers.profile);
-
+  const navigate = useNavigate()
   const handleSectionChange = (section) => {
     setActiveSection(section);
   };
@@ -74,6 +75,8 @@ const MyAccount = () => {
                 role: 1,
               },
             });
+            navigate('/')
+            
           }}
           className='self-start '>
           <p className='text-red-500 text-lg font-Raleway font-medium tracking-widest '>
