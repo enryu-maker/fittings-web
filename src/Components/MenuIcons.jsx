@@ -4,22 +4,23 @@ import { IoHomeOutline } from 'react-icons/io5';
 import { CiSearch } from 'react-icons/ci';
 import { TbCategory } from 'react-icons/tb';
 import { CgDetailsMore } from 'react-icons/cg';
-import { RxCross1 } from 'react-icons/rx';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const MenuIcons = () => {
   const Menus = [
     { name: 'Home', icon: IoHomeOutline, href: '/' },
     { name: 'Search', icon: CiSearch, href: '/search' },
     { name: 'Category', icon: TbCategory, href: '/category' },
-    // { name: 'More', icon: CgDetailsMore },
+    { name: 'More', icon: CgDetailsMore, href: '/myaccount' },
   ];
   const [active, setActive] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const [open, setOpen] = React.useState(false);
   const [data, setData] = React.useState({});
   const category = useSelector((state) => state.Reducers.cateogry);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -46,42 +47,6 @@ const MenuIcons = () => {
               </span>
             </Link>
           ))}
-          <button
-            type='button'
-            onClick={() => {
-              setIsOpen(!isOpen);
-            }}
-            className={`inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group`}>
-            {isOpen ? (
-              <>
-                <RxCross1
-                  className={`w-5 h-5 mb-2 text-gray-500 dark:text-gray-400 group-hover:text-orange-600 dark:group-hover:text-orange-500 ${
-                    isOpen && 'text-orange-600'
-                  }`}
-                />
-                <span
-                  className={`text-sm text-gray-500 dark:text-gray-400 group-hover:text-orange-600 dark:group-hover:text-orange-500 ${
-                    isOpen && 'text-orange-600'
-                  }`}>
-                  Close
-                </span>
-              </>
-            ) : (
-              <>
-                <CgDetailsMore
-                  className={`w-5 h-5 mb-2 text-gray-500 dark:text-gray-400 group-hover:text-orange-600 dark:group-hover:text-orange-500 ${
-                    isOpen && 'text-orange-600'
-                  }`}
-                />
-                <span
-                  className={`text-sm text-gray-500 dark:text-gray-400 group-hover:text-orange-600 dark:group-hover:text-orange-500 ${
-                    isOpen && 'text-orange-600'
-                  }`}>
-                  More
-                </span>
-              </>
-            )}
-          </button>
         </div>
       </div>
       {/* // Mobile Menu Here */}
